@@ -1,0 +1,136 @@
+запустк на верцел с конфликтом пакетов
+    npm install --legacy-peer-deps
+
+
+npx create-react-app frontend --template typescript
+
+//
+npm install -g react-devtools
+
+npm i react-router-dom@6  // установка именно 6 версии react-router-dom
+
+// install material ui
+npm install @mui/material @emotion/react @emotion/styled
+
+//install sass
+npm install sass
+
+//install packet axios
+npm i --save axios
+
+
+//install react-redux
+npm i --save react-redux
+//install  @reduxjs/toolkit
+npm install @reduxjs/toolkit
+
+//install material dis icons
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+npm install @mui/icons-material
+
+//install libs @mui/styles
+npm --force install @mui/styles
+
+//install libs yup
+npm i yup
+npm i yup --legacy-peer-deps
+
+
+//install libs react hook form
+npm install react-hook-form
+npm install react-hook-form --legacy-peer-deps
+
+//npm install @hookform/resolvers
+npm install @hookform/resolvers --legacy-peer-deps
+
+// npm install @mui/lab  for button loader
+npm install @mui/lab --legacy-peer-deps
+
+//coingecko api key
+CG-1pYzTN8BvrJVcTFsysW78d2D
+
+//npm i highcharts-react-official  библиотека для построение графиков
+npm install highcharts-react-official --legacy-peer-deps
+npm install highcharts --legacy-peer-deps
+
+npm i react-chartjs-2 chart.js
+npm i react-chartjs-2 chart.js --legacy-peer-deps
+
+https://fakerjs.dev/guide/
+npm install @faker-js/faker --save-dev
+npm install @faker-js/faker --save-dev --legacy-peer-deps
+
+
+// библиотека для формат даты
+npm install moment --save
+npm install moment --save --legacy-peer-deps
+
+//conect to server
+$ ssh -i id_ed25519.pub test85@52.178.75.133
+ssh -i id_ed25519.pub test85@52.178.75.133
+
+/// for nginx
+test85@test85:~$ sudo nano /etc/nginx/sites-available/default
+
+--doppo
+test85@test85:~$ sudo systemctl restart nginx
+test85@test85:~$ sudo systemctl status nginx
+
+---------------------
+ location / {
+                //proxy_pass http://localhost:5000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+...
+///for db.service
+для запуска докера и всего сервиса----
+sudo systemctl start db.service
+для проверки статуса----
+sudo systemctl status db.service
+for stop service----
+sudo systemctl status db.service
+
+
+[Unit]
+Description=PostgreSQL Docker Service
+Requires=docker.service
+After=docker.service network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/server/cryptocurrencyBackEndFree
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+
+
+//for nest.service------------------- sudo npm run start
+для запуска nest и всего сервиса--
+sudo systemctl start nest.service
+для проверки статуса---
+sudo systemctl status nest.service
+for stop service---
+sudo systemctl stop nest.service
+
+[Unit]
+Description=nest daemon service
+
+[Service]
+WorkingDirectory=/home/test85/server/cryptocurrencyBackEndFree
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=4
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+
+
