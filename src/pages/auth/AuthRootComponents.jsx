@@ -10,7 +10,7 @@ const AuthRootComponents = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
-        <Box sx={{p:2}}>
+        <Box sx={{p:2,width:'360px'}}>
             <form  >
                 <Box
                     display='flex'
