@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleThemeAction } from "../../components/themeToggle/sliceToggleTheme";
 
@@ -17,13 +17,20 @@ export const useToggleTheme = () => {
     };
 
     // Используем useLayoutEffect для выполнения побочных эффектов, связанных с изменением темы
-    useLayoutEffect(() => {
-        // Устанавливаем атрибут 'data-theme' в элементе <html> для применения новой темы
-        document.documentElement.setAttribute('data-theme', theme);
-        // Сохранение темы в localStorage (закомментировано)
-        // localStorage.setItem('themeModeDiary', theme);
-    }, [theme]); // Зависимостью является 'theme', эффект будет срабатывать при её изменении
+    // useLayoutEffect(() => {
+    //     // Устанавливаем атрибут 'data-theme' в элементе <html> для применения новой темы
+    //     document.documentElement.setAttribute('data-theme', theme);
+    // }, [theme]); // Зависимостью является 'theme', эффект будет срабатывать при её изменении
+    useEffect(() => {
 
+       if( theme==='tomato'){
+           console.log('theme', theme)
+           // document.documentElement.style.backgroundColor = '#ff6347 !important';
+           document.body.setAttribute('data-theme', theme);
+       }else{
+           document.body.removeAttribute('data-theme', theme);
+       }
+    }, [theme]);
     // Возвращаем текущую тему и функцию для её изменения
     return { theme, setTheme };
 };

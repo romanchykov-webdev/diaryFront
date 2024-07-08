@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 // Проверка предпочтительной цветовой схемы пользователя
-const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+// const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 // console.log(isDarkTheme)
-const defaultTheme = isDarkTheme ? 'dark' : 'light';
-
+// const defaultTheme = isDarkTheme ? 'dark' : 'light';
+// console.log(defaultTheme)
 const initialState = {
-    themeMode: localStorage.getItem("themeModeDiary") || defaultTheme,
+    themeMode: 'dark',
 }
 
 export const toggleTheme = createSlice({
@@ -15,7 +15,7 @@ export const toggleTheme = createSlice({
     reducers: {
         toggleThemeAction(state, action) {
             state.themeMode = action.payload;
-            localStorage.setItem("themeModeDiary", action.payload); // Сохранение состояния в localStorage
+            // localStorage.setItem("themeModeDiary", action.payload); // Сохранение состояния в localStorage
         }
     }
 })

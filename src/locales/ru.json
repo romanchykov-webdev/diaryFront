@@ -3,8 +3,14 @@
   "Enter your login and Password": "Введите ваш login и Password",
   "Registration": "Регистрация",
   "Don't have an account?": "У вас нет аккаунт?",
+  "Do you have an account?": " У вас есть аккаунта?",
   "Enter your Email": "Введите ваш Email",
   "Enter your Password": "Введите ваш Password",
-  "To come in": "Войти",
-  "Language": "Язык"
+  "Enter": "Войти",
+  "Change application language": "Изменить язык приложения",
+  "Enter registration details": "Введите данные для регистрации",
+  "Enter your userName": "Введите ваш userName",
+  "Repeat your Password": "Повторите ваш Password",
+  "Select a theme for the application": "Выберите тему для приложения",
+  "Active application theme": "Активная тема приложения"
 }
