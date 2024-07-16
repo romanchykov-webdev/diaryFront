@@ -4,27 +4,56 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--text-color);
+    transition: color 500ms linear;
 }
-
+html{
+    height: 100%;
+}
 body {
     min-width: 375px;
-    overflow-x: hidden;
+    height: 100%;
+    background-color: var(--background-color) !important;
+    /*overflow-x: hidden;*/
     /*background-color: var(--background-color) !important;*/
     /*transition: background-color 200ms linear;*/
     /*height: 100vh;*/
     /*font-family: 'Poppins', 'sans-serif';*/
 }
+#root{
+    height: 100%;
+}
+.App{
+    height: 100%;
+}
+html[data-theme='dark'] {
+    --text-color: rgb(255, 255, 255);
+    --background-color: rgb(18, 18, 18);
+    --icon-color: rgba(255, 255, 255);
+    --border-color: rgba(255, 255, 255, 0.8);
+}
 
-body[data-theme='tomato'] {
-    background-color: var(--background-color) !important;
-    /*--text-color: rgb(0, 0, 0);*/
+html[data-theme='light'] {
+    --text-color: rgba(0, 0, 0, 0.87);
+    --background-color: rgb(255, 255, 255);
+    --icon-color: rgba(0, 0, 0, 0);
+    --border-color: rgba(0, 0, 0, 0.23);
+}
+
+html[data-theme='tomato'] {
+    --text-color: rgb(0, 0, 0);
     --background-color: #ff6347;
-    /*--icon-color: rgba(255, 255, 255);*/
-    /*--border-color: rgba(0, 0, 0, 0.23);*/
+    --icon-color: rgba(255, 255, 255);
+    --border-color: rgba(0, 0, 0, 0.23);
 }
-
-.App {
-    & .css-1g4q8oj {
-        height: 100%
-    }
+*{
+    --text-color: rgb(0, 0, 0);
+    --background-color: #ff6347;
+    --icon-color: rgba(255, 255, 255);
+    --border-color: rgba(0, 0, 0, 0.23);
 }
+/*.App {*/
+/*    & .css-1g4q8oj {*/
+/*        height: 100%*/
+/*    }*/
+/*}*/

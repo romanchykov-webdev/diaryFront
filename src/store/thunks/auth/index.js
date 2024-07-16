@@ -77,12 +77,13 @@ export const getPublicUser = createAsyncThunk(
     },
 )
 
-//thunk for get-public-user-info
+//thunk for updateUserInfo
 export const updateUserInfo = createAsyncThunk(
     'users/update',
+    // 'auth/update',
     async (data, {rejectWithValue}) => {
         try {
-            const user = await instanceAuth.patch('users', data)
+            const user = await instanceAuth.patch('/auth/update', data)
             console.log('user', user.data)
             return user.data
         } catch (error) {

@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeLanguage} from "../../locales/languageSlice";
 import {useTranslation} from "react-i18next";
 
-import {ButtonChangeLanguage, WrapperAccordionDetails, WrapperLanguageComponent} from "./style";
+import {ButtonChangeLanguage,  WrapperLanguageComponent} from "./style";
 
 const LanguageComponent = () => {
     // translate
@@ -20,7 +20,11 @@ const LanguageComponent = () => {
     // translate
 
     // theme cast
-    const backgroundTheme = useSelector((state) => state.theme.themeMode)
+    let backgroundTheme = useSelector((state) => state.auth?.user.themeModeDevice)
+    const logResTheme=useSelector((state) => state.theme.themeMode)
+    if(!backgroundTheme){
+        backgroundTheme=logResTheme
+    }
     // theme cast
     return (
         <WrapperLanguageComponent sx={{

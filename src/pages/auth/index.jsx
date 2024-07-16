@@ -46,6 +46,7 @@ const AuthRootComponents = () => {
                         email: data.email,
                         password: data.password,
                         language: language,
+                        popupForNewUser: true,
                         themeModeDevice: themeModeDevice,
                         avatar: ''
                     };

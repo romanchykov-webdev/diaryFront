@@ -2,9 +2,12 @@ import React from 'react';
 import {TextField, Typography} from "@mui/material";
 import AppLoadingButton from "../../../components/loading-button/loadingButton";
 import {IncitingText} from "./style";
+import {WrapperPassword} from "../style";
 
 import LanguageComponent from "../../../components/leng/LanguageComponent";
 import {useTranslation} from "react-i18next";
+import EyeComponent from "../../../components/eye/EyeComponent";
+import {useSelector} from "react-redux";
 // import {useSelector} from "react-redux";
 
 const LoginPage = (props) => {
@@ -18,6 +21,7 @@ const LoginPage = (props) => {
     const {t} = useTranslation();
     // const language = useSelector((state) => state.language.language);
     // translate
+    const isVisible = useSelector(state => state.isVisiblePassword.isVisible);
 
     return (
         <>
@@ -34,12 +38,15 @@ const LoginPage = (props) => {
                 fullWidth={true} margin='normal' label={t('Email')} variant="outlined"
                 {...register('email')}
                 placeholder={t('Enter your Email')}/>
-            <TextField
-                error={!!errors.password}
-                helperText={errors.password ? `${errors.password.message}` : ''}
-                fullWidth={true} type='password' margin='normal' label={t('Password')} variant="outlined"
-                {...register('password')}
-                placeholder={t('Enter your Password')}/>
+            <WrapperPassword>
+                <TextField
+                    error={!!errors.password}
+                    helperText={errors.password ? `${errors.password.message}` : ''}
+                    fullWidth={true} type={isVisible ?'password' : 'text'} margin='normal' label={t('Password')} variant="outlined"
+                    {...register('password')}
+                    placeholder={t('Enter your Password')}/>
+                <EyeComponent/>
+            </WrapperPassword>
             <AppLoadingButton
                 loading={loading}
                 type="submit"
@@ -57,7 +64,6 @@ const LoginPage = (props) => {
                 >{t('Registration')}</IncitingText>
             </Typography>
             <LanguageComponent/>
-
 
 
         </>

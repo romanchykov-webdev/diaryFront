@@ -13,7 +13,9 @@ export const Root = styled('div')(({ theme }) => {
 
 export const MenuIcon = styled('div')({
     cursor: 'pointer',
-    marginRight: '10px',
+    marginRight: '20px',
+    display:'flex',
+    alignItems: 'center',
 });
 
 export const Toolbar = styled('div')({
