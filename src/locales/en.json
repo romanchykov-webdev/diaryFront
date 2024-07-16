@@ -14,5 +14,7 @@
   "Enter your userName": "Enter your userName",
   "Repeat your Password": "Repeat your Password",
   "Select a theme for the application": "Select a theme for the application",
-  "Active application theme": "Active application theme"
+  "Active application theme": "Active application theme",
+  "Welcome": "Welcome",
+  "Settings": "Settings"
 }

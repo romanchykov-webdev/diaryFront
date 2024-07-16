@@ -1,12 +1,13 @@
 import React from 'react';
-import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, TextField, Typography} from "@mui/material";
+import {TextField, Typography} from "@mui/material";
 import AppLoadingButton from "../../../components/loading-button/loadingButton";
 import {IncitingText} from "./style";
-import ThemeToggleComponent from "../../../components/themeToggle/ThemeToggleComponent";
 import LanguageComponent from "../../../components/leng/LanguageComponent";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
+import AccordionToggleTheme from "../../../components/themeToggle/AccordionToggleTheme";
+import {WrapperPassword} from "../style";
+import EyeComponent from "../../../components/eye/EyeComponent";
 
 const RegisterPage = (props) => {
     const {
@@ -20,6 +21,9 @@ const RegisterPage = (props) => {
     const {t} = useTranslation();
     // const language = useSelector((state) => state.language.language);
     // translate
+
+    const isVisible = useSelector(state => state.isVisiblePassword.isVisible);
+
     return (
         <>
             <Typography variant="h2" fontFamily='Poppins' textAlign='center'>
@@ -59,9 +63,10 @@ const RegisterPage = (props) => {
                 placeholder={t('Enter your Email')}
                 helperText={errors.email ? errors.email.message : ''}
             />
+            <WrapperPassword>
             <TextField
                 fullWidth={true}
-                type='password'
+                type={isVisible ?'password' : 'text'}
                 margin='normal'
                 label="Password"
                 variant="outlined"
@@ -70,9 +75,12 @@ const RegisterPage = (props) => {
                 placeholder={t('Enter your Password')}
                 helperText={errors.password ? errors.password.message : ''}
             />
+                <EyeComponent/>
+            </WrapperPassword>
+            <WrapperPassword>
             <TextField
                 fullWidth={true}
-                type='password'
+                type={isVisible ?'password' : 'text'}
                 margin='normal'
                 label="Password"
                 variant="outlined"
@@ -81,30 +89,10 @@ const RegisterPage = (props) => {
                 placeholder={t('Repeat your Password')}
                 helperText={errors.confirmPassword ? errors.confirmPassword.message : ''}
             />
-            <Accordion sx={{
-                backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : {},
-                width: '100%',
-                mb: 2,
-                mt: 2
-            }}>
-                <AccordionSummary
-                    expandIcon={<ArrowDownwardIcon/>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    <Typography>{t("Select a theme for the application")}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Grid container sx={{justifyContent: 'space-between', alignItems: 'center'}}>
-                        <Box item>
-                            <h4>{t('Active application theme')} : <b>{backgroundTheme}</b> </h4>
-                        </Box>
+            </WrapperPassword>
+            <AccordionToggleTheme backgroundTheme={backgroundTheme}/>
 
-                        <ThemeToggleComponent item/>
-                    </Grid>
-                </AccordionDetails>
-            </Accordion>
-            <LanguageComponent/>
+            <LanguageComponent />
 
             <AppLoadingButton
                 loading={loading}

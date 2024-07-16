@@ -7,38 +7,44 @@ import s from './theme.module.css';
 import {ReactSVG} from 'react-svg';
 import {Grid, IconButton, useTheme} from '@mui/material';
 import {useToggleTheme} from '../../utils/hooks/toggleTheme';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {ColorModeContext} from "../../theme";
+import {updateUserInfo} from "../../store/thunks/auth";
 // material-ui
 
 // material-ui
 
 
-const ThemeToggleComponent = () => {
+const ThemeToggleComponent = ({backgroundTheme}) => {
     // material-ui
-    const MaTheme = useTheme();
-    const colorMode = useContext(ColorModeContext);
+    // const MaTheme = useTheme();
+    // const colorMode = useContext(ColorModeContext);
     // material-ui
-    
 
-    let themeState = useSelector(store => store.theme.themeMode)
 
-    if (themeState === 'dark') {
-        colorMode.toggleColorMode('dark')
-    } else if (themeState === 'light') {
-        colorMode.toggleColorMode('light')
-    } else if (themeState === 'tomato') {
-        colorMode.toggleColorMode('dark')
-    }
+
+    // const themeState = useSelector(store => store.theme.themeMode)
+
+    //
+    // if (themeState === 'dark') {
+    //     colorMode.toggleColorMode('dark')
+    // } else if (themeState === 'light') {
+    //     colorMode.toggleColorMode('light')
+    // } else if (themeState === 'tomato') {
+    //     colorMode.toggleColorMode('dark')
+    // }
 
     const {theme, setTheme} = useToggleTheme();
-    const themeMode = useSelector(state => state.theme.themeMode);
+    let themeMode = useSelector(state => state.theme.themeMode);
+    const userData=useSelector((state)=>state.auth?.user)
+    console.log(userData)
     // console.log(themeMode)
     const toggleTheme = () => {
         switch (theme) {
             case 'dark':
                 setTheme('light');
-                colorMode.toggleColorMode(); // Переключаем цветовую схему
+
+                // colorMode.toggleColorMode(); // Переключаем цветовую схему
                 // console.log('colorMode.toggleColorMode',colorMode.toggleColorMode)
                 break;
             case 'light':
@@ -48,7 +54,7 @@ const ThemeToggleComponent = () => {
                 break;
             case 'tomato':
                 setTheme('dark');
-                colorMode.toggleColorMode(); // Переключаем цветовую схему
+                // colorMode.toggleColorMode(); // Переключаем цветовую схему
                 // console.log('colorMode.toggleColorMode',colorMode.toggleColorMode)
                 break;
             default:
@@ -57,14 +63,20 @@ const ThemeToggleComponent = () => {
     };
 
     const renderIcon = () => {
-        if (themeMode === 'dark' & MaTheme.palette.mode === 'dark') {
+        if (themeMode === 'dark'
+            // & MaTheme.palette.mode === 'dark'
+        ) {
             // return <ReactSVG src={light} className={s.icon} onClick={colorMode.toggleColorMode} />;
             return <ReactSVG src={light} className={s.icon}/>;
 
-        } else if (themeMode === 'light' & MaTheme.palette.mode === 'light') {
+        } else if (themeMode === 'light'
+            // & MaTheme.palette.mode === 'light'
+        ) {
             return <ReactSVG src={tomato} className={s.icon}/>;
 
-        } else {
+        } else if (themeMode === 'tomato'
+            // & MaTheme.palette.mode === 'light'
+        ) {
             // return <ReactSVG src={dark} className={s.icon} onClick={colorMode.toggleColorMode} />;
             return <ReactSVG src={dark} className={s.icon}/>;
         }

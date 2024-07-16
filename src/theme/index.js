@@ -78,7 +78,7 @@ export const tokens = (mode) => ({
         }),
 })
 
-export const themeSettings= (mode) => {
+export const themeSettings = (mode) => {
     const colors = tokens(mode)
     return {
         palette: {
@@ -146,8 +146,10 @@ export const ColorModeContext = createContext({
 })
 
 
+
 export const useMode = () => {
     const [mode, setMode] = useState('dark')
+
 
     const colorMode = useMemo(
         () => ({

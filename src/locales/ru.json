@@ -12,5 +12,7 @@
   "Enter your userName": "Введите ваш userName",
   "Repeat your Password": "Повторите ваш Password",
   "Select a theme for the application": "Выберите тему для приложения",
-  "Active application theme": "Активная тема приложения"
+  "Active application theme": "Активная тема приложения",
+  "Welcome": "Добро пожаловать",
+  "Settings": "Настройки"
 }

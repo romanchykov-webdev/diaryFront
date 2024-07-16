@@ -12,16 +12,18 @@ const Root = () => {
     const [theme, colorMode] = useMode();
 
     return (
+        <Provider store={store}>
         <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Provider store={store}>
+
                     <BrowserRouter>
                         <App />
                     </BrowserRouter>
-                </Provider>
+
             </ThemeProvider>
         </ColorModeContext.Provider>
+        </Provider>
     );
 };
 

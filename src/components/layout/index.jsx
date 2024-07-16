@@ -1,36 +1,57 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import TopBarComponent from "../top-bar";
-import { Outlet, useLocation } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
+import {Outlet, useLocation} from "react-router-dom";
+import {Box, useMediaQuery} from "@mui/material";
 import SidebarComponent from "../sidebar/SidebarComponent";
-import { MainSection, DynamicBox } from "./style";
+import {useStyles} from "./style"
 
 const LayoutComponent = () => {
-    const location = useLocation();
-    const isNonMobile = useMediaQuery('(min-width:760px)');
-    const [isOpen, setIsOpen] = useState(true);
+    const location = useLocation()
+    const isNonMobile = useMediaQuery('(min-width:760px)')
+    //burger menu
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         location.pathname === '/login' || location.pathname === '/register'
-            ? <Outlet />
+            ? (
+                <>
+                    <Outlet/>
+                </>
+            )
             : (
-                <DynamicBox isNonMobile={isNonMobile}>
-                    <SidebarComponent
-                        isNonMobile={isNonMobile}
-                        drawerWidth='250px'
-                        isOpen={isOpen}
-                        setIsOpen={setIsOpen}
-                    />
-                    <MainSection>
-                        <TopBarComponent
+                <>
+                    <Box
+                        display='flex'
+                        justifyContent='space-between'
+                        width='100%'
+                        height='100%'
+                        position='relative'
+                    >
+                        <SidebarComponent
+                            isNonMobile={isNonMobile}
+                            drawerWidth='250px'
                             isOpen={isOpen}
                             setIsOpen={setIsOpen}
-                            isNonMobile={isNonMobile}
                         />
-                        <Outlet />
-                    </MainSection>
-                </DynamicBox>
+                        <Box
+                            display='flex'
+                            flexDirection='column'
+                            width='100%'
+                        >
+                            <TopBarComponent
+                                isOpen={isOpen}
+                                setIsOpen={setIsOpen}
+                                isNonMobile={isNonMobile}
+                            />
+
+                            <Outlet/>
+                        </Box>
+                    </Box>
+
+                </>
             )
+
+
     );
 };
 

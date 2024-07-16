@@ -12,5 +12,7 @@
   "Enter your userName": "Inserisci il tuo nome utente",
   "Repeat your Password": "Ripeti la tua password",
   "Select a theme for the application": "Seleziona un tema per l'applicazione",
-  "Active application theme": "Tema dell'applicazione attivo"
+  "Active application theme": "Tema dell'applicazione attivo",
+  "Welcome": "Benvenuto",
+  "Settings": "Impostazioni"
 }
