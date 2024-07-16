@@ -16,10 +16,10 @@ export const ButtonChangeLanguage = styled(Button)(({theme}) => {
     const colors = tokens(theme.palette.mode);
     return {
         // width:'64px',
-        color: theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT,
+        // color: theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT,
         margin: '5px',
         fontWeight: 600,
-        borderColor: theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT,
+        // borderColor: theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT,
         '&:hover': {
             borderColor: colors.borderColor,
         },

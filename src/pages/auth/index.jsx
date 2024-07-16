@@ -24,17 +24,19 @@ const AuthRootComponents = () => {
         resolver: yupResolver(location.pathname === '/login' ? LoginSchema : RegisterSchema),
     });
 
-    const loading = useSelector((state) => state.auth.loading);
+    const loading = useSelector((state) => state.auth.isLoading);
 
     const language = useSelector((state) => state.language.language);
     const themeModeDevice = useSelector((state) => state.theme.themeMode);
 
     const handleSubmitForm = async (data) => {
+        console.log('Form data:', data);
         if (location.pathname === '/login') {
             try {
                 await dispatch(LoginUser(data));
                 navigate('/'); // Navigate to homepage if login is successful
             } catch (e) {
+                console.error('Login error:', e);
                 return new Error(AppErrors.ErrorPassword);
             }
         } else if (location.pathname === '/register') {
@@ -54,9 +56,11 @@ const AuthRootComponents = () => {
                     // console.log('userData',userData)
                     navigate('/');
                 } catch (error) {
+                    console.error('Registration error:', error);
                     return error;
                 }
             } else {
+                console.error('Passwords do not match');
                 return new Error(AppErrors.PasswordDoNoMatch);
             }
         }

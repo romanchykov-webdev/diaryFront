@@ -28,12 +28,12 @@ const LanguageComponent = () => {
     // theme cast
     return (
         <WrapperLanguageComponent sx={{
-            backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : 'transparent',
+            backgroundColor: 'transparent',
             width: '100%',
             mb: 2
         }}>
             <Accordion sx={{
-                backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : {},
+                backgroundColor: 'transparent',
                 width: '100%'
             }}>
                 <AccordionSummary
@@ -49,17 +49,23 @@ const LanguageComponent = () => {
                 >
                     <Grid container gap={2} justifyContent="center" mt='5px'>
                         <ButtonChangeLanguage
-                            item sm={12}  md={4}
+                             sm={12}  md={4}
                             variant="outlined"
-                            onClick={() => handleLanguageChange('en')}>English</ButtonChangeLanguage>
+                            onClick={() => handleLanguageChange('en')}>
+                            English
+                        </ButtonChangeLanguage>
                         <ButtonChangeLanguage
-                            item sm={12}  md={4}
+                             sm={12}  md={4}
                             variant="outlined"
-                            onClick={() => handleLanguageChange('ru')}>Русский</ButtonChangeLanguage>
+                            onClick={() => handleLanguageChange('ru')}>
+                            Русский
+                        </ButtonChangeLanguage>
                         <ButtonChangeLanguage
-                            item sm={12}  md={4}
+                             sm={12}  md={4}
                             variant="outlined"
-                            onClick={() => handleLanguageChange('it')}>Italiano</ButtonChangeLanguage>
+                            onClick={() => handleLanguageChange('it')}>
+                            Italiano
+                        </ButtonChangeLanguage>
                     </Grid>
                 </AccordionDetails>
 

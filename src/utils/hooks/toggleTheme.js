@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect} from "react";
+import { useLayoutEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleThemeAction } from "../../components/themeToggle/sliceToggleTheme";
 

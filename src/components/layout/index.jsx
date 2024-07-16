@@ -3,7 +3,7 @@ import TopBarComponent from "../top-bar";
 import {Outlet, useLocation} from "react-router-dom";
 import {Box, useMediaQuery} from "@mui/material";
 import SidebarComponent from "../sidebar/SidebarComponent";
-import {useStyles} from "./style"
+// import {useStyles} from "./style"
 
 const LayoutComponent = () => {
     const location = useLocation()

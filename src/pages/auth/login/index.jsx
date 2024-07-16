@@ -23,6 +23,9 @@ const LoginPage = (props) => {
     // translate
     const isVisible = useSelector(state => state.isVisiblePassword.isVisible);
 
+    // console.log('LoginPage props:', props);
+    // console.log('isVisible:', isVisible);
+
     return (
         <>
             <Typography variant="h2" textAlign='center' fontSize={32}>
@@ -56,7 +59,7 @@ const LoginPage = (props) => {
                     marginBottom: 2
                 }} variant="contained">{t('Enter')}
             </AppLoadingButton>
-            <Typography variant="body1" fontFamily='Poppins' sx={{mb: 4, mt: 2}}>
+            <Typography variant="body1" fontFamily='Poppins' sx={{mb: 4, mt: 4}}>
                 {t('Don\'t have an account?')}
                 <IncitingText
                     component="span"
