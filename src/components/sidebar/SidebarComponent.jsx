@@ -29,6 +29,7 @@ import {useSelector} from "react-redux";
 import s from "../themeToggle/theme.module.css";
 import {ReactSVG} from "react-svg";
 import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
 import {useTranslation} from "react-i18next";
 
 const SidebarComponent = (props) => {
@@ -77,6 +78,11 @@ const SidebarComponent = (props) => {
 
     function handleSettings() {
         navigate('/settings')
+        // navigate('/path')
+        setIsOpen(false)
+    }
+    function handleHome() {
+        navigate('/')
         // navigate('/path')
         setIsOpen(false)
     }
@@ -161,6 +167,19 @@ const SidebarComponent = (props) => {
                                 {/*)}*/}
                                 <ListItem>
                                     <ListItemButton
+                                        onClick={handleHome}
+                                        component={active === '/' ? ActiveNavItem : NavItem}
+                                    >
+                                        <ListItemIcon>
+                                            <HomeIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText>
+                                            {t('Home')}
+                                        </ListItemText>
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemButton
                                                     onClick={handleSettings}
                                                     component={active === '/settings' ? ActiveNavItem : NavItem}
                                     >
@@ -168,7 +187,7 @@ const SidebarComponent = (props) => {
                                             <SettingsIcon/>
                                         </ListItemIcon>
                                         <ListItemText>
-                                            {t('Impostazioni')}
+                                            {t('Settings')}
                                         </ListItemText>
                                     </ListItemButton>
                                 </ListItem>
@@ -180,7 +199,7 @@ const SidebarComponent = (props) => {
                                         </ListItemIcon>
                                         <ListItemText>
                                             <Typography>
-                                                LogOut
+                                                {t('Log out')}
                                             </Typography>
                                         </ListItemText>
                                     </ListItemButton>

@@ -1,6 +1,5 @@
 // rsc
 import React from 'react';
-import PopUpLesson from "../../components/popupLesson/PopUpLesson";
 
 
 const Home = () => {

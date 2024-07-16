@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import { Box } from "@mui/material";
+import React, {useState} from 'react';
+import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography} from "@mui/material";
 import AppLoadingButton from "../loading-button/loadingButton";
-import { updateUserPassword } from "../../store/thunks/auth";
+import {updateUserPassword} from "../../store/thunks/auth";
 import AlertComponent from "../alert/AlertComponent";
-import { useDispatch } from "react-redux";
-import { StyledGrid, StyledTextField, ButtonSubmitBlock, WrapperChangePassword } from "./style";
+import {useDispatch} from "react-redux";
+import {StyledGrid, StyledTextField, ButtonSubmitBlock, WrapperChangePassword} from "./style";
+import {useTranslation} from "react-i18next";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ThemeToggleComponent from "../themeToggle/ThemeToggleComponent";
 
-const ChangePasswordComponent = ({isNonMobile}) => {
+const ChangePasswordComponent = ({isNonMobile, loading}) => {
     const [newPassword, setNewPassword] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const dispatch = useDispatch();
@@ -14,7 +17,9 @@ const ChangePasswordComponent = ({isNonMobile}) => {
     const [snackbarMessage, setSnackbarMessage] = useState(null);
     const [snackbarSeverity, setSnackbarSeverity] = useState("success");
     const [open, setOpen] = useState(false);
-
+    // translate
+    const {t} = useTranslation();
+    // translate
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -23,12 +28,12 @@ const ChangePasswordComponent = ({isNonMobile}) => {
                 newPassword: newPassword
             };
             await dispatch(updateUserPassword(data)).unwrap();
-            setSnackbarMessage(`Вы изменили свой старый пароль на: ${newPassword}`);
+            setSnackbarMessage(`${t('You have changed your old password to')}: ${newPassword}`);
             setSnackbarSeverity("success");
             setOpen(true);
             setTimeout(() => setOpen(false), 2000);
         } catch (error) {
-            setSnackbarMessage('Произошла ошибка при изменении пароля. Попробуйте еще раз.');
+            setSnackbarMessage(`${t('An error occurred while changing the password. Try again.')}`);
             setSnackbarSeverity("error");
             setOpen(true);
             setTimeout(() => setOpen(false), 2000);
@@ -36,47 +41,75 @@ const ChangePasswordComponent = ({isNonMobile}) => {
     };
 
     return (
-        <StyledGrid
-            component='form'
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit}
-        >
-            <WrapperChangePassword>
-                <StyledTextField
-                    sx={{
-                        ...(!isNonMobile && {
-                            width: '100%',
-                        }),
-                    }}
-                    value={oldPassword}
-                    onChange={(e) => setOldPassword(e.target.value)}
-                    type='text'
-                    label='Старый пароль'
-                    variant='outlined'
-                />
-                <StyledTextField
-                    sx={{
-                        ...(!isNonMobile && {
-                            width: '100%',
-                        }),
-                    }}
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    type='text'
-                    label='Новый пароль'
-                    variant='outlined'
-                />
-                <ButtonSubmitBlock>
-                    <AppLoadingButton type='submit'>
-                        Изменить пароль
-                    </AppLoadingButton>
-                </ButtonSubmitBlock>
-            </WrapperChangePassword>
-            {snackbarMessage && (
-                <AlertComponent message={snackbarMessage} severity={snackbarSeverity} isOpen={open}/>
-            )}
-        </StyledGrid>
+        <Accordion sx={{
+            backgroundColor: 'transparent',
+            width: '100%',
+            mb: 2,
+            mt: 2
+        }}>
+            <AccordionSummary
+                expandIcon={<ArrowDownwardIcon/>}
+                aria-controls="panel1-content"
+                id="panel1-header"
+            >
+                <Typography>{t("Change password")}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <StyledGrid
+                    component='form'
+                    noValidate
+                    autoComplete="off"
+                    onSubmit={handleSubmit}
+                >
+                    <WrapperChangePassword>
+                        <StyledTextField
+                            sx={{
+                                ...(!isNonMobile && {
+                                    width: '100%',
+                                }),
+                            }}
+                            value={oldPassword}
+                            onChange={(e) => setOldPassword(e.target.value)}
+                            type='text'
+                            label={t('Old Password')}
+                            variant='outlined'
+                        />
+                        <StyledTextField
+                            sx={{
+                                ...(!isNonMobile && {
+                                    width: '100%',
+                                }),
+                            }}
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)}
+                            type='text'
+                            label={t('New Password')}
+                            variant='outlined'
+                        />
+                        <ButtonSubmitBlock>
+
+                            <AppLoadingButton
+                                onClick={handleSubmit}
+                                loading={loading}
+                                type="submit"
+                                sx={{
+                                    marginTop: 2,
+                                    alignSelf: 'center',
+                                    width: '60%',
+                                    marginBottom: 2
+                                }} variant="contained">
+                                {t('Change password')}
+                            </AppLoadingButton>
+
+                        </ButtonSubmitBlock>
+                    </WrapperChangePassword>
+                    {snackbarMessage && (
+                        <AlertComponent message={snackbarMessage} severity={snackbarSeverity} isOpen={open}/>
+                    )}
+                </StyledGrid>
+            </AccordionDetails>
+        </Accordion>
+
     );
 };
 

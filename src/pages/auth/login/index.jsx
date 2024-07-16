@@ -8,6 +8,7 @@ import LanguageComponent from "../../../components/leng/LanguageComponent";
 import {useTranslation} from "react-i18next";
 import EyeComponent from "../../../components/eye/EyeComponent";
 import {useSelector} from "react-redux";
+import ThemeToggleComponent from "../../../components/themeToggle/ThemeToggleComponent";
 // import {useSelector} from "react-redux";
 
 const LoginPage = (props) => {
@@ -67,6 +68,7 @@ const LoginPage = (props) => {
                 >{t('Registration')}</IncitingText>
             </Typography>
             <LanguageComponent/>
+            <ThemeToggleComponent/>
 
 
         </>

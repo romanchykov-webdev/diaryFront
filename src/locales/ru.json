@@ -18,5 +18,14 @@
   "Active application theme": "Активная тема приложения",
   "Welcome": "Добро пожаловать",
   "Settings": "Настройки",
-  "Save settings": "Сохранить настройки"
+  "Save settings": "Сохранить настройки",
+  "You have changed your old password to": "Вы изменили свой старый пароль на",
+  "An error occurred while changing the password. Try again.": "Произошла ошибка при изменении пароля. Попробуйте еще раз.",
+  "Old Password": "Старый пароль",
+  "New Password": "Новый пароль",
+  "Change user name": " Изменить имя пользователя",
+  "User Name": "Имя пользователя",
+  "New user name": "Новое имя пользователя",
+  "Home": "Home",
+  "Log out": "Выйти"
 }
