@@ -40,7 +40,7 @@ const TopBarComponent = (props) => {
     return (
         <AppBar component={Root} sx={{
             position: 'relative',
-            backgroundColor: backgroundTheme === 'tomato' ? '#ff6347 !important' : {}
+            backgroundColor: 'var(--background-color)'
         }}>
             <MuiToolbar component={Toolbar}>
                 <Grid container justifyContent='space-between' alignItems='center'>

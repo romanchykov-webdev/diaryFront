@@ -4,9 +4,9 @@ import AppLoadingButton from "../loading-button/loadingButton";
 import { updateUserPassword } from "../../store/thunks/auth";
 import AlertComponent from "../alert/AlertComponent";
 import { useDispatch } from "react-redux";
-import { StyledGrid, StyledTextField, ButtonSubmitBlock } from "./style";
+import { StyledGrid, StyledTextField, ButtonSubmitBlock, WrapperChangePassword } from "./style";
 
-const ChangePasswordComponent = () => {
+const ChangePasswordComponent = ({isNonMobile}) => {
     const [newPassword, setNewPassword] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const dispatch = useDispatch();
@@ -42,8 +42,13 @@ const ChangePasswordComponent = () => {
             autoComplete="off"
             onSubmit={handleSubmit}
         >
-            <Box>
+            <WrapperChangePassword>
                 <StyledTextField
+                    sx={{
+                        ...(!isNonMobile && {
+                            width: '100%',
+                        }),
+                    }}
                     value={oldPassword}
                     onChange={(e) => setOldPassword(e.target.value)}
                     type='text'
@@ -51,6 +56,11 @@ const ChangePasswordComponent = () => {
                     variant='outlined'
                 />
                 <StyledTextField
+                    sx={{
+                        ...(!isNonMobile && {
+                            width: '100%',
+                        }),
+                    }}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     type='text'
@@ -62,7 +72,7 @@ const ChangePasswordComponent = () => {
                         Изменить пароль
                     </AppLoadingButton>
                 </ButtonSubmitBlock>
-            </Box>
+            </WrapperChangePassword>
             {snackbarMessage && (
                 <AlertComponent message={snackbarMessage} severity={snackbarSeverity} isOpen={open}/>
             )}

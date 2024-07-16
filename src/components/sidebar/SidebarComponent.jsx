@@ -36,7 +36,7 @@ const SidebarComponent = (props) => {
     const {isNonMobile, drawerWidth, isOpen, setIsOpen} = props;
     const {pathname} = useLocation();
     const navigate = useNavigate();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     // translate
     const {t} = useTranslation();
@@ -77,6 +77,7 @@ const SidebarComponent = (props) => {
 
     function handleSettings() {
         navigate('/settings')
+        // navigate('/path')
         setIsOpen(false)
     }
 
@@ -87,7 +88,7 @@ const SidebarComponent = (props) => {
                  ? {
                      position: 'absolute',
                      width: '100%',
-                     height: '100%',
+                     minHeight: '100%',
                      backgroundColor: '#ff000000',
                      backdropFilter: 'blur(5px)',
                      zIndex: 10000,
@@ -105,12 +106,15 @@ const SidebarComponent = (props) => {
                         variant='persistent'
                         anchor='left'
                         sx={{
+                            backgroundColor: 'var(--background-color)',
                             width: drawerWidth,
+
                             '& .MuiDrawer-paper': {
-                                color: theme.palette.secondary.main,
-                                backgroundColor: backgroundTheme === 'tomato' ? '#ff6347 !important' : theme.palette.primary.main,
+                                // color: theme.palette.secondary.main,
+                                // backgroundColor: backgroundTheme === 'tomato'  '#ff6347 !important'
                                 boxSizing: 'border-box',
                                 width: drawerWidth,
+                                backgroundColor: 'var(--background-color)',
                                 borderColor: backgroundTheme === 'tomato' && 'black !important'
                             }
                         }}
@@ -124,7 +128,7 @@ const SidebarComponent = (props) => {
                                                       fill: backgroundTheme === 'black' ? '#fff' : undefined
                                                   }}
                                         />
-                                        <Typography variant='h1' component={BrandTitle}>
+                                        <Typography variant='h4' component={BrandTitle}>
                                             Diary
                                         </Typography>
                                     </Brand>
@@ -156,8 +160,10 @@ const SidebarComponent = (props) => {
                                 {/*    </ListItem>*/}
                                 {/*)}*/}
                                 <ListItem>
-                                    <ListItemButton component={NavItem}
-                                                    onClick={handleSettings}>
+                                    <ListItemButton
+                                                    onClick={handleSettings}
+                                                    component={active === '/settings' ? ActiveNavItem : NavItem}
+                                    >
                                         <ListItemIcon>
                                             <SettingsIcon/>
                                         </ListItemIcon>

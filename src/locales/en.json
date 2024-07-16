@@ -8,13 +8,17 @@
   "Email": "Email",
   "Password": "Password",
   "Enter your Password": "Enter your Password",
+  "Change password": "Change password",
   "Enter": "Enter",
   "Change application language": "Change application language",
+  "Language": "Language",
   "Enter registration details": "Enter registration details",
   "Enter your userName": "Enter your userName",
   "Repeat your Password": "Repeat your Password",
   "Select a theme for the application": "Select a theme for the application",
+  "Change theme": "Change theme",
   "Active application theme": "Active application theme",
   "Welcome": "Welcome",
-  "Settings": "Settings"
+  "Settings": "Settings",
+  "Save settings": "Save settings"
 }

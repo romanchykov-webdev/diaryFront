@@ -27,11 +27,11 @@ const AccordionToggleTheme = ({backgroundTheme}) => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Grid container sx={{justifyContent: 'space-between', alignItems: 'center'}}>
-                        <Box >
+                        <Box sx={{mb: 1}}>
                             <Typography>{t('Active application theme')} : <b>{backgroundTheme}</b> </Typography>
                         </Box>
 
-                        <ThemeToggleComponent item backgroundTheme={backgroundTheme}/>
+                        <ThemeToggleComponent item backgroundTheme={backgroundTheme} />
                     </Grid>
                 </AccordionDetails>
             </Accordion>

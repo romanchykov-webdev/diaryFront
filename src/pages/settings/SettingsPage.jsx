@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react';
-import {Box, Button} from "@mui/material";
+import {Box, Button, useMediaQuery} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import LanguageComponent from "../../components/leng/LanguageComponent";
 import AccordionToggleTheme from "../../components/themeToggle/AccordionToggleTheme";
 import {useDispatch, useSelector} from "react-redux";
 import {getPublicUser, updateUserInfo} from "../../store/thunks/auth";
+import ChangePasswordComponent from "../../components/change-password/ChangePasswordComponent";
+import AppLoadingButton from "../../components/loading-button/loadingButton";
+import {RootGrid} from "./style";
 
 const SettingsPage = () => {
     const {t} = useTranslation();
@@ -15,11 +18,13 @@ const SettingsPage = () => {
     const backgroundTheme = userData.themeModeDevice;
 
     const dispatch = useDispatch();
+    const isNonMobile = useMediaQuery('(min-width:760px)')
+    const loading = useSelector((state) => state.auth.isLoading);
+
     useEffect(() => {
         dispatch(getPublicUser());
-    }, [dispatch]);
-
-
+    }, [dispatch, isNonMobile]);
+    console.log('isNonMobile', isNonMobile, loading)
 
     // dispatch(updateUserInfo)
     function handleSubmit() {
@@ -37,16 +42,26 @@ const SettingsPage = () => {
     }
 
     return (
-        <Box sx={{p: 5}}>
-            <h2>{t('Change application language')}</h2>
+        <RootGrid>
+            <h2>{t('Language')}</h2>
             <LanguageComponent/>
-            <h1>{t('Select a theme for the application')}</h1>
+            <h2>{t('Change theme')}</h2>
             <AccordionToggleTheme backgroundTheme={backgroundTheme}/>
-            <h1>setting page</h1>
-            <h1>setting page</h1>
-            <h1>setting page</h1>
-            <Button onClick={handleSubmit}>Save</Button>
-        </Box>
+            <AppLoadingButton
+                onClick={handleSubmit}
+                loading={loading}
+                type="submit"
+                sx={{
+                    marginTop: 2,
+                    alignSelf: 'center',
+                    width: '60%',
+                    marginBottom: 2
+                }} variant="contained">{t('Save settings')}
+            </AppLoadingButton>
+            <hr style={{margin: '20px 0'}}/>
+            <h2>{t('Change password')}</h2>
+            <ChangePasswordComponent isNonMobile={isNonMobile}/>
+        </RootGrid>
     );
 };
 

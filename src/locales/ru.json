@@ -6,13 +6,17 @@
   "Do you have an account?": " У вас есть аккаунта?",
   "Enter your Email": "Введите ваш Email",
   "Enter your Password": "Введите ваш Password",
+  "Change password": "Изменить пароль",
   "Enter": "Войти",
   "Change application language": "Изменить язык приложения",
+  "Language": "Язык",
   "Enter registration details": "Введите данные для регистрации",
   "Enter your userName": "Введите ваш userName",
   "Repeat your Password": "Повторите ваш Password",
   "Select a theme for the application": "Выберите тему для приложения",
+  "Change theme": "Изменить тему",
   "Active application theme": "Активная тема приложения",
   "Welcome": "Добро пожаловать",
-  "Settings": "Настройки"
+  "Settings": "Настройки",
+  "Save settings": "Сохранить настройки"
 }

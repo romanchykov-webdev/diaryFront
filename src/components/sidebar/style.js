@@ -3,10 +3,11 @@ import { tokens } from "../../theme";
 
 
 export const NavBlock = styled('div')(({ theme }) => {
-    const colors = tokens(theme.palette.mode);
+    // const colors = tokens(theme.palette.mode);
     return {
         width: '100%',
-        borderBottom: `1px solid ${colors.borderColor}`
+        borderBottom: `1px solid black`,
+        backgroundColor: 'var(--background-color) !important'
     };
 });
 
@@ -34,10 +35,10 @@ export const NavItem = styled('div')(({ theme }) => {
     return {
         '&:hover': {
             backgroundColor: '#1900D5 !important',
-            color: `${colors.white.DEFAULT}`,
+            color: `var(--text-color)`,
             borderRadius: '4px',
             '& .MuiSvgIcon-root': {
-                color: `${colors.white.DEFAULT} !important`
+                color: `var(--text-color)`
             }
         },
     };

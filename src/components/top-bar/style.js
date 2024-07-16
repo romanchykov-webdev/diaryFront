@@ -1,12 +1,12 @@
 import { styled } from "@mui/material/styles";
-import { tokens } from "../../theme";
+// import { tokens } from "../../theme";
 
 export const Root = styled('div')(({ theme }) => {
-    const colors = tokens(theme.palette.mode);
+    // const colors = tokens(theme.palette.mode);
     return {
         position: 'static',
-        background: `${colors.primary.DEFAULT} !important`,
-        borderBottom: `1px solid ${colors.borderColor}`,
+        backgroundColor: `var(--background-color)`,
+        borderBottom: `1px solid var(--text-color)`,
         boxShadow: 'none !important'
     };
 });
