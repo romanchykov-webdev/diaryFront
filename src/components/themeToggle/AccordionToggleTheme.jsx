@@ -13,7 +13,7 @@ const AccordionToggleTheme = ({backgroundTheme}) => {
     return (
         <>
             <Accordion sx={{
-                backgroundColor: backgroundTheme === 'tomato' ? '#ff6347 !important' : {},
+                backgroundColor: 'transparent',
                 width: '100%',
                 mb: 2,
                 mt: 2
@@ -27,8 +27,8 @@ const AccordionToggleTheme = ({backgroundTheme}) => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Grid container sx={{justifyContent: 'space-between', alignItems: 'center'}}>
-                        <Box item>
-                            <h4>{t('Active application theme')} : <b>{backgroundTheme}</b> </h4>
+                        <Box >
+                            <Typography>{t('Active application theme')} : <b>{backgroundTheme}</b> </Typography>
                         </Box>
 
                         <ThemeToggleComponent item backgroundTheme={backgroundTheme}/>

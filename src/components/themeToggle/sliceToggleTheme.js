@@ -1,12 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 // Проверка предпочтительной цветовой схемы пользователя
-// const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 // console.log(isDarkTheme)
-// const defaultTheme = isDarkTheme ? 'dark' : 'light';
+const defaultTheme = isDarkTheme ? 'dark' : 'light';
 // console.log(defaultTheme)
 const initialState = {
-    themeMode: 'dark',
+    // themeMode: 'dark',
+    themeMode: defaultTheme,
 }
 
 export const toggleTheme = createSlice({

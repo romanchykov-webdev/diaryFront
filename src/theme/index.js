@@ -109,34 +109,34 @@ export const themeSettings = (mode) => {
                     },
                 }),
         },
-        typography: {
-            fontFamily: ['Poppins', 'sans-serif'].join(','),
-            fontSize: 14,
-            h1: {
-                fontFamily: ['Poppins', 'sans-serif'].join(','),
-                fontSize: 40,
-                fontWeight: 600,
-            },
-            h2: {
-                fontFamily: ['Poppins', 'sans-serif'].join(','),
-                fontSize: 35,
-                fontWeight: 600,
-            },
-            h3: {
-                fontFamily: ['Poppins', 'sans-serif'].join(','),
-                fontSize: 30,
-                fontWeight: 500,
-            },
-            h4: {
-                fontFamily: ['Poppins', 'sans-serif'].join(','),
-                fontSize: 25,
-                fontWeight: 500,
-            },
-            p: {
-                fontFamily: ['Poppins', 'sans-serif'].join(','),
-                fontSize: 20,
-            },
-        },
+        // typography: {
+        //     fontFamily: ['Poppins', 'sans-serif'].join(','),
+        //     fontSize: 14,
+        //     h1: {
+        //         fontFamily: ['Poppins', 'sans-serif'].join(','),
+        //         fontSize: 40,
+        //         fontWeight: 600,
+        //     },
+        //     h2: {
+        //         fontFamily: ['Poppins', 'sans-serif'].join(','),
+        //         fontSize: 35,
+        //         fontWeight: 600,
+        //     },
+        //     h3: {
+        //         fontFamily: ['Poppins', 'sans-serif'].join(','),
+        //         fontSize: 30,
+        //         fontWeight: 500,
+        //     },
+        //     h4: {
+        //         fontFamily: ['Poppins', 'sans-serif'].join(','),
+        //         fontSize: 25,
+        //         fontWeight: 500,
+        //     },
+        //     p: {
+        //         fontFamily: ['Poppins', 'sans-serif'].join(','),
+        //         fontSize: 20,
+        //     },
+        // },
     }
 }
 

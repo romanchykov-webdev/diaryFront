@@ -106,9 +106,8 @@ const RegisterPage = (props) => {
                 {t('Registration')}
             </AppLoadingButton>
             <Typography variant="body1" fontFamily='Poppins'
-                        sx={{
-                            fontFamily: 'Poppins'
-                        }}>
+                        sx={{mb: 4, mt: 4}}
+            >
                 {t('Do you have an account?')}
                 <IncitingText
                     component="span"
