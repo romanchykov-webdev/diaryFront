@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
     Accordion,
     AccordionDetails,
@@ -8,10 +8,10 @@ import {
     FormGroup,
     Typography
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { deleteUser } from "../../store/thunks/auth";
-import { useDispatch } from "react-redux";
-import { StyledGrid, TabHeading, AlertMessage, CheckBoxBlock, StyledCheckbox, BlockButton } from "./style";
+import {useNavigate} from "react-router-dom";
+import {deleteUser} from "../../store/thunks/auth";
+import {useDispatch} from "react-redux";
+import {StyledGrid, AlertMessage, CheckBoxBlock, StyledCheckbox, BlockButton} from "./style";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import {useTranslation} from "react-i18next";
 
@@ -22,6 +22,7 @@ const DeleteUserAccountComponent = () => {
 
     // translate
     const {t} = useTranslation();
+
     // translate
 
     function handlerButtonDeleteAccount() {
@@ -46,7 +47,7 @@ const DeleteUserAccountComponent = () => {
                 aria-controls="panel1-content"
                 id="panel1-header"
             >
-                <Typography sx={{color:'red !important'}}>{t('Delete account')}</Typography>
+                <Typography sx={{color: 'red !important'}}>{t('Delete account')}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <StyledGrid
@@ -61,7 +62,7 @@ const DeleteUserAccountComponent = () => {
                             </Typography>
                         </AlertMessage>
                         <CheckBoxBlock item>
-                            <FormGroup >
+                            <FormGroup>
                                 <FormControlLabel control={
                                     <StyledCheckbox
                                         checked={checked}
@@ -81,7 +82,6 @@ const DeleteUserAccountComponent = () => {
                 </StyledGrid>
             </AccordionDetails>
         </Accordion>
-
 
 
     );

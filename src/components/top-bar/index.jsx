@@ -6,24 +6,23 @@ import SearchBarComponent from "../search-bar/SearchBarComponent";
 import {getPublicUser} from "../../store/thunks/auth";
 import {useDispatch, useSelector} from "react-redux";
 import {Root, MenuIcon, Toolbar} from './style';
-import ThemeToggleComponent from "../themeToggle/ThemeToggleComponent";
-import {useTranslation} from "react-i18next";
+// import {useTranslation} from "react-i18next";
 import {changeLanguage} from "../../locales/languageSlice";
 import {toggleThemeAction} from "../themeToggle/sliceToggleTheme";
 import SwitcherFolder from "../switcher-folder/SwitcherFolder";
-import {useToggleTheme} from "../../utils/hooks/toggleTheme";
+// import {useToggleTheme} from "../../utils/hooks/toggleTheme";
 
 const TopBarComponent = (props) => {
     const {isOpen, setIsOpen, isNonMobile} = props;
 
     // const dispatch = useDispatch();
 
-    const {t} = useTranslation();
+    // const {t} = useTranslation();
 
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
 
-    const {setTheme} = useToggleTheme();
+    // const {setTheme} = useToggleTheme();
     const backgroundTheme = useSelector((state) => state.auth.user.themeModeDevice)
 
     // get user data
@@ -34,8 +33,8 @@ const TopBarComponent = (props) => {
     useEffect(() => {
         dispatch(changeLanguage(user.language))
         dispatch(toggleThemeAction(user.themeModeDevice))
-        setTheme(backgroundTheme)
-    }, [dispatch, user,backgroundTheme]);
+        // setTheme(backgroundTheme)
+    }, [dispatch, user, backgroundTheme]);
     if (!user) {
         return <div>Loading...</div>; // Or any loading spinner/component
     }

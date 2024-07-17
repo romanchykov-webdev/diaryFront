@@ -50,6 +50,7 @@ const SettingsPage = () => {
         }
         console.log(updateUser)
         dispatch(updateUserInfo(updateUser))
+        dispatch(getPublicUser());
     }
 
     return (

@@ -1,9 +1,10 @@
 import React from 'react';
-import {WrapperCard} from "./style";
+import {CardHeader, WrapperCard} from "./style";
 
 const CardComponent = () => {
     return (
         <WrapperCard>
+            <CardHeader></CardHeader>
             card
         </WrapperCard>
     );

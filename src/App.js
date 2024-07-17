@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './pages/home/HomePage';
-import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import {Route, Routes, useLocation} from 'react-router-dom';
 import PrivateRoute from './utils/router/privateRoute';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
@@ -25,7 +25,7 @@ function App() {
 
     const {pathname} = useLocation();
     // const navigate = useNavigate();
-    console.log('pathname',pathname)
+    // console.log('pathname',pathname)
     // console.log('navigate',navigate)
 
     return (

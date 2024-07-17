@@ -13,6 +13,7 @@ const SwitcherFolder = () => {
 
 
     function handlerSwitcher() {
+        // eslint-disable-next-line default-case
         switch (switcher) {
             case 'tile':
                 dispatch(switcherFolderAction('todo'));

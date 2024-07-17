@@ -1,0 +1,21 @@
+import {Box, styled} from "@mui/material";
+
+export const WrapperHeader = styled(Box)({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '20px',
+
+})
+export const WrapperTitle = styled(Box)({})
+export const WrapperIcons = styled(Box)({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    '& svg': {
+        width: '40px',
+        height: '40px',
+        cursor: 'pointer',
+    }
+})

@@ -9,7 +9,6 @@ import {
     ListItemIcon,
     ListItemText,
     Typography,
-    useTheme,
 
 } from "@mui/material";
 import {LogoutOutlined, ChevronLeftOutlined} from '@mui/icons-material';
@@ -132,7 +131,7 @@ const SidebarComponent = (props) => {
                                 <FlexBetween>
 
                                     {/*{!isNonMobile && (*/}
-                                    <IconButton onClick={() => setIsOpen(!isOpen)}>
+                                    <IconButton onClick={() => setIsOpen(!isOpen)} sx={{backgroundColor:'transparent !important'}}>
                                         <Brand>
                                             <ReactSVG src={Logo} className={s.icon}
                                                       style={{

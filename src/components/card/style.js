@@ -6,4 +6,10 @@ export const WrapperCard = styled(Box)({
     padding: '10px',
     borderRadius: '12px',
     boxShadow: `var(--box-shadow)`,
+    maxHeight: '400px',
+})
+export const CardHeader = styled(Box)({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 })
