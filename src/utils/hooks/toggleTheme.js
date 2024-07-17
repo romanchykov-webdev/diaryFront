@@ -9,7 +9,7 @@ export const useToggleTheme = () => {
 
     // Получаем текущее значение темы из состояния Redux
     const theme = useSelector((state) => state.theme.themeMode);
-
+    // console.log('theme',theme)
     // Функция для изменения темы
     const setTheme = (newTheme) => {
         // Отправляем действие для изменения темы в Redux

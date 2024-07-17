@@ -25,7 +25,9 @@ export const authSlice = createSlice({
 
         //выполнено fulfilled
         builder.addCase(LoginUser.fulfilled, (state, action) => {
-            state.user = action.payload
+            // debugger
+            state.user = action.payload.user
+            state.token = action.payload.token
             state.isLogged = true
             state.isLoading = false
         })

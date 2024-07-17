@@ -16,7 +16,7 @@ export const LoginUser = createAsyncThunk(
 
             //session storage
             sessionStorage.setItem("token", user.data.token)
-            sessionStorage.setItem("firstName", user.data.user.firstName)
+            sessionStorage.setItem("userName", user.data.user.userName)
             //session storage end
             //localStorage
             // localStorage.setItem("token", user.data.token)

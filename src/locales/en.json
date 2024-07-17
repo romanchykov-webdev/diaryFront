@@ -1,4 +1,5 @@
 {
+  "Diary": "Diary",
   "Authorization": "Authorization",
   "Enter your login and Password": "Enter your login and Password",
   "Registration": "Registration",
@@ -20,5 +21,19 @@
   "Active application theme": "Active application theme",
   "Welcome": "Welcome",
   "Settings": "Settings",
-  "Save settings": "Save settings"
+  "Save settings": "Save settings",
+  "You have changed your old password to": "You have changed your old password to",
+  "An error occurred while changing the password. Try again.": "An error occurred while changing the password. Try again.",
+  "Old Password": "Old Password",
+  "New Password": "New Password",
+  "Change user name": "Change user name",
+  "User Name": "User Name",
+  "New user name": "New user name",
+  "Home": "Home",
+  "Log out": "Log out",
+  "Your email": "Your email",
+  "Account": "Account",
+  "Delete account": "Delete account",
+  "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.": "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.",
+  "I agree": "I agree"
 }

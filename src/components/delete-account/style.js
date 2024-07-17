@@ -5,7 +5,7 @@ import { tokens } from "../../theme";
 export const StyledGrid = styled(Grid)(({ theme }) => {
     // const colors = tokens(theme.palette.mode);
     return {
-        padding: 32
+        paddingBottom: '10px'
     };
 });
 

@@ -1,4 +1,5 @@
 {
+  "Diary": "Diario",
   "Authorization": "Autorizzazione",
   "Enter your login and Password": "Inserisci il tuo login e la tua password",
   "Registration": "Registrazione",
@@ -18,5 +19,19 @@
   "Active application theme": "Tema dell'applicazione attivo",
   "Welcome": "Benvenuto",
   "Settings": "Impostazioni",
-  "Save settings": "Salva le impostazioni"
+  "Save settings": "Salva le impostazioni",
+  "You have changed your old password to": "Hai cambiato la tua vecchia password in",
+  "An error occurred while changing the password. Try again.": "Si è verificato un errore durante la modifica della password. Riprova.",
+  "Old Password": "Vecchia password",
+  "New Password": "Nuova password",
+  "Change user name": "Cambia nome utente",
+  "User Name": "Nome utente",
+  "New user name": "Nuovo nome utente",
+  "Home": "Home",
+  "Log out": "Disconnettersi",
+  "Your email": "La tua email",
+  "Account": "L'account",
+  "Delete account": "Eliminare l'account",
+  "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.": "Gentile utente, eliminando il tuo account, elimini tutte le informazioni personali. Una volta eliminate, tutte le informazioni salvate non saranno più disponibili.",
+  "I agree": "Sono d'accordo"
 }

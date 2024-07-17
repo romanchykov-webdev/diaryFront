@@ -2,11 +2,11 @@ import {Navigate, Outlet} from 'react-router-dom';
 import {useAuth} from "../hooks/auth";
 
 const PrivateRoute = () => {
-
-    // const auth = false;
     const auth = useAuth()
+
+
     // const auth = false
-    console.log(auth)
+    // console.log(auth)
     return (
         auth ? <Outlet/> : <Navigate to={'/login'}/>
     );

@@ -4,10 +4,12 @@ import { styled } from "@mui/material/styles";
 export const Root = styled('div')(({ theme }) => {
     // const colors = tokens(theme.palette.mode);
     return {
-        position: 'static',
-        backgroundColor: `var(--background-color)`,
+        // position: 'static',
+        position: 'relative !important',
+        backgroundColor: `var(--background-color) !important`,
         borderBottom: `1px solid var(--text-color)`,
-        boxShadow: 'none !important'
+        boxShadow: 'var(--box-shadow) !important'
+
     };
 });
 
