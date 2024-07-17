@@ -1,15 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 // icon
 import dark from '../../assets/image/theme/dark.svg';
 import light from '../../assets/image/theme/light.svg';
 import tomato from '../../assets/image/theme/tomato.svg';
 import s from './theme.module.css';
 import {ReactSVG} from 'react-svg';
-import {Grid, IconButton, useTheme} from '@mui/material';
+import {Grid, IconButton} from '@mui/material';
 import {useToggleTheme} from '../../utils/hooks/toggleTheme';
-import {useDispatch, useSelector} from 'react-redux';
-import {ColorModeContext} from "../../theme";
-import {updateUserInfo} from "../../store/thunks/auth";
+import { useSelector} from 'react-redux';
 // material-ui
 
 // material-ui

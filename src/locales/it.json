@@ -1,4 +1,5 @@
 {
+  "Diary": "Diario",
   "Authorization": "Autorizzazione",
   "Enter your login and Password": "Inserisci il tuo login e la tua password",
   "Registration": "Registrazione",
@@ -27,5 +28,10 @@
   "User Name": "Nome utente",
   "New user name": "Nuovo nome utente",
   "Home": "Home",
-  "Log out": "Disconnettersi"
+  "Log out": "Disconnettersi",
+  "Your email": "La tua email",
+  "Account": "L'account",
+  "Delete account": "Eliminare l'account",
+  "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.": "Gentile utente, eliminando il tuo account, elimini tutte le informazioni personali. Una volta eliminate, tutte le informazioni salvate non saranno più disponibili.",
+  "I agree": "Sono d'accordo"
 }

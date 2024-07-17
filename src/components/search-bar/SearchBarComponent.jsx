@@ -1,33 +1,36 @@
-import React, { useState} from 'react';
-import {Stack, Autocomplete, TextField} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+import { Stack, Autocomplete, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const SearchBarComponent = ()=> {
-    const [selectedItem,setSelectedItem]=useState('')
-    const navigate = useNavigate()
-    //
-    const [temp,setTemp]=useState('')
-    //
-    const aray=[1,2,3,4,5,6,7,8]
-    // console.log(selectedItem)
+const SearchBarComponent = () => {
+    const [selectedItem, setSelectedItem] = useState(null);
+    const navigate = useNavigate();
+
+    const aray = [1, 2, 3, 4, 5, 6, 7, 8];
+
     return (
-        <Stack spacing={2} sx={{width: '300px'}}>
+        <Stack spacing={2} sx={{ width: '300px' }}>
             <Autocomplete
                 value={selectedItem}
-                onChange={(e)=> {
-                    setTemp(e.target.value)
+                onChange={(event, newValue) => {
+                    setSelectedItem(newValue);
+                    if (newValue !== null) {
+                        navigate(`/search/${newValue}`);
+                    }
                 }}
-                renderInput={(element) => (
+                renderInput={(params) => (
                     <TextField
-                        {...element}
-                        label={'Поиск'}
+                        {...params}
+                        label="Поиск"
                         InputProps={{
-                            ...element.InputProps,
+                            ...params.InputProps,
                             type: 'search',
                         }}
                     />
                 )}
-                options={aray.map((item=>item))}
+                options={aray}
+                getOptionLabel={(option) => option.toString()}  // Преобразование числа в строку
+                isOptionEqualToValue={(option, value) => option === value}
             />
         </Stack>
     );

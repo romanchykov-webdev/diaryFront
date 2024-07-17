@@ -1,4 +1,5 @@
 {
+  "Diary": "Дневник",
   "Authorization": "Авторизация",
   "Enter your login and Password": "Введите ваш login и Password",
   "Registration": "Регистрация",
@@ -27,5 +28,10 @@
   "User Name": "Имя пользователя",
   "New user name": "Новое имя пользователя",
   "Home": "Home",
-  "Log out": "Выйти"
+  "Log out": "Выйти",
+  "Your email": "Ваш адрес электронной почты",
+  "Account": "Аккаунт",
+  "Delete account": "Удалить аккаунт",
+  "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.": "Уважаемый пользователь, удаляя свой аккаунт, вы удаляете все персональную информацию. После удаления вся сохраненная вами информация будет недоступна.",
+  "I agree": "Я соглашаюсь"
 }

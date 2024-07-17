@@ -2,9 +2,9 @@ import {createSlice} from "@reduxjs/toolkit";
 
 // Проверка предпочтительной цветовой схемы пользователя
 const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-console.log('isDarkTheme', isDarkTheme)
+// console.log('isDarkTheme', isDarkTheme)
 const defaultTheme = isDarkTheme ? 'dark' : 'light';
-console.log('defaultTheme', defaultTheme)
+// console.log('defaultTheme', defaultTheme)
 const initialState = {
     // themeMode: 'dark',
     themeMode: defaultTheme,

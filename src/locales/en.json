@@ -1,4 +1,5 @@
 {
+  "Diary": "Diary",
   "Authorization": "Authorization",
   "Enter your login and Password": "Enter your login and Password",
   "Registration": "Registration",
@@ -29,5 +30,10 @@
   "User Name": "User Name",
   "New user name": "New user name",
   "Home": "Home",
-  "Log out": "Log out"
+  "Log out": "Log out",
+  "Your email": "Your email",
+  "Account": "Account",
+  "Delete account": "Delete account",
+  "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.": "Dear user, by deleting your account, you delete all personal information. Once deleted, all of your saved information will no longer be available.",
+  "I agree": "I agree"
 }

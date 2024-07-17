@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect} from 'react';
-import {AppBar, Box, Grid, Toolbar as MuiToolbar, Typography} from "@mui/material";
+import {AppBar, Avatar, Box, Grid, Toolbar as MuiToolbar, Typography} from "@mui/material";
 import {MenuOutlined} from "@mui/icons-material";
 import FlexBetween from "../flex-between/FlexBetween";
 import SearchBarComponent from "../search-bar/SearchBarComponent";
@@ -10,6 +10,8 @@ import ThemeToggleComponent from "../themeToggle/ThemeToggleComponent";
 import {useTranslation} from "react-i18next";
 import {changeLanguage} from "../../locales/languageSlice";
 import {toggleThemeAction} from "../themeToggle/sliceToggleTheme";
+import SwitcherFolder from "../switcher-folder/SwitcherFolder";
+import {useToggleTheme} from "../../utils/hooks/toggleTheme";
 
 const TopBarComponent = (props) => {
     const {isOpen, setIsOpen, isNonMobile} = props;
@@ -21,6 +23,8 @@ const TopBarComponent = (props) => {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
 
+    const {setTheme} = useToggleTheme();
+    const backgroundTheme = useSelector((state) => state.auth.user.themeModeDevice)
 
     // get user data
     useLayoutEffect(() => {
@@ -30,7 +34,8 @@ const TopBarComponent = (props) => {
     useEffect(() => {
         dispatch(changeLanguage(user.language))
         dispatch(toggleThemeAction(user.themeModeDevice))
-    }, [dispatch, user]);
+        setTheme(backgroundTheme)
+    }, [dispatch, user,backgroundTheme]);
     if (!user) {
         return <div>Loading...</div>; // Or any loading spinner/component
     }
@@ -52,10 +57,14 @@ const TopBarComponent = (props) => {
     //     console.log("useLayoutEffect",backgroundTheme)
     // }, [backgroundTheme]);
     // console.log('backgroundTheme',backgroundTheme)
+
+
+
+
     return (
         <AppBar component={Root} sx={{
             position: 'relative',
-            backgroundColor: 'var(--background-color)'
+            // backgroundColor: 'var(--background-color)'
         }}>
             <MuiToolbar component={Toolbar}>
                 <Grid container justifyContent='space-between' alignItems='center'>
@@ -66,21 +75,26 @@ const TopBarComponent = (props) => {
                             </Box>
 
                             <Typography variant='h3'>
-                                {t('Welcome')}{` ${user.userName || ''}`}
+                                {/*{t('Welcome')}{` ${user.userName || ''}`}*/}
+                                {/*{t('Welcome')}{` ${user.userName}`}*/}
+                                <Avatar sx={{
+                                    border: "1px solid var(--border-color)",
+                                    backgroundColor: 'transparent',
+                                    boxShadow:`var(--box-shadow)`
+                                }}>{`${user.userName}`}</Avatar>
                             </Typography>
                         </FlexBetween>
                     </Grid>
 
-                    {isNonMobile && (
-                        <Grid display='flex' justifyContent='flex-end' item sm={9} lg={9}>
-                            <Box borderRight='1px solid #3C3C3C'>
-                                <ThemeToggleComponent/>
-                            </Box>
+                    <Grid display='flex' justifyContent='flex-end' item sm={9} lg={9}>
+                        <SwitcherFolder/>
+
+                        {isNonMobile && (
                             <Box marginLeft='28px'>
                                 <SearchBarComponent/>
                             </Box>
-                        </Grid>
-                    )}
+                        )}
+                    </Grid>
                 </Grid>
             </MuiToolbar>
         </AppBar>

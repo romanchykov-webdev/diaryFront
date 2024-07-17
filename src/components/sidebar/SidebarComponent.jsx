@@ -31,6 +31,7 @@ import {ReactSVG} from "react-svg";
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import {useTranslation} from "react-i18next";
+import SwitcherFolder from "../switcher-folder/SwitcherFolder";
 
 const SidebarComponent = (props) => {
     const [active, setActive] = useState();
@@ -81,6 +82,7 @@ const SidebarComponent = (props) => {
         // navigate('/path')
         setIsOpen(false)
     }
+
     function handleHome() {
         navigate('/')
         // navigate('/path')
@@ -121,25 +123,26 @@ const SidebarComponent = (props) => {
                                 boxSizing: 'border-box',
                                 width: drawerWidth,
                                 backgroundColor: 'var(--background-color)',
-                                borderColor: backgroundTheme === 'tomato' && 'black !important'
+                                borderColor: `var(--border-color)`
                             }
                         }}
                     >
                         <NavBlock>
                             <Box>
                                 <FlexBetween>
-                                    <Brand>
-                                        <ReactSVG src={Logo} className={s.icon}
-                                                  style={{
-                                                      fill: backgroundTheme === 'black' ? '#fff' : undefined
-                                                  }}
-                                        />
-                                        <Typography variant='h4' component={BrandTitle}>
-                                            Diary
-                                        </Typography>
-                                    </Brand>
+
                                     {/*{!isNonMobile && (*/}
                                     <IconButton onClick={() => setIsOpen(!isOpen)}>
+                                        <Brand>
+                                            <ReactSVG src={Logo} className={s.icon}
+                                                      style={{
+                                                          fill: backgroundTheme === 'black' ? '#fff' : undefined
+                                                      }}
+                                            />
+                                            <Typography variant='h4' component={BrandTitle}>
+                                                {t('Diary')}
+                                            </Typography>
+                                        </Brand>
                                         <ChevronLeftOutlined/>
                                     </IconButton>
                                     {/*)}*/}
@@ -149,6 +152,9 @@ const SidebarComponent = (props) => {
                                 <List>
                                     <ListItem>
                                         <SearchBarComponent/>
+                                    </ListItem>
+                                    <ListItem sx={{justifyContent: 'center', mt: 2}}>
+                                        <SwitcherFolder/>
                                     </ListItem>
                                 </List>
                             )}
@@ -180,8 +186,8 @@ const SidebarComponent = (props) => {
                                 </ListItem>
                                 <ListItem>
                                     <ListItemButton
-                                                    onClick={handleSettings}
-                                                    component={active === '/settings' ? ActiveNavItem : NavItem}
+                                        onClick={handleSettings}
+                                        component={active === '/settings' ? ActiveNavItem : NavItem}
                                     >
                                         <ListItemIcon>
                                             <SettingsIcon/>

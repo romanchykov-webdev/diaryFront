@@ -1,12 +1,11 @@
 import React from 'react';
-import Home from './pages/home';
-import {Route, Routes} from 'react-router-dom';
+import Home from './pages/home/HomePage';
+import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import PrivateRoute from './utils/router/privateRoute';
-// import {CssBaseline} from '@mui/material';
-// import {ColorModeContext, useMode} from './theme';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
 import AuthRootComponents from "./pages/auth";
+
 
 // import {useSelector} from "react-redux";
 
@@ -23,12 +22,23 @@ function App() {
     //     console.log("useLayoutEffect", backgroundTheme)
     // }, [backgroundTheme]);
     // // console.log('backgroundTheme',backgroundTheme)
+
+    const {pathname} = useLocation();
+    // const navigate = useNavigate();
+    console.log('pathname',pathname)
+    // console.log('navigate',navigate)
+
     return (
         <>
 
             {/*<CssBaseline/>*/}
             {/*<div className="App" style={{backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : undefined}}>*/}
-            <div className="App">
+
+            <div className="App"  style={
+                (pathname === '/login' || pathname === '/register')
+                    ? { alignSelf: 'center' }
+                    : {}
+            }>
                 <Routes>
                     <Route element={<LayoutComponent/>}>
                         <Route element={<PrivateRoute/>}>
@@ -40,6 +50,7 @@ function App() {
                     </Route>
                 </Routes>
             </div>
+
         </>
 
 

@@ -7,9 +7,11 @@
     color: var(--text-color) !important;
     transition: color 500ms linear;
 }
-html{
+
+html {
     height: 100%;
 }
+
 body {
     min-width: 375px;
     height: 100%;
@@ -22,38 +24,67 @@ body {
     /*height: 100vh;*/
     /*font-family: 'Poppins', 'sans-serif';*/
 }
+
 /*typography*/
-h1{
+h1 {
     font-size: 40px !important;
     font-weight: 600 !important;
 }
-h2{
+
+h2 {
     font-size: 35px !important;
     font-weight: 600 !important;
 }
-h3{
+
+h3 {
     font-size: 30px !important;
     font-weight: 500 !important;
 }
-h4{
+
+h4 {
     font-size: 35px !important;
     font-weight: 500 !important;
 }
-p{
+
+p {
     font-size: 20px !important;
+
 }
+
+.css-1wc848c-MuiFormHelperText-root.Mui-error {
+    color: #d32f2f !important;
+}
+
 /*typography*/
-#root{
-    height: 100%;
+#root {
+    min-height: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
 }
-.App{
-    height: 100%;
+
+.App {
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+    max-width: 1400px;
+    /*align-self: center;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*box-shadow: var(--box-shadow);*/
+    /*border-radius: var(--border-radius5);*/
 }
+
 html[data-theme='dark'] {
     --text-color: rgb(255, 255, 255);
     --background-color: rgb(18, 18, 18);
     --icon-color: rgba(255, 255, 255);
     --border-color: rgba(255, 255, 255, 0.8);
+    --box-shadow: 1px 1px 10px #eee5e580;
+    --border-radius5: 5px;
+    --border-radiou12: 12px;
 }
 
 html[data-theme='light'] {
@@ -61,6 +92,9 @@ html[data-theme='light'] {
     --background-color: rgb(255, 255, 255);
     --icon-color: rgba(0, 0, 0, 0);
     --border-color: rgba(0, 0, 0, 0.23);
+    --box-shadow: 1px 1px 10px #00000080;
+    --border-radius5: 5px;
+    --border-radius12: 12px;
 }
 
 html[data-theme='tomato'] {
@@ -68,7 +102,11 @@ html[data-theme='tomato'] {
     --background-color: #ff6347;
     --icon-color: rgba(255, 255, 255);
     --border-color: rgba(0, 0, 0, 0.23);
+    --box-shadow: 1px 1px 10px #00000080;
+    --border-radius5: 5px;
+    --border-radius12: 12px;
 }
+
 /**{*/
 /*    --text-color: rgb(0, 0, 0);*/
 /*    --background-color: #ff6347;*/

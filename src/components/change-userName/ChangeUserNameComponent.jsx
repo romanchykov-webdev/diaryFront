@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
 
 // import {updateUserPassword} from "../../store/thunks/auth";
-import { useSelector} from "react-redux";
-import {StyledGrid, StyledTextField,  WrapperChangePassword} from "./style";
+import {useSelector} from "react-redux";
+import {StyledGrid, StyledTextField, WrapperChangePassword} from "./style";
 import {useTranslation} from "react-i18next";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-const ChangeUserNameComponent = ({isNonMobile,newUserName,setNewUserName}) => {
+const ChangeUserNameComponent = ({isNonMobile, newUserName, setNewUserName}) => {
 
-    console.log('newUserName',newUserName)
+    // console.log('newUserName', newUserName)
     // const [newUserName, setNewUserName] = useState('');
-
     const oldUserName = useSelector((state) => state.auth.user.userName);
+
+    useEffect(() => {
+        if (newUserName === undefined) {
+            setNewUserName(oldUserName)
+        }
+    }, [newUserName]);
 
     // translate
     const {t} = useTranslation();
@@ -37,7 +42,8 @@ const ChangeUserNameComponent = ({isNonMobile,newUserName,setNewUserName}) => {
                     alignItems: 'center'
                 }}>
                     <Typography sx={{marginRight: 1}}>{t("User Name")}</Typography> :
-                    <Typography variant='h6' sx={{marginLeft: 1,textDecoration:'underline'}}>{oldUserName}</Typography>
+                    <Typography variant='h6'
+                                sx={{marginLeft: 1, textDecoration: 'underline'}}>{oldUserName}</Typography>
                 </Box>
             </AccordionSummary>
             <AccordionDetails>
@@ -56,7 +62,7 @@ const ChangeUserNameComponent = ({isNonMobile,newUserName,setNewUserName}) => {
                                     width: '100%',
                                 }),
                             }}
-                            value={newUserName}
+                            value={newUserName || ''}
                             onChange={(e) => setNewUserName(e.target.value)}
                             type='text'
                             label={t('New user name')}

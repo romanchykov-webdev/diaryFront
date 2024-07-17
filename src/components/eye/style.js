@@ -5,7 +5,7 @@ import {Box} from "@mui/material";
 export const EyeWrapper = styled(Box)({
     position: 'absolute',
     right: 0,
-    top: 'calc(50% - 20px)',
+    top: '20px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary,  Typography} from "@mui/material";
 import AppLoadingButton from "../loading-button/loadingButton";
 import {updateUserPassword} from "../../store/thunks/auth";
 import AlertComponent from "../alert/AlertComponent";
@@ -7,7 +7,6 @@ import {useDispatch} from "react-redux";
 import {StyledGrid, StyledTextField, ButtonSubmitBlock, WrapperChangePassword} from "./style";
 import {useTranslation} from "react-i18next";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ThemeToggleComponent from "../themeToggle/ThemeToggleComponent";
 
 const ChangePasswordComponent = ({isNonMobile, loading}) => {
     const [newPassword, setNewPassword] = useState('');
