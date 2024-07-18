@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 import {WrapperSwitcher, IconWrapper, WrapperAddCardFs, WrapperList, WrapperBody} from "./style";
 import {ReactSVG} from "react-svg";
-import todoIcon from '../img/todo.svg'
+// import todoIcon from '../img/todo.svg'
+import todoIcon from '../img/todoIcon.svg'
 import {useDispatch, useSelector} from "react-redux";
 import {addTextAreaAction, addTodoAction} from "../addCardSlice";
 import FooterComponent from "../bottomSection/FooterComponent";
 import HeaderComponent from "../headerComponent/HeaderComponent";
 import BodyComponent from "../bodyComponent/BodyComponent";
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 
 const AddCardFsComponent = () => {
     const dispatch = useDispatch();
@@ -36,7 +38,8 @@ const AddCardFsComponent = () => {
                             <h4>Text area... </h4>
                         </WrapperList>
                         <IconWrapper onClick={handlerTodo} title='Нажмите, чтобы создать список'>
-                            <ReactSVG src={todoIcon}/>
+                            {/*<ReactSVG src={todoIcon} style={{width:'40px', height:'40px'}}/>*/}
+                            <FactCheckIcon/>
                         </IconWrapper>
                     </WrapperSwitcher>
                     : <WrapperBody>

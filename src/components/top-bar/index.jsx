@@ -6,11 +6,11 @@ import SearchBarComponent from "../search-bar/SearchBarComponent";
 import {getPublicUser} from "../../store/thunks/auth";
 import {useDispatch, useSelector} from "react-redux";
 import {Root, MenuIcon, Toolbar} from './style';
-// import {useTranslation} from "react-i18next";
 import {changeLanguage} from "../../locales/languageSlice";
 import {toggleThemeAction} from "../themeToggle/sliceToggleTheme";
 import SwitcherFolder from "../switcher-folder/SwitcherFolder";
-// import {useToggleTheme} from "../../utils/hooks/toggleTheme";
+import ThemeToggleComponent from "../themeToggle/ThemeToggleComponent";
+
 
 const TopBarComponent = (props) => {
     const {isOpen, setIsOpen, isNonMobile} = props;
@@ -28,12 +28,14 @@ const TopBarComponent = (props) => {
     // get user data
     useLayoutEffect(() => {
         dispatch(getPublicUser());
-    }, [dispatch,]);
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(changeLanguage(user.language))
         dispatch(toggleThemeAction(user.themeModeDevice))
         // setTheme(backgroundTheme)
+        // dispatch(getPublicUser());
+
     }, [dispatch, user, backgroundTheme]);
     if (!user) {
         return <div>Loading...</div>; // Or any loading spinner/component
@@ -58,8 +60,6 @@ const TopBarComponent = (props) => {
     // console.log('backgroundTheme',backgroundTheme)
 
 
-
-
     return (
         <AppBar component={Root} sx={{
             position: 'relative',
@@ -67,7 +67,7 @@ const TopBarComponent = (props) => {
         }}>
             <MuiToolbar component={Toolbar}>
                 <Grid container justifyContent='space-between' alignItems='center'>
-                    <Grid item sm={3} lg={3}>
+                    <Grid item sm={4} lg={3}>
                         <FlexBetween>
                             <Box component={MenuIcon} onClick={() => setIsOpen(!isOpen)}>
                                 <MenuOutlined sx={{cursor: 'pointer'}}/>
@@ -79,15 +79,18 @@ const TopBarComponent = (props) => {
                                 <Avatar sx={{
                                     border: "1px solid var(--border-color)",
                                     backgroundColor: 'transparent',
-                                    boxShadow:`var(--box-shadow)`
+                                    boxShadow: `var(--box-shadow)`
                                 }}>{`${user.userName}`}</Avatar>
                             </Typography>
                         </FlexBetween>
                     </Grid>
 
-                    <Grid display='flex' justifyContent='flex-end' item sm={9} lg={9}>
+                    <Grid display='flex' justifyContent='flex-end' item sm={8} lg={9}>
                         <SwitcherFolder/>
+                        <Box sx={{visibility:'hidden', width:0,height:0}}>
 
+                            <ThemeToggleComponent />
+                        </Box>
                         {isNonMobile && (
                             <Box marginLeft='28px'>
                                 <SearchBarComponent/>

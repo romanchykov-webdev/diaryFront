@@ -14,7 +14,8 @@ import DeleteUserAccountComponent from "../../components/delete-account/DeleteUs
 const SettingsPage = () => {
     const {t} = useTranslation();
 
-    const userData = useSelector(state => state.auth?.user);
+    // const userData = useSelector(state => state.auth?.user);
+    const userData = useSelector(state => state.auth.user);
     const theme = useSelector(state => state.theme.themeMode);
     const language = useSelector(state => state.language.language);
     const backgroundTheme = userData.themeModeDevice;
@@ -45,8 +46,9 @@ const SettingsPage = () => {
             "language": language,
             "themeModeDevice": theme,
             "popupForNewUser": userData.popupForNewUser,
-            "avatar": userData.avatar
-
+            "avatar": userData.avatar,
+            "switcherFolder":userData.switcherFolder,
+            "colors":userData.colors,
         }
         console.log(updateUser)
         dispatch(updateUserInfo(updateUser))

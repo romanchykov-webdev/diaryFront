@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary,  Grid, Typography} from "@mui/material";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import {useDispatch, useSelector} from "react-redux";
 import {changeLanguage} from "../../locales/languageSlice";

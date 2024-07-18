@@ -1,0 +1,112 @@
+/*.todo-container {*/
+/*    padding: 16px;*/
+/*    width: 100%;*/
+/*    border: 1px solid lightgrey;*/
+/*}*/
+
+/*.todo-item {*/
+/*    user-select: none;*/
+/*    padding: 16px;*/
+/*    margin: 0 0 8px 0;*/
+/*    min-height: 50px;*/
+/*    background-color: #fff;*/
+/*    border: 1px solid lightgrey;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    transition: all 0.5s ease;*/
+/*}*/
+
+/*.fade-enter {*/
+/*    opacity: 0;*/
+/*    transform: scale(0.9);*/
+/*}*/
+
+/*.fade-enter-active {*/
+/*    opacity: 1;*/
+/*    transform: scale(1);*/
+/*    transition: opacity 300ms, transform 300ms;*/
+/*}*/
+
+/*.fade-exit {*/
+/*    opacity: 1;*/
+/*    transform: scale(1);*/
+/*}*/
+
+/*.fade-exit-active {*/
+/*    opacity: 0;*/
+/*    transform: scale(0.9);*/
+/*    transition: opacity 300ms, transform 300ms;*/
+/*}*/
+
+/*.hovered {*/
+/*    margin-top: 10px; !* Adjust this value as needed *!*/
+/*    margin-bottom: 10px; !* Adjust this value as needed *!*/
+/*    transition: all 0.5s ease;*/
+/*}*/
+/*////*/
+ul, li {
+    list-style-type: none; /* Удаляет маркеры списка */
+    margin: 0; /* Удаляет внешние отступы */
+    padding: 0; /* Удаляет внутренние отступы */
+}
+
+
+/*.reorder-item {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    padding: 1rem 1.5rem;*/
+/*    margin-bottom: 0.5rem;*/
+/*    background: white;*/
+/*    border-radius: 5px;*/
+/*    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);*/
+/*    cursor: grab;*/
+/*    user-select: none;*/
+/*    transition: all 0.5s ease;*/
+/*}*/
+.wrapperTodo {
+    width: 100%;
+    padding: 16px;
+    /*border: 1px solid lightgrey;*/
+    overflow: hidden;
+
+    li {
+        padding: 5px 2px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 0;
+        background-color: var(--background-color);
+        cursor: all-scroll;
+
+        span {
+            color: var(--text-color);
+        }
+    }
+}
+
+/*.fade-enter {*/
+/*    opacity: 0;*/
+/*    height: 0;*/
+/*    margin: 0;*/
+/*}*/
+/*.fade-enter-active {*/
+/*    opacity: 1;*/
+/*    height: auto;*/
+/*    margin: 5px 0;*/
+/*    transition: opacity 100ms, height 100ms, margin 100ms;*/
+/*}*/
+
+/*.fade-exit {*/
+/*    opacity: 1;*/
+/*    height: auto;*/
+/*    margin: 5px 0;*/
+/*}*/
+
+/*.fade-exit-active {*/
+/*    opacity: 0;*/
+/*    height: 0;*/
+/*    margin: 0;*/
+/*    transition: opacity 100ms, height 100ms, margin 100ms;*/
+/*}*/

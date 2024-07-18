@@ -1,7 +1,11 @@
 import React from 'react';
 import {WrapperBody} from "./style";
 import {useSelector} from "react-redux";
-import { Textarea } from '@mui/joy';
+import TextAreaComponent from "./tetxareaComponent/TextAreaComponent";
+// import TodoComponent from "./todoComponent/TodoComponent";
+import ToDoList from "./todoComponent/ToDoList";
+import {DndProvider} from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
 const BodyComponent = () => {
     const addCardSwitcher = useSelector((state) => state.addCard)
     const todo = addCardSwitcher.todo
@@ -10,10 +14,13 @@ const BodyComponent = () => {
     return (
         <WrapperBody>
             {todo && <div>
-                <h1>todo body</h1>
+                <DndProvider backend={HTML5Backend}>
+                    <ToDoList />
+                </DndProvider>
             </div>}
             {textarea && <div>
-                <Textarea sx={{backgroundColor:'transparent'}} minRows={2} />
+                <TextAreaComponent/>
+
             </div>}
         </WrapperBody>
     );

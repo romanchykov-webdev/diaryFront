@@ -50,8 +50,11 @@ const AuthRootComponents = () => {
                         language: language,
                         popupForNewUser: true,
                         themeModeDevice: themeModeDevice,
-                        avatar: ''
+                        avatar: '',
+                        switcherFolder:'tile',
+                        colors:["#fff","#faafa8","#f39f76","#fff8b8","#e2f6d3","#b4ddd3","#efeff1","#aeccdc","#d3bfdb","#f6e2dd","#e9e3d4","#b5a582"]
                     };
+
                     await dispatch(RegisterUser(userData));
                     // console.log('userData',userData)
                     navigate('/');
