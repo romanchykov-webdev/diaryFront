@@ -14,7 +14,7 @@ const SwitcherFolder = () => {
     // const switcher = useSelector((state) => state.auth.user.switcherFolder)
     // const userData = useSelector(state => state.auth?.user);
     const userData = useSelector(state => state.auth.user);
-    const [newUserName, setNewUserName] = useState(userData.userName)
+    const [newUserName] = useState(userData.userName)
     const switcherUser = userData.switcherFolder
     console.log('userData.switcherFolder',userData.switcherFolder)
 

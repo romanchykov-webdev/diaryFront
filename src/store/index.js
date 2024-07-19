@@ -5,6 +5,7 @@ import languageReducer from '../locales/languageSlice'
 import toggleIsVisiblePassword from "../components/eye/sliceTogglePasswordIsVisible";
 import switcherFolderSlice from "../components/switcher-folder/SwitcherFolderSlice";
 import addCardSlice from "../components/addCard/addCardSlice";
+import createNewTodoSlice from "../components/addCard/bodyComponent/todoComponent/todocomponentSlice";
 
 const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
         language: languageReducer,
         isVisiblePassword: toggleIsVisiblePassword,
         switcherFolder: switcherFolderSlice,
-        addCard:addCardSlice
+        addCard:addCardSlice,
+        createNewTodo:createNewTodoSlice
     }
 })
 

@@ -1,5 +1,10 @@
 import {Box, styled} from "@mui/material";
 
+export const WrapperFooter=styled(Box)({
+    display:'flex',
+    flexDirection:'column'
+})
+
 export const WrapperBottom = styled(Box)({
     display: 'flex',
     // outline:'1px solid red',

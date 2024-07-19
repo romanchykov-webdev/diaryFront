@@ -1,12 +1,17 @@
 import * as React from "react";
 import {Reorder} from "framer-motion";
-// import { useRaisedShadow } from "./use-raised-shadow";
 import ClearIcon from '@mui/icons-material/Clear';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import {Box, TextField} from "@mui/material";
-import {useState} from "react";
+import { useState} from "react";
+import {useDispatch} from "react-redux";
+import {
+    changeTextAction,
+    removeTodoItemAction,
+    switcherCompletedAction,
+    todoCompletedAction
+} from "./todocomponentSlice";
 
 
 // animation init,animate exit
@@ -26,10 +31,38 @@ const variants = {
 }
 // animation init,animate exit
 
-export const Item = ({item, removeItem, toggleComplete}) => {
-    // const y = useMotionValue(0);
-    // const boxShadow = useRaisedShadow(y);
+export const Item = (
+    {
+        item,
+        handlerAddItem,
+        // inputRef
+    }) => {
+
+    const dispatch = useDispatch();
+
     const [inputValue, setInputValue] = useState(item.content)
+
+
+
+    const handlerTodoCompleted = (item) => {
+        dispatch(todoCompletedAction({item}))
+    }
+
+    const handlerChangeText = (e, id) => {
+        const text = e.target.value
+        setInputValue(text)
+        // console.log('text', text)
+        dispatch(changeTextAction({id, text}))
+    }
+
+    const handlerRemoveItem = (id) => {
+        dispatch(removeTodoItemAction(id))
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handlerAddItem();
+        }
+    };
 
     return (
         <Reorder.Item value={item} id={item.id} className="reorder-item"
@@ -38,6 +71,7 @@ export const Item = ({item, removeItem, toggleComplete}) => {
                       whileDrag={{
                           scale: 1.1,
                       }}
+
 
         >
             <DragIndicatorIcon sx={{
@@ -48,39 +82,31 @@ export const Item = ({item, removeItem, toggleComplete}) => {
                     transition: 'transform 0.2s ease-in-out',
                 },
             }}/>
-            <Box onClick={() => toggleComplete(item.id)}
+            <Box onClick={() => handlerTodoCompleted(item)}
                  sx={{
                      display: 'flex',
                      alignItems: 'center',
                  }}
             >
 
-                {
-                    item.completed
-                        ? <CheckBoxIcon sx={{
-                            cursor: 'pointer',
-                            width: '20px',
-                            height: '20px',
-                            '&:hover': {
-                                transform: 'scale(1.5)',
-                                transition: 'transform 0.2s ease-in-out',
-                            },
-                        }}/>
-                        : <CheckBoxOutlineBlankIcon sx={{
-                            cursor: 'pointer',
-                            width: '20px',
-                            height: '20px',
-                            '&:hover': {
-                                transform: 'scale(1.5)',
-                                transition: 'transform 0.2s ease-in-out',
-                            },
-                        }}/>
-                }
-
+                <CheckBoxOutlineBlankIcon sx={{
+                    cursor: 'pointer',
+                    width: '20px',
+                    height: '20px',
+                    '&:hover': {
+                        transform: 'scale(1.5)',
+                        transition: 'transform 0.2s ease-in-out',
+                    },
+                }}/>
 
             </Box>
-            <TextField sx={{width: '100%', ml: 1, mr: 1}} variant="standard" value={inputValue}
-                       onChange={(e) => setInputValue(e.target.value)}/>
+            <TextField sx={{width: '100%', ml: 1, mr: 1}} variant="standard"
+                       value={inputValue}
+                       autoComplete="off"
+                       onKeyDown={handleKeyDown}
+                       // inputRef={inputRef}
+                       onChange={(e) => handlerChangeText(e, item.id)}
+            />
             <ClearIcon
                 sx={{
                     borderLeft: '1px solid var(--border-color)',
@@ -95,7 +121,7 @@ export const Item = ({item, removeItem, toggleComplete}) => {
                         transition: 'transform 0.2s ease-in-out',
                     }
                 }}
-                onClick={() => removeItem(item.id)}/>
+                onClick={() => handlerRemoveItem(item.id)}/>
 
         </Reorder.Item>
     );

@@ -71,13 +71,14 @@ ul, li {
 
     li {
         padding: 5px 2px;
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius5);
+        /*border: 1px solid var(--border-color);*/
+        /*border-radius: var(--border-radius5);*/
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 5px 0;
-        background-color: var(--background-color);
+        /*background-color: var(--background-color);*/
+        background-color: transparent;
         cursor: all-scroll;
 
         span {

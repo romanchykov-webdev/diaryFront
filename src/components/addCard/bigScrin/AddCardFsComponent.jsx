@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import {WrapperSwitcher, IconWrapper, WrapperAddCardFs, WrapperList, WrapperBody} from "./style";
-import {ReactSVG} from "react-svg";
+// import {ReactSVG} from "react-svg";
 // import todoIcon from '../img/todo.svg'
-import todoIcon from '../img/todoIcon.svg'
+// import todoIcon from '../img/todoIcon.svg'
 import {useDispatch, useSelector} from "react-redux";
 import {addTextAreaAction, addTodoAction} from "../addCardSlice";
-import FooterComponent from "../bottomSection/FooterComponent";
+import FooterComponent from "../bottomComponent/FooterComponent";
 import HeaderComponent from "../headerComponent/HeaderComponent";
 import BodyComponent from "../bodyComponent/BodyComponent";
 import FactCheckIcon from '@mui/icons-material/FactCheck';
-
+import background from '../../../assets/image/backgroundImg/grocery_light_0609.svg'
 const AddCardFsComponent = () => {
     const dispatch = useDispatch();
 
@@ -31,7 +31,9 @@ const AddCardFsComponent = () => {
 
 
     return (
-        <WrapperAddCardFs>
+        // <WrapperAddCardFs sx={{backgroundImage:`url(${background})`,backgroundSize:'cover',backgroundPositionX: 'right',
+        //     backgroundPositionY: 'bottom'}}>
+            <WrapperAddCardFs >
             {
                 showSwitcher ? <WrapperSwitcher>
                         <WrapperList onClick={handlerArea} title='Нажмите, чтобы создать заметку'>
