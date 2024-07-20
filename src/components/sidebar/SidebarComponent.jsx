@@ -31,6 +31,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import {useTranslation} from "react-i18next";
 import SwitcherFolder from "../switcher-folder/SwitcherFolder";
+import {motion,AnimatePresence} from 'framer-motion';
 
 const SidebarComponent = (props) => {
     const [active, setActive] = useState();
@@ -89,134 +90,142 @@ const SidebarComponent = (props) => {
     }
 
     return (
+        <AnimatePresence>
 
-        <Box component='nav'
-             sx={isOpen
-                 ? {
-                     position: 'absolute',
-                     width: '100%',
-                     minHeight: '100%',
-                     backgroundColor: '#ff000000',
-                     backdropFilter: 'blur(5px)',
-                     zIndex: 10000,
-                     // filter: 'blur(8px)'
-                 }
-                 : {}
-             }
+                <Box component='nav'
+                     sx={isOpen
+                         ? {
+                             position: 'absolute',
+                             width: '100%',
+                             minHeight: '100%',
+                             backgroundColor: '#ff000000',
+                             backdropFilter: 'blur(5px)',
+                             zIndex: 10000,
+                             // filter: 'blur(8px)'
+                         }
+                         : {}
+                     }
 
-        >
-            {isOpen && (
-                <>
-                    <Drawer
-                        open={isOpen}
-                        onClose={() => setIsOpen(false)}
-                        variant='persistent'
-                        anchor='left'
-                        sx={{
-                            backgroundColor: 'var(--background-color)',
-                            width: drawerWidth,
-
-                            '& .MuiDrawer-paper': {
-                                // color: theme.palette.secondary.main,
-                                // backgroundColor: backgroundTheme === 'tomato'  '#ff6347 !important'
-                                boxSizing: 'border-box',
-                                width: drawerWidth,
+                >
+                    {isOpen && (
+                        <motion.div
+                            initial={{width: 0, opacity: 0}}
+                            animate={{width: 'auto', opacity: 1}}
+                            exit={{width: 0, opacity: 0}}
+                            transition={{duration: 0.5}}
+                        >
+                        <Drawer
+                            open={isOpen}
+                            onClose={() => setIsOpen(false)}
+                            variant='persistent'
+                            anchor='left'
+                            sx={{
                                 backgroundColor: 'var(--background-color)',
-                                borderColor: `var(--border-color)`
-                            }
-                        }}
-                    >
-                        <NavBlock>
-                            <Box>
-                                <FlexBetween>
+                                width: drawerWidth,
 
-                                    {/*{!isNonMobile && (*/}
-                                    <IconButton onClick={() => setIsOpen(!isOpen)} sx={{backgroundColor:'transparent !important'}}>
-                                        <Brand>
-                                            <ReactSVG src={Logo} className={s.icon}
-                                                      style={{
-                                                          fill: backgroundTheme === 'black' ? '#fff' : undefined
-                                                      }}
-                                            />
-                                            <Typography variant='h4' component={BrandTitle}>
-                                                {t('Diary')}
-                                            </Typography>
-                                        </Brand>
-                                        <ChevronLeftOutlined/>
-                                    </IconButton>
-                                    {/*)}*/}
-                                </FlexBetween>
-                            </Box>
-                            {!isNonMobile && (
+                                '& .MuiDrawer-paper': {
+                                    // color: theme.palette.secondary.main,
+                                    // backgroundColor: backgroundTheme === 'tomato'  '#ff6347 !important'
+                                    boxSizing: 'border-box',
+                                    width: drawerWidth,
+                                    backgroundColor: 'var(--background-color)',
+                                    borderColor: `var(--border-color)`
+                                }
+                            }}
+                        >
+                            <NavBlock>
+                                <Box>
+                                    <FlexBetween>
+
+                                        {/*{!isNonMobile && (*/}
+                                        <IconButton onClick={() => setIsOpen(!isOpen)}
+                                                    sx={{backgroundColor: 'transparent !important'}}>
+                                            <Brand>
+                                                <ReactSVG src={Logo} className={s.icon}
+                                                          style={{
+                                                              fill: backgroundTheme === 'black' ? '#fff' : undefined
+                                                          }}
+                                                />
+                                                <Typography variant='h4' component={BrandTitle}>
+                                                    {t('Diary')}
+                                                </Typography>
+                                            </Brand>
+                                            <ChevronLeftOutlined/>
+                                        </IconButton>
+                                        {/*)}*/}
+                                    </FlexBetween>
+                                </Box>
+                                {!isNonMobile && (
+                                    <List>
+                                        <ListItem>
+                                            <SearchBarComponent/>
+                                        </ListItem>
+                                        <ListItem sx={{justifyContent: 'center', mt: 2}}>
+                                            <SwitcherFolder/>
+                                        </ListItem>
+                                    </List>
+                                )}
+                                <NavList>
+                                    {renderNavMenu()}
+                                </NavList>
+                            </NavBlock>
+                            <Box width='100%'>
                                 <List>
+                                    {/*{!isNonMobile && (*/}
+                                    {/*    <ListItem>*/}
+                                    {/*        <Box padding='5px'>*/}
+                                    {/*            <ThemeToggleComponent/>*/}
+                                    {/*        </Box>*/}
+                                    {/*    </ListItem>*/}
+                                    {/*)}*/}
                                     <ListItem>
-                                        <SearchBarComponent/>
+                                        <ListItemButton
+                                            onClick={handleHome}
+                                            component={active === '/' ? ActiveNavItem : NavItem}
+                                        >
+                                            <ListItemIcon>
+                                                <HomeIcon/>
+                                            </ListItemIcon>
+                                            <ListItemText>
+                                                {t('Home')}
+                                            </ListItemText>
+                                        </ListItemButton>
                                     </ListItem>
-                                    <ListItem sx={{justifyContent: 'center', mt: 2}}>
-                                        <SwitcherFolder/>
+                                    <ListItem>
+                                        <ListItemButton
+                                            onClick={handleSettings}
+                                            component={active === '/settings' ? ActiveNavItem : NavItem}
+                                        >
+                                            <ListItemIcon>
+                                                <SettingsIcon/>
+                                            </ListItemIcon>
+                                            <ListItemText>
+                                                {t('Settings')}
+                                            </ListItemText>
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem>
+
+                                        <ListItemButton component={NavItem} onClick={handleLogOut}>
+                                            <ListItemIcon>
+                                                <LogoutOutlined/>
+                                            </ListItemIcon>
+                                            <ListItemText>
+                                                <Typography>
+                                                    {t('Log out')}
+                                                </Typography>
+                                            </ListItemText>
+                                        </ListItemButton>
                                     </ListItem>
                                 </List>
-                            )}
-                            <NavList>
-                                {renderNavMenu()}
-                            </NavList>
-                        </NavBlock>
-                        <Box width='100%'>
-                            <List>
-                                {/*{!isNonMobile && (*/}
-                                {/*    <ListItem>*/}
-                                {/*        <Box padding='5px'>*/}
-                                {/*            <ThemeToggleComponent/>*/}
-                                {/*        </Box>*/}
-                                {/*    </ListItem>*/}
-                                {/*)}*/}
-                                <ListItem>
-                                    <ListItemButton
-                                        onClick={handleHome}
-                                        component={active === '/' ? ActiveNavItem : NavItem}
-                                    >
-                                        <ListItemIcon>
-                                            <HomeIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText>
-                                            {t('Home')}
-                                        </ListItemText>
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemButton
-                                        onClick={handleSettings}
-                                        component={active === '/settings' ? ActiveNavItem : NavItem}
-                                    >
-                                        <ListItemIcon>
-                                            <SettingsIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText>
-                                            {t('Settings')}
-                                        </ListItemText>
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem>
+                            </Box>
+                        </Drawer>
+                        </motion.div>
 
-                                    <ListItemButton component={NavItem} onClick={handleLogOut}>
-                                        <ListItemIcon>
-                                            <LogoutOutlined/>
-                                        </ListItemIcon>
-                                        <ListItemText>
-                                            <Typography>
-                                                {t('Log out')}
-                                            </Typography>
-                                        </ListItemText>
-                                    </ListItemButton>
-                                </ListItem>
-                            </List>
-                        </Box>
-                    </Drawer>
+                        )}
+                </Box>
 
-                </>
-            )}
-        </Box>
-
+        </AnimatePresence>
     );
 };
 

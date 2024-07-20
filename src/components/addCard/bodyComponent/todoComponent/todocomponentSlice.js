@@ -11,7 +11,8 @@ const initialState = {
     colors: [],
     colorsSwitcher:false,
     labels: [],
-    title: ''
+    title: '',
+    backgroundColorCard:''
 }
 
 export const createNewTodoSlice = createSlice({
@@ -57,7 +58,7 @@ export const createNewTodoSlice = createSlice({
             }
         },
         todoCompletedAction(state, action) {
-            debugger
+            // debugger
             const {item} = action.payload;
             // Проверяем, существует ли элемент с данным id
             const exists = state.todoCompleted.some(i => i.id === item.id);
@@ -74,7 +75,7 @@ export const createNewTodoSlice = createSlice({
 
         },
         todoNonCompletedAction(state, action) {
-            debugger
+            // debugger
             const {item} = action.payload;
             // Проверяем, существует ли элемент с данным id
             const exists = state.todo.some(i => i.id === item.id);
@@ -100,8 +101,11 @@ export const createNewTodoSlice = createSlice({
                 );
             }
         },
+        changeTextareaAction(state,action){
+            state.textarea = action.payload;
+        },
         dropItemAction(state, action) {
-            debugger
+            // debugger
             state.todo = action.payload;
         },
         titleTextAction(state, action) {
@@ -117,14 +121,27 @@ export const createNewTodoSlice = createSlice({
             state.colors = action.payload;
             state.colorsSwitcher = !state.colorsSwitcher;
         },
+        addNewColorAction(state,action){
+            state.colors=[...state.colors,action.payload]
+        },
+        removeColorAction(state,action){
+            // debugger
+            state.colors=state.colors.filter(item => item !== action.payload);
+            state.backgroundColorCard=''
+        },
+        backgroundColorCardAction(state,action){
+            state.backgroundColorCard=action.payload
+        },
         exitAction(state, action) {
             state.todo = [{id: uuidv4(), content: '', completed: false}]
             state.todoCompleted = []
             state.textarea = ''
             state.isFavorite = false
             state.colors = []
+            state.colorsSwitcher=false
             state.labels = []
             state.title = ''
+            state.backgroundColorCard=''
         },
 
     }
@@ -137,9 +154,13 @@ export const {
     todoCompletedAction,
     todoNonCompletedAction,
     changeTextAction,
+    changeTextareaAction,
     dropItemAction,
     titleTextAction,
     colorsAction,
+    addNewColorAction,
+    removeColorAction,
+    backgroundColorCardAction,
     isFavoriteAction,
     exitAction
 } = createNewTodoSlice.actions

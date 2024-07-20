@@ -9,13 +9,17 @@ import FooterComponent from "../bottomComponent/FooterComponent";
 import HeaderComponent from "../headerComponent/HeaderComponent";
 import BodyComponent from "../bodyComponent/BodyComponent";
 import FactCheckIcon from '@mui/icons-material/FactCheck';
-import background from '../../../assets/image/backgroundImg/grocery_light_0609.svg'
+// import background from '../../../assets/image/backgroundImg/grocery_light.svg'
 const AddCardFsComponent = () => {
     const dispatch = useDispatch();
 
     const addCardSwitcher = useSelector((state) => state.addCard)
+
+    const backgroundColorCard = useSelector((state) => state.createNewTodo.backgroundColorCard);
+
     // const todo = addCardSwitcher.todo
     // const textarea = addCardSwitcher.textarea
+
     const showSwitcher = addCardSwitcher.showSwitcher
     useEffect(() => {
 
@@ -33,7 +37,15 @@ const AddCardFsComponent = () => {
     return (
         // <WrapperAddCardFs sx={{backgroundImage:`url(${background})`,backgroundSize:'cover',backgroundPositionX: 'right',
         //     backgroundPositionY: 'bottom'}}>
-            <WrapperAddCardFs >
+        <WrapperAddCardFs
+            sx={{
+                backgroundColor: backgroundColorCard==='' ? {} : backgroundColorCard,
+                backgroundImage: backgroundColorCard ? `url(${backgroundColorCard})` : 'none',
+                backgroundPositionX: 'right',
+                backgroundPositionY: 'bottom',
+                backgroundSize: 'cover',
+            }}
+        >
             {
                 showSwitcher ? <WrapperSwitcher>
                         <WrapperList onClick={handlerArea} title='Нажмите, чтобы создать заметку'>

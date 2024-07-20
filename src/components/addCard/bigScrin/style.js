@@ -17,6 +17,7 @@ export const WrapperAddCardFs = styled(Box)({
     border: '1px solid var(--border-color)',
     boxShadow: 'var(--box-shadow)',
     transition: 'ease-in-out 0.5s',
+    overflow:'hidden',
     '&:hover': {
         boxShadow: '0px 0px 19px #eee5e580',
     },

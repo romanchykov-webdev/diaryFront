@@ -1,5 +1,5 @@
 import './styles.css';
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect,  useState} from "react";
 import {Reorder, AnimatePresence} from "framer-motion";
 
 import {Box, Typography} from "@mui/material";
@@ -21,6 +21,8 @@ export default function ToDoList() {
 
     const [items, setItems] = useState(initialItems);
 
+    // const [reorderedItems, setReorderedItems] = useState(initialItems);
+
     const dispatch = useDispatch();
 
     // const completedItemsCount = items.filter(item => item.completed).length;
@@ -31,6 +33,7 @@ export default function ToDoList() {
 
     useEffect(() => {
         setItems(initialItems)
+        // setReorderedItems(initialItems);
     }, [initialItems]);
     // }, [initialItems, completedItemsCount]);
 
@@ -43,6 +46,7 @@ export default function ToDoList() {
             completed: false
         };
         setItems(prevItems => [...prevItems, newItem]);
+        // setReorderedItems(prevItems => [...prevItems, newItem]);
         dispatch(addTodoItemAction(newItem))
         // setIsNewItemAdded(true);  // Устанавливаем флаг в true при добавлении нового элемента
     };
@@ -68,23 +72,26 @@ export default function ToDoList() {
     //     setItems(newItems);
     //
     // };
-    const onDragEnd = () => {
-        dispatch(dropItemAction(items));
-    };
+
     const onReorderItems = (newOrder) => {
         setItems(newOrder);
     };
-
+    const handleDragEnd = () => {
+        // setItems(reorderedItems);
+        dispatch(dropItemAction(items));
+        console.log('onDragEnd');
+    };
     return (
         <div className="wrapperTodo">
             {/*no completed*/}
-            <Reorder.Group axis="y" onReorder={onReorderItems} values={items.filter(item => item)}
-                           as="ul" onDragEnd={onDragEnd}
+            <Reorder.Group axis="y" onReorder={onReorderItems} values={items.filter(item => !item.completed)}
+                           as="ul"
             >
                 <AnimatePresence>
                     <TodoNonCompleteComponent
                         items={items}
                         handlerAddItem={handlerAddItem}
+                        handleDragEnd={handleDragEnd}
                         // lastItemRef={lastItemRef}  // Передаем ссылку на последний элемент
                     />
                 </AnimatePresence>

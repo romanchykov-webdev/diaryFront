@@ -12,7 +12,7 @@ const TodoCompleteComponent = () => {
     const items = useSelector((state) => state.createNewTodo.todoCompleted);
 
     const lengthItemsCompleted=Object.keys(items).length;
-    console.log('lengthItemsCompleted',lengthItemsCompleted)
+    // console.log('lengthItemsCompleted',lengthItemsCompleted)
 
 
     const handlerTodoNonCompleted = (item) => {

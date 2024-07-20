@@ -9,7 +9,7 @@ import {useDispatch} from "react-redux";
 import {
     changeTextAction,
     removeTodoItemAction,
-    switcherCompletedAction,
+    // switcherCompletedAction,
     todoCompletedAction
 } from "./todocomponentSlice";
 
