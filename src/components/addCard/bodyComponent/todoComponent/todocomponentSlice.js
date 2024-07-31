@@ -12,7 +12,8 @@ const initialState = {
     colorsSwitcher:false,
     labels: [],
     title: '',
-    backgroundColorCard:''
+    backgroundColorCard:'',
+
 }
 
 export const createNewTodoSlice = createSlice({
@@ -111,8 +112,14 @@ export const createNewTodoSlice = createSlice({
         titleTextAction(state, action) {
             state.title = action.payload;
         },
-        labelAction(state, action) {
-
+        addRemoveLabelAction(state, action){
+            const item=action.payload;
+            // state.label=[...state.label,action.payload];
+            if (state.labels.includes(item)) {
+                state.labels= state.labels.filter(label => label !== item);
+            } else {
+                state.labels= [...state.labels, item];
+            }
         },
         isFavoriteAction(state, action) {
             state.isFavorite = !state.isFavorite;
@@ -157,6 +164,7 @@ export const {
     changeTextareaAction,
     dropItemAction,
     titleTextAction,
+    addRemoveLabelAction,
     colorsAction,
     addNewColorAction,
     removeColorAction,

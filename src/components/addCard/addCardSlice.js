@@ -5,6 +5,7 @@ const initialState = {
     todo: false,
     textarea:false,
     showSwitcher: true,
+    cards:[]
 }
 
 export const addCardSlice = createSlice({
@@ -25,12 +26,19 @@ export const addCardSlice = createSlice({
             state.textarea = false;
             state.todo = false;
             state.showSwitcher = true;
-        }
+        },
+        createNewCardAction(state,action){
+            // debugger
+            const {item}=action.payload;
+            state.cards=[...state.cards,item]
+        },
+
     }
 })
 export const {
     addTodoAction,
     addTextAreaAction,
     handlerExitAction,
+    createNewCardAction,
 } = addCardSlice.actions
 export default addCardSlice.reducer

@@ -7,14 +7,18 @@ const initialState = {
         user: {}
     },
     isLogged: false,
-    isLoading: false
+    isLoading: false,
+    error: null
 }
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-
+        setLoading(state, action) {
+            // debugger
+            state.isLoading = action.payload;
+        },
     },
     extraReducers: (builder) => {
         //в ожидании  pending
@@ -29,12 +33,12 @@ export const authSlice = createSlice({
             state.user = action.payload.user
             state.token = action.payload.token
             state.isLogged = true
-            state.isLoading = false
+            // state.isLoading = false
         })
         //отклоненный rejected ошибка при входе
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.isLogged = false
-            state.isLoading = false
+            // state.isLoading = false
         })
         // registration -----------------------------
         // registration pending
@@ -46,17 +50,27 @@ export const authSlice = createSlice({
         builder.addCase(RegisterUser.fulfilled, (state, action) => {
             state.user = action.payload
             state.isLogged = true
-            state.isLoading = false
+            // state.isLoading = false
         })
         // отклоненный rejected ошибка при register
         builder.addCase(RegisterUser.rejected, (state, action) => {
             state.isLogged = false
-            state.isLoading = false
+            // state.isLoading = false
         })
-        // getPublicUser get public user info
+
+        // Get Public User Info
+        builder.addCase(getPublicUser.pending, (state) => {
+            state.isLoading = true;
+        });
         builder.addCase(getPublicUser.fulfilled, (state, action) => {
-            state.user = action.payload
+            state.user = action.payload;
+            // state.isLoading = false;
         })
+        builder.addCase(getPublicUser.rejected, (state, action) => {
+            state.error = action.payload;
+            // state.isLoading = false;
+        });
+
         // updateUserInfo pending
         builder.addCase(updateUserInfo.pending, (state) => {
             state.isLoading = true;
@@ -64,15 +78,15 @@ export const authSlice = createSlice({
         // updateUserInfo fulfilled
         builder.addCase(updateUserInfo.fulfilled, (state, action) => {
             state.user = action.payload;
-            state.isLoading = false;
+            // state.isLoading = false;
         });
         // updateUserInfo rejected
         builder.addCase(updateUserInfo.rejected, (state, action) => {
-            state.isLoading = false;
+            // state.isLoading = false;
             state.error = action.payload;
         });
     }
 
 })
-
+export const { setLoading } = authSlice.actions;
 export default authSlice.reducer

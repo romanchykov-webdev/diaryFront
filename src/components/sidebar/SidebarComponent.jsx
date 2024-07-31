@@ -74,6 +74,7 @@ const SidebarComponent = (props) => {
         console.log('logout');
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('firstName');
+        setIsOpen(false)
         navigate('/login');
     };
 
@@ -107,6 +108,7 @@ const SidebarComponent = (props) => {
                      }
 
                 >
+
                     {isOpen && (
                         <motion.div
                             initial={{width: 0, opacity: 0}}
@@ -201,6 +203,18 @@ const SidebarComponent = (props) => {
                                             </ListItemIcon>
                                             <ListItemText>
                                                 {t('Settings')}
+                                            </ListItemText>
+                                        </ListItemButton>
+                                    </ListItem>                 <ListItem>
+                                        <ListItemButton
+                                            // onClick={handleSettings}
+                                            // component={active === '/settings' ? ActiveNavItem : NavItem}
+                                        >
+                                            <ListItemIcon>
+                                                <SettingsIcon/>
+                                            </ListItemIcon>
+                                            <ListItemText>
+                                                Изменение ярлыков
                                             </ListItemText>
                                         </ListItemButton>
                                     </ListItem>

@@ -4,7 +4,6 @@ import {Button,  Typography, Box} from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import {getPublicUser, updateUserInfo} from "../../../../../store/thunks/auth";
 import {addNewColorAction} from "../../../bodyComponent/todoComponent/todocomponentSlice";
-// import { addUserColorAction } from '../../../auth/authSlice';
 
 const AddColorComponent = ({setDialogOpen,dialogOpen}) => {
 

@@ -67,7 +67,7 @@ const TopBarComponent = (props) => {
         }}>
             <MuiToolbar component={Toolbar}>
                 <Grid container justifyContent='space-between' alignItems='center'>
-                    <Grid item sm={4} lg={3}>
+                    <Grid item sm={4} md={3}>
                         <FlexBetween>
                             <Box component={MenuIcon} onClick={() => setIsOpen(!isOpen)}>
                                 <MenuOutlined sx={{cursor: 'pointer'}}/>
@@ -85,9 +85,9 @@ const TopBarComponent = (props) => {
                         </FlexBetween>
                     </Grid>
 
-                    <Grid display='flex' justifyContent='flex-end' item sm={8} lg={9}>
+                    <Grid display='flex' justifyContent='flex-end' item sm={8} md={9}>
                         <SwitcherFolder/>
-                        <Box sx={{visibility:'hidden', width:0,height:0}}>
+                        <Box sx={{display:'none', visibility:'hidden', width:0,height:0,position:'absolute'}}>
 
                             <ThemeToggleComponent />
                         </Box>

@@ -1,12 +1,7 @@
 import React from 'react';
 import { Button, Grid} from "@mui/material";
-import celebration from '../../../../../../assets/image/backgroundImg/celebration.svg'
-
-
-
-const BackgroundImgComponentFood_light = ({switcherBackground,backgroundColorCard}) => {
-
-
+import firework from '../../../../../../assets/image/backgroundImg/salut.webp'
+const BackgroundImgComponentFireworkLight = ({switcherBackground,backgroundColorCard}) => {
     return (
         <Grid item xs={4} sm={3} md={2}
               sx={{
@@ -14,12 +9,10 @@ const BackgroundImgComponentFood_light = ({switcherBackground,backgroundColorCar
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 0,
-                  marginBottom: 2,
-
-
+                  marginBottom: 2
               }}>
             <Button
-                onClick={() => switcherBackground(celebration)}
+                onClick={() => switcherBackground(firework)}
                 variant='outlined'
                 sx={{
                     border: '1px solid var(--border-color)',
@@ -28,11 +21,11 @@ const BackgroundImgComponentFood_light = ({switcherBackground,backgroundColorCar
                     minWidth: 0,
                     width:'50px',
                     height:'50px',
-                    transition: 'background-color 0s',
-                    backgroundImage:`url(${celebration})`,
+                    backgroundImage:`url(${firework})`,
                     backgroundPositionX: 'right',
                     backgroundPositionY: 'bottom',
                     backgroundSize: 'cover',
+                    transition: 'background-color 0s',
                     boxShadow: backgroundColorCard === '' ? 'var(--box-shadow)' : 'none',
                     '&:hover': {border: '1px solid var(--border-color)'}
                 }}>
@@ -41,4 +34,4 @@ const BackgroundImgComponentFood_light = ({switcherBackground,backgroundColorCar
     );
 };
 
-export default BackgroundImgComponentFood_light;
+export default BackgroundImgComponentFireworkLight;

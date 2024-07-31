@@ -27,6 +27,7 @@ const LayoutComponent = () => {
                         height='100%'
                         position='relative'
                     >
+
                         <SidebarComponent
                             isNonMobile={isNonMobile}
                             drawerWidth='250px'

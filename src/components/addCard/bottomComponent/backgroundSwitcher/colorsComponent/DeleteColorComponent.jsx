@@ -8,10 +8,8 @@ import {
 } from "../../../bodyComponent/todoComponent/todocomponentSlice";
 import {AnimatePresence, motion} from "framer-motion";
 import Avatar from "@mui/material/Avatar";
-// import { addUserColorAction } from '../../../auth/authSlice';
 
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {

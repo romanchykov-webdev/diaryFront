@@ -6,6 +6,25 @@
     box-sizing: border-box;
     color: var(--text-color) !important;
     transition: color 500ms linear;
+    /* Стилизация полосы прокрутки */
+
+    &::-webkit-scrollbar {
+        width: 8px; /* Ширина полосы прокрутки */
+    }
+
+    &::-webkit-scrollbar-track {
+        /*background: #f1f1f1; !* Цвет фона полосы прокрутки *!*/
+        background: var(--background-color); /* Цвет фона полосы прокрутки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888; /* Цвет бегунка полосы прокрутки */
+        border-radius: 4px; /* Скругленные края бегунка */
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Цвет бегунка полосы прокрутки при наведении */
+    }
 }
 
 html {
@@ -64,6 +83,21 @@ p {
     /*align-items: center;*/
 }
 
+/*.wrapperLoader {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    backdrop-filter: blur(10px);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    !*background-color: red;*!*/
+/*    z-index: 10000;*/
+/*    overflow: hidden;*/
+/*}*/
+
 .App {
     min-height: 100%;
     height: auto;
@@ -85,6 +119,7 @@ html[data-theme='dark'] {
     --box-shadow: 1px 1px 10px #eee5e580;
     --border-radius5: 5px;
     --border-radiou12: 12px;
+    --hover-color: rgba(86 , 86, 86, 0.45);
 }
 
 html[data-theme='light'] {
@@ -95,6 +130,7 @@ html[data-theme='light'] {
     --box-shadow: 1px 1px 10px #00000080;
     --border-radius5: 5px;
     --border-radius12: 12px;
+    --hover-color: rgba(86 , 86, 86, 0.45);
 }
 
 html[data-theme='tomato'] {
@@ -105,6 +141,7 @@ html[data-theme='tomato'] {
     --box-shadow: 1px 1px 10px #00000080;
     --border-radius5: 5px;
     --border-radius12: 12px;
+    --hover-color: rgba(86 , 86, 86, 0.45);
 }
 
 /**{*/
@@ -121,3 +158,4 @@ html[data-theme='tomato'] {
         min-height: auto;
     }
 }
+

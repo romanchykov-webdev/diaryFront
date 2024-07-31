@@ -14,6 +14,7 @@ import BackgroundImgComponentPlacesLight from "./backgroundImgComponents/Backgro
 import BackgroundImgComponentRecipeLight from "./backgroundImgComponents/BackgroundImgComponentRecipeLight";
 import BackgroundImgComponentTravelLight from "./backgroundImgComponents/BackgroundImgComponentTravelLight";
 import BackgroundImgComponentVideoLight from "./backgroundImgComponents/BackgroundImgComponentVideoLight";
+// import BackgroundImgComponentFireworkLight from "./backgroundImgComponents/BackgroundImgComponentFireworkLight";
 
 const BackgroundComponent = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const BackgroundComponent = () => {
             <BackgroundImgComponentRecipeLight backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>
             <BackgroundImgComponentTravelLight backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>
             <BackgroundImgComponentVideoLight backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>
+            {/*<BackgroundImgComponentFireworkLight backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>*/}
 
         </Grid>
     );

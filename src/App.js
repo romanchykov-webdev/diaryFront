@@ -5,6 +5,8 @@ import PrivateRoute from './utils/router/privateRoute';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
 import AuthRootComponents from "./pages/auth";
+import { useSelector} from "react-redux";
+import SkeletonComponent from "./components/skeleton/SkeletonComponent";
 
 
 // import {useSelector} from "react-redux";
@@ -12,6 +14,7 @@ import AuthRootComponents from "./pages/auth";
 
 function App() {
 
+    // const dispatch=useDispatch()
     // const [theme, colorMode] = useMode();
     // const backgroundTheme = useSelector((state) => state.auth?.user.themeModeDevice)
     //
@@ -27,9 +30,15 @@ function App() {
     // const navigate = useNavigate();
     // console.log('pathname',pathname)
     // console.log('navigate',navigate)
+const isloading=useSelector(state => state.auth.isLoading);
+// const isloading=true
 
     return (
         <>
+            {
+                isloading && <SkeletonComponent/>
+
+            }
 
             {/*<CssBaseline/>*/}
             {/*<div className="App" style={{backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : undefined}}>*/}
@@ -42,6 +51,7 @@ function App() {
                 <Routes>
                     <Route element={<LayoutComponent/>}>
                         <Route element={<PrivateRoute/>}>
+
                             <Route path="/" element={<Home/>}/>
                             <Route path="/settings" element={<SettingsPage/>}/>
                         </Route>

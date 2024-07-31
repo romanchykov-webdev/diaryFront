@@ -6,7 +6,6 @@ import CheckIcon from '@mui/icons-material/Check';
 import {backgroundColorCardAction} from "../../../bodyComponent/todoComponent/todocomponentSlice";
 import AddColorComponent from "./AddColorComponent";
 import {motion,AnimatePresence} from 'framer-motion';
-import BackgroundSwitcher from "../BackgroundSwitcher";
 import DeleteColorComponent from "./DeleteColorComponent";
 
 const ColorsComponent = () => {
@@ -25,7 +24,7 @@ const ColorsComponent = () => {
         }
         const [dialogOpen, setDialogOpen] = useState(false);
         const [deleteColorOpen, setDeleteColorOpen] = useState(false);
-        console.log('dialogOpen',dialogOpen)
+        // console.log('dialogOpen',dialogOpen)
     // const handleDialogOpen = () => {
     //     setDialogOpen(true);
     //     console.log('setDialogOpen(true)',dialogOpen)

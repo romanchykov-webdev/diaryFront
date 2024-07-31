@@ -16,7 +16,7 @@ const SwitcherFolder = () => {
     const userData = useSelector(state => state.auth.user);
     const [newUserName] = useState(userData.userName)
     const switcherUser = userData.switcherFolder
-    console.log('userData.switcherFolder',userData.switcherFolder)
+    // console.log('userData.switcherFolder',userData.switcherFolder)
 
     function handlerSwitcher() {
         // eslint-disable-next-line default-case
