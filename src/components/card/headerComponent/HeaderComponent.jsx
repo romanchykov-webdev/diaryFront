@@ -53,6 +53,7 @@ const HeaderComponent = ({i,userId,itemId,title, isFavorite, switcherIsFavorite}
     return (
         <WrapperHeader>
             <WrapperTitle>
+
                 <TextField
                     value={inputValue}
                     autoComplete='off'

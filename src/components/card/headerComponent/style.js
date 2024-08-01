@@ -2,6 +2,7 @@ import {Box, styled} from "@mui/material";
 
 export const WrapperHeader = styled(Box)({
     display: 'flex',
+    width:'100%',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: '20px',

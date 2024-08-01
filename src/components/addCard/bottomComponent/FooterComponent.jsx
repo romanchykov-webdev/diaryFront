@@ -15,7 +15,11 @@ import {createCard} from "../../../store/thunks/cardActions/cardActions";
 const FooterComponent = () => {
     const dispatch = useDispatch();
     const card = useSelector((state) => state.createNewTodo)
-    const userId = useSelector((state) => state.auth.user.id)
+    // const userId = useSelector((state) => state.auth.user.id)
+    const user = useSelector((state) => state.auth.user)
+    const tootCards=useSelector((state) => state.cards.cards)
+    console.log(tootCards.length)
+    const userId = user.id
     const colorsSwitcher = card.colorsSwitcher
 
     function handlerExit() {
@@ -35,6 +39,7 @@ const FooterComponent = () => {
             labels: card.labels,
             title: card.title,
             backgroundColorCard: card.backgroundColorCard,
+            order:tootCards.length +1
         }
         // dispatch(createNewCardAction({item}))
         dispatch(createCard(item))

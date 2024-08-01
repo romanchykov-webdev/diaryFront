@@ -2,10 +2,11 @@ import {createSlice} from "@reduxjs/toolkit";
 import {getPublicUser, LoginUser, RegisterUser, updateUserInfo} from "../../thunks/auth";
 
 const initialState = {
-    user: {
-        token: '',
-        user: {}
-    },
+    // user: {
+    //     token: '',
+    //     user: {}
+    // },
+    user:{},
     isLogged: false,
     isLoading: false,
     error: null
@@ -48,6 +49,7 @@ export const authSlice = createSlice({
         })
         // registration ok
         builder.addCase(RegisterUser.fulfilled, (state, action) => {
+            debugger
             state.user = action.payload
             state.isLogged = true
             // state.isLoading = false

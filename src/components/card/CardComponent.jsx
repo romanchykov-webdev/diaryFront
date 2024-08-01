@@ -28,12 +28,19 @@ const CardComponent = ({i}) => {
 
 
     return (
-        <Grid xs={12} sm={6} md={3} item sx={{outline: '1px solid red', padding: '5px'}}>
-            <Box>
+        <Grid
+        //     xs={12} sm={6} md={3} item sx={{
+        //     width:'100%',
+        //     maxWidth:'100%',
+        //     outline: '1px solid red',
+        //     padding: '5px'
+        // }}
+        >
+            {/*<Box>*/}
                 <HeaderComponent i={i} userId={i.userId} itemId={i.id} title={i.title} isFavorite={i.isFavorite}
                                  switcherIsFavorite={switcherIsFavorite}/>
-                <BodyComponent todo={i.todo} todoCompleted={i.todoCompleted} textarea={i.textarea}/>
-            </Box>
+                {/*<BodyComponent todo={i.todo} todoCompleted={i.todoCompleted} textarea={i.textarea}/>*/}
+            {/*</Box>*/}
         </Grid>
     );
 };

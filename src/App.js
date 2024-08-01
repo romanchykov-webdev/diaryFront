@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Home from './pages/home/HomePage';
 import {Route, Routes, useLocation} from 'react-router-dom';
 import PrivateRoute from './utils/router/privateRoute';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
 import AuthRootComponents from "./pages/auth";
-import { useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import SkeletonComponent from "./components/skeleton/SkeletonComponent";
+import {changeLanguage} from "./locales/languageSlice";
+// import i18n from "i18next";
 
 
 // import {useSelector} from "react-redux";
@@ -14,7 +16,11 @@ import SkeletonComponent from "./components/skeleton/SkeletonComponent";
 
 function App() {
 
-    // const dispatch=useDispatch()
+    const dispatch=useDispatch()
+    useEffect(() => {
+        dispatch(changeLanguage('en'));
+        // i18n.changeLanguage('en');
+    }, [dispatch]);
     // const [theme, colorMode] = useMode();
     // const backgroundTheme = useSelector((state) => state.auth?.user.themeModeDevice)
     //

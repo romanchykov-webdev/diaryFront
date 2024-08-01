@@ -27,6 +27,7 @@ const AuthRootComponents = () => {
     const loading = useSelector((state) => state.auth.isLoading);
 
     const language = useSelector((state) => state.language.language);
+    console.log('language',language)
     const themeModeDevice = useSelector((state) => state.theme.themeMode);
 
     const handleSubmitForm = async (data) => {

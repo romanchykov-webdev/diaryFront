@@ -38,6 +38,7 @@ const LoginPage = (props) => {
 
             <TextField
                 error={!!errors.email}
+                autoComplete='off'
                 helperText={errors.email ? `${errors.email.message}` : ''}
                 fullWidth={true} margin='normal' label={t('Email')} variant="outlined"
                 {...register('email')}
@@ -45,6 +46,7 @@ const LoginPage = (props) => {
             <WrapperPassword>
                 <TextField
                     error={!!errors.password}
+                    autoComplete='off'
                     helperText={errors.password ? `${errors.password.message}` : ''}
                     fullWidth={true} type={isVisible ?'password' : 'text'} margin='normal' label={t('Password')} variant="outlined"
                     {...register('password')}

@@ -5,7 +5,7 @@ import {setLoading} from "../../slice/auth";
 //thunk for logIn
 export const LoginUser = createAsyncThunk(
     'auth/login',
-    async (data, {dispatch,rejectWithValue}) => {
+    async (data, {dispatch, rejectWithValue}) => {
         dispatch(setLoading(true));
         try {
             const user = await instance.post('auth/login', data)
@@ -33,17 +33,22 @@ export const LoginUser = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
+        } finally {
+            setTimeout(() => {
+                // console.log('setTimeout')
+                dispatch(setLoading(false));
+            }, 2000)
         }
     }
 )
 //thunk for registration
 export const RegisterUser = createAsyncThunk(
     'auth/register',
-    async (data, {dispatch,rejectWithValue}) => {
+    async (data, {dispatch, rejectWithValue}) => {
         dispatch(setLoading(true));
         try {
             const user = await instance.post('auth/register', data)
-
+            debugger
             //session storage
             sessionStorage.setItem("token", user.data.token)
             sessionStorage.setItem("firstName", user.data.user.firstName)
@@ -60,11 +65,11 @@ export const RegisterUser = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-        }finally {
-            setTimeout(()=>{
+        } finally {
+            setTimeout(() => {
                 // console.log('setTimeout')
                 dispatch(setLoading(false));
-            },2000)
+            }, 2000)
         }
     }
 )
@@ -73,10 +78,10 @@ export const RegisterUser = createAsyncThunk(
 //thunk for get-public-user-info
 export const getPublicUser = createAsyncThunk(
     'auth/get-public-user-info',
-    async (_, {dispatch, rejectWithValue }) => {
+    async (_, {dispatch, rejectWithValue}) => {
         dispatch(setLoading(true));
         try {
-
+            debugger
             const user = await instanceAuth.get('auth/get-public-user-info')
 
             return user.data
@@ -86,11 +91,11 @@ export const getPublicUser = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-        }finally {
-            setTimeout(()=>{
+        } finally {
+            setTimeout(() => {
                 // console.log('setTimeout')
                 dispatch(setLoading(false));
-            },2000)
+            }, 2000)
         }
     },
 )
@@ -100,7 +105,7 @@ export const updateUserInfo = createAsyncThunk(
     'users/update',
     // 'auth/update',
 
-    async (data, {dispatch,rejectWithValue}) => {
+    async (data, {dispatch, rejectWithValue}) => {
         dispatch(setLoading(true));
         try {
             const user = await instanceAuth.patch('/auth/update', data)
@@ -112,11 +117,11 @@ export const updateUserInfo = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-        }finally {
-            setTimeout(()=>{
+        } finally {
+            setTimeout(() => {
                 // console.log('setTimeout')
                 dispatch(setLoading(false));
-            },2000)
+            }, 2000)
         }
     },
 )
@@ -140,7 +145,7 @@ export const updateUserPassword = createAsyncThunk(
 //thunk for deleteUser
 export const deleteUser = createAsyncThunk(
     'users/delete-user',
-    async (_, { rejectWithValue }) => {
+    async (_, {rejectWithValue}) => {
         try {
             return instanceAuth.delete('users')
         } catch (error) {
