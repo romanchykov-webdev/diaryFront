@@ -6,10 +6,18 @@ export const WrapperCard = styled(Box)({
     padding: '10px',
     borderRadius: '12px',
     boxShadow: `var(--box-shadow)`,
-    maxHeight: '400px',
+    height: '200px',
+    display: 'flex',
+    flexDirection: 'column',
 })
 export const CardHeader = styled(Box)({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+})
+export const WrapperIsFavorite = styled(Box)({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position:'relative',
 })

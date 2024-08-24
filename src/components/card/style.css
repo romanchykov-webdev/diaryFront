@@ -1,0 +1,13 @@
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card.isDragging {
+    opacity: 0.5;
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+.card.isOver {
+    transform: translateY(-10px);
+}

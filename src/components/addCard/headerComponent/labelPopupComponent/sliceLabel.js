@@ -9,6 +9,7 @@ export const labelSlice =createSlice({
     initialState,
     reducers:{
         addRemoveLabelAction(state, action){
+            debugger
             const item=action.payload;
             // state.label=[...state.label,action.payload];
             if (state.label.includes(item)) {

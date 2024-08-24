@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {WrapperHeader, WrapperIcons, WrapperTitle} from "./style";
 import {TextField} from "@mui/material";
 import BeenhereIcon from '@mui/icons-material/Beenhere';
@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {colorsAction, isFavoriteAction, titleTextAction} from "../bodyComponent/todoComponent/todocomponentSlice";
 import LabelPopupComponent from "./labelPopupComponent/LabelPopupComponent";
 import {motion, AnimatePresence} from "framer-motion";
+import {getCardIds} from "../../../store/thunks/cardActions/cardActions";
 
 const HeaderComponent = () => {
 
@@ -42,6 +43,9 @@ const HeaderComponent = () => {
     const [openPopUpLabel, setOpenPopUpLabel] = React.useState(false);
     const handleClickOpen = () => {
         setOpenPopUpLabel(true);
+
+            dispatch(getCardIds());
+
     };
 
     const handleClose = () => {

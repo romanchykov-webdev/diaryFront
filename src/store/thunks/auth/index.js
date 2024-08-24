@@ -24,7 +24,7 @@ export const LoginUser = createAsyncThunk(
             // localStorage.setItem("token", user.data.token)
             // localStorage.setItem("firstName", user.data.user.firstName)
             //localStorage end
-
+            // console.log('sessionStorage.setItem(token ) LoginUser', sessionStorage.getItem("token"))
             return user.data
 
         } catch (error) {
@@ -52,6 +52,7 @@ export const RegisterUser = createAsyncThunk(
             //session storage
             sessionStorage.setItem("token", user.data.token)
             sessionStorage.setItem("firstName", user.data.user.firstName)
+
             //session storage end
             //localStorage
             // localStorage.setItem("token", user.data.token)
@@ -65,7 +66,8 @@ export const RegisterUser = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-        } finally {
+        }
+        finally {
             setTimeout(() => {
                 // console.log('setTimeout')
                 dispatch(setLoading(false));
@@ -81,9 +83,9 @@ export const getPublicUser = createAsyncThunk(
     async (_, {dispatch, rejectWithValue}) => {
         dispatch(setLoading(true));
         try {
-            debugger
+            // debugger
             const user = await instanceAuth.get('auth/get-public-user-info')
-
+            // console.log('sessionStorage.setItem(token)', sessionStorage.getItem("token"))
             return user.data
         } catch (error) {
             if (error.response && error.response.data.message) {
@@ -91,7 +93,8 @@ export const getPublicUser = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-        } finally {
+        }
+        finally {
             setTimeout(() => {
                 // console.log('setTimeout')
                 dispatch(setLoading(false));
@@ -106,7 +109,7 @@ export const updateUserInfo = createAsyncThunk(
     // 'auth/update',
 
     async (data, {dispatch, rejectWithValue}) => {
-        dispatch(setLoading(true));
+        // dispatch(setLoading(true));
         try {
             const user = await instanceAuth.patch('/auth/update', data)
             console.log('user', user.data)
@@ -117,12 +120,13 @@ export const updateUserInfo = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-        } finally {
-            setTimeout(() => {
-                // console.log('setTimeout')
-                dispatch(setLoading(false));
-            }, 2000)
         }
+        // finally {
+        //     setTimeout(() => {
+        //         // console.log('setTimeout')
+        //         dispatch(setLoading(false));
+        //     }, 2000)
+        // }
     },
 )
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // ----------
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -8,15 +8,22 @@ import DialogContent from '@mui/material/DialogContent';
 import {addRemoveLabelAction} from "../../bodyComponent/todoComponent/todocomponentSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {Box, Checkbox, FormControlLabel, FormGroup, TextField, Typography} from "@mui/material";
+import {addNewLabelAction} from "../../../../store/slice/cardReducer/cardReducer";
 
 const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, setIsOpenLabelPopup}) => {
 
     const dispatch = useDispatch()
 
+    // const labelsCart = useSelector((state) => state.cards.labels || [])
     const labelsCart = useSelector((state) => state.createNewTodo.labels)
 
     // const labels = ['first', 'second', 'sam label', 'ter', '444', '555', '6666', '77777', '888', '999']
-    const labels = useMemo(() => ['first', 'second', 'sam label', 'ter', '444', '555', '6666', '77777', '888', '999'], []);
+    // console.log('labelsCart',labelsCart)
+
+
+    // const labels = useMemo(() => ['first', 'second', 'sam label', 'ter', '444', '555', '6666', '77777', '888', '999'], []);
+    const labels = useSelector((state) => state.cards.labels || [])
+
     const [valueInput, setValueInput] = useState('');
 
     // const [labelsCart, setLabelsCart] = useState([]);
@@ -31,6 +38,7 @@ const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, set
 
 
     useEffect(() => {
+
         setFilteredLabels(
             labels.filter(label =>
                 label.toLowerCase().includes(valueInput.toLowerCase())
@@ -55,6 +63,13 @@ const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, set
         dispatch(addRemoveLabelAction(item))
     };
 
+
+    function addNewLabel() {
+        console.log('addNewLabel', valueInput)
+        setValueInput('')
+        dispatch(addRemoveLabelAction(valueInput))
+        dispatch(addNewLabelAction(valueInput))
+    }
 
     return (
 
@@ -84,7 +99,7 @@ const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, set
 
 
                     <FormGroup>
-                        {filteredLabels.map((item, index) => (
+                        {filteredLabels && filteredLabels.map((item, index) => (
 
                             <FormControlLabel
                                 key={index}
@@ -104,19 +119,20 @@ const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, set
                             />
                         ))
                         }
-                        {/*// <FormControlLabel checked={labelsCart.includes(item)} onClick={()=>handlerGetLabel(item)} onChange={() => handlerGetLabel(item)} control={<Checkbox defaultChecked />} label="Label" />*/}
-                        {/*// <FormControlLabel required control={<Checkbox />} label="Required" />*/}
-                        {/*// <FormControlLabel disabled control={<Checkbox />} label="Disabled" />*/}
+
                     </FormGroup>
 
 
                 </DialogContent>
                 <DialogActions>
                     {
-                        buttonAddLabels && <Button onClick={()=>setValueInput('')} >add labels</Button>
+                        buttonAddLabels && <Button onClick={addNewLabel}>add labels</Button>
                     }
 
-                    <Button onClick={() => { handleClose(); setValueInput(''); }}  >
+                    <Button onClick={() => {
+                        handleClose();
+                        setValueInput('');
+                    }}>
                         exit
                     </Button>
                 </DialogActions>

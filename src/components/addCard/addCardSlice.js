@@ -31,6 +31,7 @@ export const addCardSlice = createSlice({
             // debugger
             const {item}=action.payload;
             state.cards=[...state.cards,item]
+
         },
 
     }

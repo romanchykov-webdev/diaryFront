@@ -9,6 +9,7 @@ import createNewTodoSlice from "../components/addCard/bodyComponent/todoComponen
 import labelSlice from "../components/addCard/headerComponent/labelPopupComponent/sliceLabel";
 import dataTimeSlice from "../components/addCard/timeDataComponent/sliceTimeData";
 import cardSlice from "./slice/cardReducer/cardReducer";
+import sidebarSlice from "../components/sidebar/sidebarSlice";
 
 const store = configureStore({
     reducer: {
@@ -21,7 +22,8 @@ const store = configureStore({
         addCard:addCardSlice,
         createNewTodo:createNewTodoSlice,
         labelSlice:labelSlice,
-        dataTime:dataTimeSlice
+        dataTime:dataTimeSlice,
+        sidebarSlice:sidebarSlice
     }
 })
 

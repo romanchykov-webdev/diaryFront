@@ -7,6 +7,7 @@ const initialState = {
     //     user: {}
     // },
     user:{},
+    token: null,  // Добавляем токен в состояние
     isLogged: false,
     isLoading: false,
     error: null
@@ -19,6 +20,9 @@ export const authSlice = createSlice({
         setLoading(state, action) {
             // debugger
             state.isLoading = action.payload;
+        },
+        setToken(state, action) {  // Добавляем редьюсер для установки токена
+            state.token = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -34,34 +38,39 @@ export const authSlice = createSlice({
             state.user = action.payload.user
             state.token = action.payload.token
             state.isLogged = true
-            // state.isLoading = false
+            state.isLoading = false
         })
         //отклоненный rejected ошибка при входе
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.isLogged = false
-            // state.isLoading = false
+            state.isLoading = false
         })
         // registration -----------------------------
         // registration pending
         builder.addCase(RegisterUser.pending, (state, action) => {
             state.isLogged = false
             state.isLoading = true
+            state.token = null;  // Очищаем токен при ошибке
         })
         // registration ok
         builder.addCase(RegisterUser.fulfilled, (state, action) => {
-            debugger
-            state.user = action.payload
-            state.isLogged = true
+            // debugger
+            state.user = action.payload.user;
+            state.token = action.payload.token;  // Устанавливаем токен
+            state.isLogged = true;
             // state.isLoading = false
         })
         // отклоненный rejected ошибка при register
         builder.addCase(RegisterUser.rejected, (state, action) => {
             state.isLogged = false
-            // state.isLoading = false
+            state.token = null;  // Очищаем токен при ошибке
+            state.isLoading = false
         })
 
         // Get Public User Info
         builder.addCase(getPublicUser.pending, (state) => {
+
+            state.isLogged = false;
             state.isLoading = true;
         });
         builder.addCase(getPublicUser.fulfilled, (state, action) => {
@@ -70,7 +79,7 @@ export const authSlice = createSlice({
         })
         builder.addCase(getPublicUser.rejected, (state, action) => {
             state.error = action.payload;
-            // state.isLoading = false;
+            state.isLoading = false;
         });
 
         // updateUserInfo pending
@@ -81,14 +90,21 @@ export const authSlice = createSlice({
         builder.addCase(updateUserInfo.fulfilled, (state, action) => {
             state.user = action.payload;
             // state.isLoading = false;
+            setTimeout(() => {
+                // console.log('setTimeout')
+                setLoading(false)
+            }, 2000)
         });
         // updateUserInfo rejected
         builder.addCase(updateUserInfo.rejected, (state, action) => {
-            // state.isLoading = false;
+            state.isLoading = false;
             state.error = action.payload;
         });
     }
 
 })
-export const { setLoading } = authSlice.actions;
+export const {
+    setLoading,
+    setToken
+} = authSlice.actions;
 export default authSlice.reducer

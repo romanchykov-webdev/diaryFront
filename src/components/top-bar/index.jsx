@@ -10,10 +10,12 @@ import {changeLanguage} from "../../locales/languageSlice";
 import {toggleThemeAction} from "../themeToggle/sliceToggleTheme";
 import SwitcherFolder from "../switcher-folder/SwitcherFolder";
 import ThemeToggleComponent from "../themeToggle/ThemeToggleComponent";
+import IsLoadComponent from "../skeleton/IsLoadComponent";
 
 
 const TopBarComponent = (props) => {
     const {isOpen, setIsOpen, isNonMobile} = props;
+
 
     // const dispatch = useDispatch();
 
@@ -21,6 +23,8 @@ const TopBarComponent = (props) => {
 
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
+
+    const isLoading = useSelector(state => state.auth.isLoading);
 
     // const {setTheme} = useToggleTheme();
     const backgroundTheme = useSelector((state) => state.auth.user.themeModeDevice)
@@ -73,23 +77,26 @@ const TopBarComponent = (props) => {
                                 <MenuOutlined sx={{cursor: 'pointer'}}/>
                             </Box>
 
-                            <Typography variant='h3'>
+                            <Typography variant='h3' sx={{position: 'relative', padding: '5px'}}>
                                 {/*{t('Welcome')}{` ${user.userName || ''}`}*/}
                                 {/*{t('Welcome')}{` ${user.userName}`}*/}
-                                <Avatar sx={{
-                                    border: "1px solid var(--border-color)",
-                                    backgroundColor: 'transparent',
-                                    boxShadow: `var(--box-shadow)`
-                                }}>{`${user.userName}`}</Avatar>
+                                <IsLoadComponent isLoading={isLoading}/>
+                                <Avatar
+                                    sx={{
+                                        border: "1px solid var(--border-color)",
+                                        backgroundColor: 'transparent',
+                                        // backgroundColor: 'var(--background-color)',
+                                        boxShadow: `var(--box-shadow)`
+                                    }}>{`${user.userName}`}</Avatar>
                             </Typography>
                         </FlexBetween>
                     </Grid>
 
                     <Grid display='flex' justifyContent='flex-end' item sm={8} md={9}>
                         <SwitcherFolder/>
-                        <Box sx={{display:'none', visibility:'hidden', width:0,height:0,position:'absolute'}}>
+                        <Box sx={{display: 'none', visibility: 'hidden', width: 0, height: 0, position: 'absolute'}}>
 
-                            <ThemeToggleComponent />
+                            <ThemeToggleComponent/>
                         </Box>
                         {isNonMobile && (
                             <Box marginLeft='28px'>

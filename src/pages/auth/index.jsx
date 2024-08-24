@@ -34,12 +34,13 @@ const AuthRootComponents = () => {
         console.log('Form data:', data);
         if (location.pathname === '/login') {
             try {
-                await dispatch(LoginUser(data));
+                // await dispatch(LoginUser(data));
                 // navigate('/'); // Navigate to homepage if login is successful
                 await dispatch(LoginUser(data));
-                setTimeout(() => {
-                    navigate('/'); // Navigate to homepage if login is successful
-                }, 2000); // Задержка 3 секунды
+                navigate('/'); // Navigate to homepage if login is successful
+                // setTimeout(() => {
+                //     navigate('/'); // Navigate to homepage if login is successful
+                // }, 2000); // Задержка 3 секунды
             } catch (e) {
                 console.error('Login error:', e);
                 return new Error(AppErrors.ErrorPassword);

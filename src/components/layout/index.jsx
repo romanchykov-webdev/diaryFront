@@ -11,6 +11,7 @@ const LayoutComponent = () => {
     //burger menu
     const [isOpen, setIsOpen] = useState(false)
 
+
     return (
         location.pathname === '/login' || location.pathname === '/register'
             ? (

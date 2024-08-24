@@ -2,7 +2,6 @@ import React from 'react';
 import {WrapperBottom, WrapperCreateCard, WrapperExit, WrapperFooter} from "./style";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    // createNewCardAction,
     handlerExitAction
 } from "../addCardSlice";
 import {exitAction} from "../bodyComponent/todoComponent/todocomponentSlice";
@@ -41,8 +40,9 @@ const FooterComponent = () => {
             backgroundColorCard: card.backgroundColorCard,
             order:tootCards.length +1
         }
-        // dispatch(createNewCardAction({item}))
         dispatch(createCard(item))
+        dispatch(handlerExitAction())
+        dispatch(exitAction())
         console.log(item)
     }
 

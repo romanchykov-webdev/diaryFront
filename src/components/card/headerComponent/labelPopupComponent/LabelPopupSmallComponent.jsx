@@ -1,6 +1,7 @@
 import React from 'react';
 
-const LabelPopupSmallComponent = () => {
+const LabelPopupSmallComponent = ({setOpenPopUpLabel,labels}) => {
+
     return (
         <div>
             

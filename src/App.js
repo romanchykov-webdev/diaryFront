@@ -5,8 +5,8 @@ import PrivateRoute from './utils/router/privateRoute';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
 import AuthRootComponents from "./pages/auth";
-import {useDispatch, useSelector} from "react-redux";
-import SkeletonComponent from "./components/skeleton/SkeletonComponent";
+import {useDispatch} from "react-redux";
+// import SkeletonComponent from "./components/skeleton/SkeletonComponent";
 import {changeLanguage} from "./locales/languageSlice";
 // import i18n from "i18next";
 
@@ -17,6 +17,9 @@ import {changeLanguage} from "./locales/languageSlice";
 function App() {
 
     const dispatch=useDispatch()
+
+
+
     useEffect(() => {
         dispatch(changeLanguage('en'));
         // i18n.changeLanguage('en');
@@ -36,15 +39,15 @@ function App() {
     // const navigate = useNavigate();
     // console.log('pathname',pathname)
     // console.log('navigate',navigate)
-const isloading=useSelector(state => state.auth.isLoading);
+// const isloading=useSelector(state => state.auth.isLoading);
 // const isloading=true
 
     return (
         <>
-            {
-                isloading && <SkeletonComponent/>
+            {/*{*/}
+            {/*    isloading && <SkeletonComponent/>*/}
 
-            }
+            {/*}*/}
 
             {/*<CssBaseline/>*/}
             {/*<div className="App" style={{backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : undefined}}>*/}
