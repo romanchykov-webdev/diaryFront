@@ -9,7 +9,7 @@ import FooterComponent from "../bottomComponent/FooterComponent";
 import HeaderComponent from "../headerComponent/HeaderComponent";
 import BodyComponent from "../bodyComponent/BodyComponent";
 import FactCheckIcon from '@mui/icons-material/FactCheck';
-// import background from '../../../assets/image/backgroundImg/grocery_light.svg'
+// import background from '../../../backgroundImg/image/backgroundImg/grocery_light.svg'
 const AddCardFsComponent = () => {
     const dispatch = useDispatch();
 

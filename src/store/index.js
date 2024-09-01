@@ -10,6 +10,7 @@ import labelSlice from "../components/addCard/headerComponent/labelPopupComponen
 import dataTimeSlice from "../components/addCard/timeDataComponent/sliceTimeData";
 import cardSlice from "./slice/cardReducer/cardReducer";
 import sidebarSlice from "../components/sidebar/sidebarSlice";
+import fullscreenSlice from "../components/card/cardsSlice";
 
 const store = configureStore({
     reducer: {
@@ -23,7 +24,8 @@ const store = configureStore({
         createNewTodo:createNewTodoSlice,
         labelSlice:labelSlice,
         dataTime:dataTimeSlice,
-        sidebarSlice:sidebarSlice
+        sidebarSlice:sidebarSlice,
+        fullscreenToggle:fullscreenSlice,
     }
 })
 

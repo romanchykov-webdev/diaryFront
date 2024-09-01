@@ -5,7 +5,7 @@ export const WrapperHeader = styled(Box)({
     width:'100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: '20px',
+    marginBottom: '10px',
 
 })
 export const WrapperTitle = styled(Box)({})

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FolderIcon from '@mui/icons-material/Folder';
 import GridViewIcon from '@mui/icons-material/GridView';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -17,7 +17,9 @@ const SwitcherFolder = () => {
     const [newUserName] = useState(userData.userName)
     const switcherUser = userData.switcherFolder
     // console.log('userData.switcherFolder',userData.switcherFolder)
+    useEffect(() => {
 
+    }, [switcher]);
     function handlerSwitcher() {
         // eslint-disable-next-line default-case
         switch (switcher) {
@@ -25,22 +27,19 @@ const SwitcherFolder = () => {
                 dispatch(switcherFolderAction('todo'));
                 break
             case 'todo':
-                dispatch(switcherFolderAction('folder'));
-                break
-            case 'folder':
                 dispatch(switcherFolderAction('tile'));
                 break
 
         }
         const updateUser = {
-            "userName": newUserName === undefined || '' ? userData.userName : newUserName,
-            "email": userData.email,
-            "language": userData.language,
-            "themeModeDevice": userData.themeModeDevice,
-            "popupForNewUser": userData.popupForNewUser,
-            "avatar": userData.avatar,
+            // "userName": newUserName === undefined || '' ? userData.userName : newUserName,
+            // "email": userData.email,
+            // "language": userData.language,
+            // "themeModeDevice": userData.themeModeDevice,
+            // "popupForNewUser": userData.popupForNewUser,
+            // "avatar": userData.avatar,
             "switcherFolder": switcher,
-            "colors":userData.colors,
+            // "colors":userData.colors,
 
         }
         console.log(updateUser)

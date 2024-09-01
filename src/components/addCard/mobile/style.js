@@ -7,10 +7,12 @@ export const WrapperAddCardButton = styled(Box)({
     right: '30px',
     width: '50px',
     height: '50px',
-    border: `1px solid var(--border-color)`,
+    // border: `1px solid var(--border-color)`,
     borderRadius: '50%',
     cursor: 'pointer',
     transition: 'ease-in-out 0.5s',
+    zIndex:'99999',
+    // boxShadow:'var(--box-shadow)'
     // '& svg': {
     //     width: '100%',
     //     height: '100%',
@@ -21,11 +23,20 @@ export const WrapperAddCardButton = styled(Box)({
     //     transform: 'rotate(5deg)'
     // }
 })
+export const WrapperBackground=styled(Box)({
+    position:'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'red',
+    // zIndex:'-1',
+
+})
 export const WrapperAdd=styled(Box)({
     position:'absolute',
     top: '0px',
     left: '0px',
-
+    // zIndex:'1',
+    backdropFilter: 'blur(25px)',
     '& svg': {
         width: '100%',
         height: '100%',

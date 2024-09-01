@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {WrapperBottom, WrapperCreateCard, WrapperExit, WrapperFooter} from "./style";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -11,7 +11,22 @@ import {motion, AnimatePresence} from 'framer-motion';
 import {createCard} from "../../../store/thunks/cardActions/cardActions";
 // import DateTimeDisplay from "../timeDataComponent/TimeDataComponent";
 
+
 const FooterComponent = () => {
+
+    const createTextarea=useSelector((state) => state.addCard.textarea);
+    const createTodo=useSelector((state) => state.addCard.todo);
+
+    const [typeNewCard,setTypeNewCard]=useState('');
+
+    useEffect(()=>{
+        if(createTextarea){
+            setTypeNewCard('textarea');
+        }else if(createTodo){
+            setTypeNewCard('todo');
+        }
+    },[createTextarea,createTodo])
+
     const dispatch = useDispatch();
     const card = useSelector((state) => state.createNewTodo)
     // const userId = useSelector((state) => state.auth.user.id)
@@ -27,6 +42,7 @@ const FooterComponent = () => {
     }
 
     const handlerAddCard = () => {
+
         const item = {
             userId:userId,
             todo: card.todo,
@@ -38,12 +54,14 @@ const FooterComponent = () => {
             labels: card.labels,
             title: card.title,
             backgroundColorCard: card.backgroundColorCard,
-            order:tootCards.length +1
+            order:tootCards.length +1,
+            typeCard:typeNewCard
         }
+        // console.log('item',item)
         dispatch(createCard(item))
         dispatch(handlerExitAction())
         dispatch(exitAction())
-        console.log(item)
+        // console.log(item)
     }
 
     return (

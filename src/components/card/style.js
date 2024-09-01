@@ -5,10 +5,11 @@ export const WrapperCard = styled(Box)({
     border: `1px solid var(--border-color)`,
     padding: '10px',
     borderRadius: '12px',
-    boxShadow: `var(--box-shadow)`,
+    // boxShadow: `var(--box-shadow)`,
     height: '200px',
     display: 'flex',
     flexDirection: 'column',
+    overflow:'hidden',
 })
 export const CardHeader = styled(Box)({
     display: 'flex',

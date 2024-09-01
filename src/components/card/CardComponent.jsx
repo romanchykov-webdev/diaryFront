@@ -1,20 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
-import {Grid} from "@mui/material";
 import HeaderComponent from "./headerComponent/HeaderComponent";
-// import {isFavoriteAction} from "../addCard/bodyComponent/todoComponent/todocomponentSlice";
-import {useDispatch} from "react-redux";
 import BodyComponent from "./bodyComponemt/BodyComponent";
-import { getCardById, updateCard} from "../../store/thunks/cardActions/cardActions";
 import FooterComponent from "./footerComponent/FooterComponent";
 import {WrapperCard} from "./style";
+import {useSelector} from "react-redux";
 
 
 const CardComponent = ({i}) => {
     // console.log('i', i);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-
+const switcherFolder=useSelector((state)=>state.auth.user.switcherFolder)
 
 
 
@@ -32,29 +29,29 @@ const CardComponent = ({i}) => {
     // }
 
 
-    function switcherIsFavorite() {
-        // console.log('i.id',i.id)
-        // Создаем обновленный объект карточки с переключенным значением isFavorite
-        const updateItem = { ...i, isFavorite: !i.isFavorite };
-        // Обновляем карточку на сервере
-        dispatch(updateCard({ cardId: i.id, cardData: updateItem }))
-            .then(() => {
-                // После успешного обновления карточки на сервере, получаем обновленную карточку
-                return dispatch(getCardById(i.id));
-            })
-            .then((response) => {
-                // Если запрос на получение обновленной карточки прошел успешно, данные можно будет использовать дальше
-                console.log('Updated card:', response.payload);
-            })
-            .catch((error) => {
-                // Обработка ошибок
-                console.error('Failed to update card:', error);
-            });
-
-        // Для отладки
-        // console.log('i', i);
-        // console.log('updateItem', updateItem);
-    }
+    // function switcherIsFavorite() {
+    //     // console.log('i.id',i.id)
+    //     // Создаем обновленный объект карточки с переключенным значением isFavorite
+    //     const updateItem = { ...i, isFavorite: !i.isFavorite };
+    //     // Обновляем карточку на сервере
+    //     dispatch(updateCard({ cardId: i.id, cardData: updateItem }))
+    //         .then(() => {
+    //             // После успешного обновления карточки на сервере, получаем обновленную карточку
+    //             return dispatch(getCardById(i.id));
+    //         })
+    //         .then((response) => {
+    //             // Если запрос на получение обновленной карточки прошел успешно, данные можно будет использовать дальше
+    //             console.log('Updated card:', response.payload);
+    //         })
+    //         .catch((error) => {
+    //             // Обработка ошибок
+    //             console.error('Failed to update card:', error);
+    //         });
+    //
+    //     // Для отладки
+    //     // console.log('i', i);
+    //     // console.log('updateItem', updateItem);
+    // }
 
     return (
         <WrapperCard
@@ -74,9 +71,12 @@ const CardComponent = ({i}) => {
         >
             {/*<Box>*/}
             <HeaderComponent i={i} userId={i.userId} itemId={i.id} title={i.title} isFavorite={i.isFavorite}
-                             switcherIsFavorite={switcherIsFavorite}/>
+                             // switcherIsFavorite={switcherIsFavorite}
+            />
+
             <BodyComponent
-                sx={{ flex: '1 1 auto' }} // Заполняет оставшееся пространство
+                i={i}
+                // sx={{ flex: '1 1 auto' }} // Заполняет оставшееся пространство
                 todo={i.todo} todoCompleted={i.todoCompleted} textarea={i.textarea}/>
             <FooterComponent i={i}/>
             {/*</Box>*/}

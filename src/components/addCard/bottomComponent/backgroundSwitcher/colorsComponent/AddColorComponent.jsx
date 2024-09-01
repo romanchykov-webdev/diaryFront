@@ -28,13 +28,13 @@ const AddColorComponent = ({setDialogOpen,dialogOpen}) => {
         const addColor=[...userData.colors,color]
         console.log('addColor',addColor)
         const updateUser = {
-            "userName":userData.userName ,
-            "email": userData.email,
-            "language": userData.language,
-            "themeModeDevice": userData.themeModeDevice,
-            "popupForNewUser": userData.popupForNewUser,
-            "avatar": userData.avatar,
-            "switcherFolder":userData.switcherFolder,
+            // "userName":userData.userName ,
+            // "email": userData.email,
+            // "language": userData.language,
+            // "themeModeDevice": userData.themeModeDevice,
+            // "popupForNewUser": userData.popupForNewUser,
+            // "avatar": userData.avatar,
+            // "switcherFolder":userData.switcherFolder,
             "colors":addColor,
         }
         console.log(updateUser)

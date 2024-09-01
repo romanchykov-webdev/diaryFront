@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {
-    createCard,
+    createCard, deleteCard,
     getAllCards,
-    getCardById, getCardIds,
+    getCardById, getCardIds, removeLabelsFromCards,
     updateCard,
     updateCardOrders
 } from '../../thunks/cardActions/cardActions';
@@ -21,7 +21,7 @@ const cardSlice = createSlice({
         dragAndDrop(state, action) {
             state.cards = action.payload;
         },
-        addNewLabelAction(state,action){
+        addNewLabelAction(state, action) {
             const newLabel = action.payload;
             state.labels.push(newLabel)
         }
@@ -33,8 +33,8 @@ const cardSlice = createSlice({
             })
             .addCase(createCard.fulfilled, (state, action) => {
                 state.loading = false;
-                state.cards.push(action.payload);
-                // state.cards.unshift(action.payload); //  unshift для добавления новой карточки в начало массива
+                // state.cards.push(action.payload);
+                state.cards.unshift(action.payload); //  unshift для добавления новой карточки в начало массива
             })
             .addCase(createCard.rejected, (state, action) => {
                 state.loading = false;
@@ -102,7 +102,7 @@ const cardSlice = createSlice({
             })
             .addCase(getCardIds.fulfilled, (state, action) => {
                 // debugger
-                const {labels}=action.payload;
+                const {labels} = action.payload;
                 state.loading = false;
                 state.labels = labels;
             })
@@ -110,7 +110,42 @@ const cardSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
-            ;
+            .addCase(deleteCard.pending, (state) => {
+                console.log('Deleting card...'); // Лог начала удаления
+                state.loading = true;
+            })
+            .addCase(deleteCard.fulfilled, (state, action) => {
+                console.log('Card deleted successfully, removing from state'); // Лог успешного удаления
+                state.loading = false;
+                state.cards = state.cards.filter(card => card.id !== action.payload);
+            })
+            .addCase(deleteCard.rejected, (state, action) => {
+                console.error('Failed to delete card:', action.payload); // Лог ошибки удаления
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(removeLabelsFromCards.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(removeLabelsFromCards.fulfilled, (state, action) => {
+                state.loading = false;
+                const UpCards = action.payload;
+                // debugger
+                // Обновляем состояние карточек
+                state.cards = state.cards.map(item => {
+                    // Найти карточку с таким же id в UpCards
+                    const updatedCard = UpCards.find(upItem => upItem.id === item.id);
+                    // Если карточка найдена в UpCards, заменить текущую карточку
+                    return updatedCard ? updatedCard : item;
+                });
+
+            })
+            .addCase(removeLabelsFromCards.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+        ;
     },
 });
 export const {

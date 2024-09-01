@@ -5,9 +5,10 @@ import PrivateRoute from './utils/router/privateRoute';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
 import AuthRootComponents from "./pages/auth";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 // import SkeletonComponent from "./components/skeleton/SkeletonComponent";
 import {changeLanguage} from "./locales/languageSlice";
+import FullscreenCardComponent from "./components/fullscreenCard/FullscreenCardComponent";
 // import i18n from "i18next";
 
 
@@ -17,7 +18,6 @@ import {changeLanguage} from "./locales/languageSlice";
 function App() {
 
     const dispatch=useDispatch()
-
 
 
     useEffect(() => {
@@ -57,6 +57,7 @@ function App() {
                     ? { alignSelf: 'center' }
                     : {}
             }>
+
                 <Routes>
                     <Route element={<LayoutComponent/>}>
                         <Route element={<PrivateRoute/>}>

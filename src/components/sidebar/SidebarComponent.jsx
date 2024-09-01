@@ -38,6 +38,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import StyleIcon from '@mui/icons-material/Style';
 import {addLabelAction} from "./sidebarSlice";
+import RemoveLabels from "./removeLabels/RemoveLabels";
 
 const SidebarComponent = (props) => {
     const [active, setActive] = useState();
@@ -100,7 +101,7 @@ const SidebarComponent = (props) => {
     };
 
     const handleLogOut = () => {
-        console.log('logout');
+        // console.log('logout');
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('firstName');
         setIsOpen(false)
@@ -124,7 +125,7 @@ const SidebarComponent = (props) => {
         setActiveLabelPath(lab)
         setLabelPath(lab)
         dispatch(addLabelAction(lab))
-        console.log('handlerLabel', lab)
+        // console.log('handlerLabel', lab)
         setIsOpen(false)
 
     }
@@ -134,7 +135,7 @@ const SidebarComponent = (props) => {
         setActiveLabelPath('allCards')
         setLabelPath('allCards')
         dispatch(addLabelAction('allCards'))
-        console.log('labelPath', labelPath)
+        // console.log('labelPath', labelPath)
         // navigate('/path')
         setIsOpen(false)
     }
@@ -144,7 +145,7 @@ const SidebarComponent = (props) => {
         setActiveLabelPath('isFavorite')
         setLabelPath('isFavorite')
         dispatch(addLabelAction('isFavorite'))
-        console.log('labelPath', labelPath)
+        // console.log('labelPath', labelPath)
         // navigate('/path')
         setIsOpen(false)
     }
@@ -153,6 +154,7 @@ const SidebarComponent = (props) => {
 
         setIsOpen(false)
     }
+
 
     return (
         <AnimatePresence
@@ -281,18 +283,13 @@ const SidebarComponent = (props) => {
                                             {renderNavMenu()}
                                         </AccordionDetails>
                                     </Accordion>
-
+                                    <RemoveLabels />
                                 </NavList>
+
                             </NavBlock>
                             <Box width='100%'>
                                 <List>
-                                    {/*{!isNonMobile && (*/}
-                                    {/*    <ListItem>*/}
-                                    {/*        <Box padding='5px'>*/}
-                                    {/*            <ThemeToggleComponent/>*/}
-                                    {/*        </Box>*/}
-                                    {/*    </ListItem>*/}
-                                    {/*)}*/}
+
                                     <ListItem>
                                         <ListItemButton
                                             onClick={handleHome}

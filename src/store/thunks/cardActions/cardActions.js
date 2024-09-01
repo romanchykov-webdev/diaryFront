@@ -54,6 +54,7 @@ export const updateCardOrders = createAsyncThunk(
     'cards/updateCardOrders',
     async (updatedCards, { rejectWithValue }) => {
         try {
+            // debugger
             const response = await updateCardOrderApi(updatedCards);
             return response;
         } catch (error) {
@@ -90,6 +91,46 @@ export const getCardIds = createAsyncThunk(
     }
 );
 
+// Действие для удаления карточки
+export const deleteCard = createAsyncThunk(
+    'cards/deleteСard',
+    async (cardId, { rejectWithValue }) => {
+        try {
+            console.log('Attempting to delete card with ID:', cardId);
+            const response = await instanceAuth.delete(`/cards/${cardId}`);
+            console.log('Card successfully deleted:', response.data);
+            return cardId; // Возвращаем ID удаленной карточки
+        } catch (error) {
+            console.error('Error deleting card:', error.response ? error.response.data : error.message);
+            return rejectWithValue(error.response ? error.response.data : 'Unknown error');
+        }
+    }
+);
 
+
+
+// removeLabelsFromCards
+// export const removeLabelsFromCards = createAsyncThunk(
+//     'cards/removeLabelsFromCards',
+//     async (labels, { rejectWithValue }) => {
+//         try {
+//             const response = await instanceAuth.post('/cards/remove-labels', { labels });
+//             return response.data;
+//         } catch (error) {
+//             return rejectWithValue(error.response.data);
+//         }
+//     }
+// );
+export const removeLabelsFromCards = createAsyncThunk(
+    'cards/removeLabelsFromCards',
+    async (labels, { rejectWithValue }) => {
+        try {
+            const response = await instanceAuth.post('/cards/remove-labels', { labels });
+            return response.data; // Верните обновленные карточки
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
 
 

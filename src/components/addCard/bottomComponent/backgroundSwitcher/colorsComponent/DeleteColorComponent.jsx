@@ -34,13 +34,13 @@ const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
         // const addColor=[...userData.colors,colorsUser]
         console.log('addColor',colorsUser)
         const updateUser = {
-            "userName":userData.userName ,
-            "email": userData.email,
-            "language": userData.language,
-            "themeModeDevice": userData.themeModeDevice,
-            "popupForNewUser": userData.popupForNewUser,
-            "avatar": userData.avatar,
-            "switcherFolder":userData.switcherFolder,
+            // "userName":userData.userName ,
+            // "email": userData.email,
+            // "language": userData.language,
+            // "themeModeDevice": userData.themeModeDevice,
+            // "popupForNewUser": userData.popupForNewUser,
+            // "avatar": userData.avatar,
+            // "switcherFolder":userData.switcherFolder,
             "colors":colorsUser,
         }
         console.log(updateUser)

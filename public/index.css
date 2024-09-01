@@ -9,7 +9,7 @@
     /* Стилизация полосы прокрутки */
 
     &::-webkit-scrollbar {
-        width: 8px; /* Ширина полосы прокрутки */
+        width: 3px; /* Ширина полосы прокрутки */
     }
 
     &::-webkit-scrollbar-track {

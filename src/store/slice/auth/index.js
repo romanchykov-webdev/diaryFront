@@ -24,6 +24,10 @@ export const authSlice = createSlice({
         setToken(state, action) {  // Добавляем редьюсер для установки токена
             state.token = action.payload;
         },
+        removeColorUser(state, action) {
+            // debugger
+            state.user.colors= state.user.colors.filter(item=>item !== action.payload);
+        },
     },
     extraReducers: (builder) => {
         //в ожидании  pending
@@ -105,6 +109,7 @@ export const authSlice = createSlice({
 })
 export const {
     setLoading,
-    setToken
+    setToken,
+    removeColorUser
 } = authSlice.actions;
 export default authSlice.reducer
