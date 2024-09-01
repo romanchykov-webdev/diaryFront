@@ -34,7 +34,7 @@ const ThemeToggleComponent = ({backgroundTheme}) => {
 
     const {theme, setTheme} = useToggleTheme();
     let themeMode = useSelector(state => state.theme.themeMode);
-    const userData=useSelector((state)=>state.auth?.user)
+    // const userData=useSelector((state)=>state.auth?.user)
     // console.log(userData)
     // console.log(themeMode)
     const toggleTheme = () => {

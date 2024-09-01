@@ -48,6 +48,7 @@ const RegisterPage = (props) => {
                 margin='normal'
                 label="Username"
                 variant="outlined"
+                autoComplete='off'
                 error={!!errors.userName}
                 {...register('userName')}
                 placeholder={t('Enter your userName')}
@@ -59,6 +60,7 @@ const RegisterPage = (props) => {
                 label="Email"
                 variant="outlined"
                 error={!!errors.email}
+                autoComplete='off'
                 {...register('email')}
                 placeholder={t('Enter your Email')}
                 helperText={errors.email ? errors.email.message : ''}
@@ -71,6 +73,7 @@ const RegisterPage = (props) => {
                 label="Password"
                 variant="outlined"
                 error={!!errors.password}
+                autoComplete='off'
                 {...register('password')}
                 placeholder={t('Enter your Password')}
                 helperText={errors.password ? errors.password.message : ''}
@@ -84,6 +87,7 @@ const RegisterPage = (props) => {
                 margin='normal'
                 label="Password"
                 variant="outlined"
+                autoComplete='off'
                 error={!!errors.confirmPassword}
                 {...register('confirmPassword')}
                 placeholder={t('Repeat your Password')}

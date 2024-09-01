@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { tokens } from "../../theme";
+// import { tokens } from "../../theme";
 
 
 export const NavBlock = styled('div')(({ theme }) => {
@@ -20,9 +20,9 @@ export const Brand = styled('div')({
 });
 
 export const BrandTitle = styled('div')(({ theme }) => {
-    const colors = tokens(theme.palette.mode);
+    // const colors = tokens(theme.palette.mode);
     return {
-        color: `${theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT}`
+        color: `var(--text-color) !important`,
     };
 });
 
@@ -31,7 +31,7 @@ export const NavList = styled('div')({
 });
 
 export const NavItem = styled('div')(({ theme }) => {
-    const colors = tokens(theme.palette.mode);
+    // const colors = tokens(theme.palette.mode);
     return {
         '&:hover': {
             backgroundColor: '#1900D5 !important',

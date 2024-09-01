@@ -6,12 +6,12 @@ import {Provider} from "react-redux";
 import store from './store/index';
 import {BrowserRouter} from "react-router-dom";
 // import { ThemeProvider, CssBaseline } from '@mui/material';
-import {CssBaseline} from '@mui/material';
+// import {CssBaseline} from '@mui/material';
 // import { ColorModeContext, useMode } from './theme';
-import './i18n'; //перевод app
+import './i18n';
+
 const Root = () => {
     // const [theme, colorMode] = useMode();
-
     return (
         <Provider store={store}>
             {/*<ColorModeContext.Provider value={colorMode}>*/}

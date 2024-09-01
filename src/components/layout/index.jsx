@@ -11,6 +11,7 @@ const LayoutComponent = () => {
     //burger menu
     const [isOpen, setIsOpen] = useState(false)
 
+
     return (
         location.pathname === '/login' || location.pathname === '/register'
             ? (
@@ -27,6 +28,7 @@ const LayoutComponent = () => {
                         height='100%'
                         position='relative'
                     >
+
                         <SidebarComponent
                             isNonMobile={isNonMobile}
                             drawerWidth='250px'

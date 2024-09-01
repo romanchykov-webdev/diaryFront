@@ -1,10 +1,12 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {instance, instanceAuth} from "../../../utils/axios";
+import {setLoading} from "../../slice/auth";
 
 //thunk for logIn
 export const LoginUser = createAsyncThunk(
     'auth/login',
-    async (data, {rejectWithValue}) => {
+    async (data, {dispatch, rejectWithValue}) => {
+        dispatch(setLoading(true));
         try {
             const user = await instance.post('auth/login', data)
             console.log(user)
@@ -22,26 +24,35 @@ export const LoginUser = createAsyncThunk(
             // localStorage.setItem("token", user.data.token)
             // localStorage.setItem("firstName", user.data.user.firstName)
             //localStorage end
+            // console.log('sessionStorage.setItem(token ) LoginUser', sessionStorage.getItem("token"))
             return user.data
+
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
             } else {
                 return rejectWithValue(error.message)
             }
+        } finally {
+            setTimeout(() => {
+                // console.log('setTimeout')
+                dispatch(setLoading(false));
+            }, 2000)
         }
     }
 )
 //thunk for registration
 export const RegisterUser = createAsyncThunk(
     'auth/register',
-    async (data, {rejectWithValue}) => {
+    async (data, {dispatch, rejectWithValue}) => {
+        dispatch(setLoading(true));
         try {
             const user = await instance.post('auth/register', data)
-
+            debugger
             //session storage
             sessionStorage.setItem("token", user.data.token)
             sessionStorage.setItem("firstName", user.data.user.firstName)
+
             //session storage end
             //localStorage
             // localStorage.setItem("token", user.data.token)
@@ -56,6 +67,12 @@ export const RegisterUser = createAsyncThunk(
                 return rejectWithValue(error.message)
             }
         }
+        finally {
+            setTimeout(() => {
+                // console.log('setTimeout')
+                dispatch(setLoading(false));
+            }, 2000)
+        }
     }
 )
 
@@ -63,9 +80,12 @@ export const RegisterUser = createAsyncThunk(
 //thunk for get-public-user-info
 export const getPublicUser = createAsyncThunk(
     'auth/get-public-user-info',
-    async (_, { rejectWithValue }) => {
+    async (_, {dispatch, rejectWithValue}) => {
+        dispatch(setLoading(true));
         try {
+            // debugger
             const user = await instanceAuth.get('auth/get-public-user-info')
+            // console.log('sessionStorage.setItem(token)', sessionStorage.getItem("token"))
             return user.data
         } catch (error) {
             if (error.response && error.response.data.message) {
@@ -74,6 +94,12 @@ export const getPublicUser = createAsyncThunk(
                 return rejectWithValue(error.message)
             }
         }
+        finally {
+            setTimeout(() => {
+                // console.log('setTimeout')
+                dispatch(setLoading(false));
+            }, 2000)
+        }
     },
 )
 
@@ -81,7 +107,9 @@ export const getPublicUser = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
     'users/update',
     // 'auth/update',
-    async (data, {rejectWithValue}) => {
+
+    async (data, {dispatch, rejectWithValue}) => {
+        // dispatch(setLoading(true));
         try {
             const user = await instanceAuth.patch('/auth/update', data)
             console.log('user', user.data)
@@ -93,6 +121,12 @@ export const updateUserInfo = createAsyncThunk(
                 return rejectWithValue(error.message)
             }
         }
+        // finally {
+        //     setTimeout(() => {
+        //         // console.log('setTimeout')
+        //         dispatch(setLoading(false));
+        //     }, 2000)
+        // }
     },
 )
 
@@ -115,7 +149,7 @@ export const updateUserPassword = createAsyncThunk(
 //thunk for deleteUser
 export const deleteUser = createAsyncThunk(
     'users/delete-user',
-    async (_, { rejectWithValue }) => {
+    async (_, {rejectWithValue}) => {
         try {
             return instanceAuth.delete('users')
         } catch (error) {

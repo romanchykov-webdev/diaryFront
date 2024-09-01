@@ -17,7 +17,7 @@ const ChangeUserNameComponent = ({isNonMobile, newUserName, setNewUserName}) => 
         if (newUserName === undefined) {
             setNewUserName(oldUserName)
         }
-    }, [newUserName]);
+    }, [newUserName, oldUserName, setNewUserName]);
 
     // translate
     const {t} = useTranslation();

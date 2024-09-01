@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Home from './pages/home/HomePage';
-import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import {Route, Routes, useLocation} from 'react-router-dom';
 import PrivateRoute from './utils/router/privateRoute';
 import LayoutComponent from "./components/layout";
 import SettingsPage from "./pages/settings/SettingsPage";
 import AuthRootComponents from "./pages/auth";
+import {useDispatch, useSelector} from "react-redux";
+// import SkeletonComponent from "./components/skeleton/SkeletonComponent";
+import {changeLanguage} from "./locales/languageSlice";
+import FullscreenCardComponent from "./components/fullscreenCard/FullscreenCardComponent";
+// import i18n from "i18next";
 
 
 // import {useSelector} from "react-redux";
@@ -12,6 +17,13 @@ import AuthRootComponents from "./pages/auth";
 
 function App() {
 
+    const dispatch=useDispatch()
+
+
+    useEffect(() => {
+        dispatch(changeLanguage('en'));
+        // i18n.changeLanguage('en');
+    }, [dispatch]);
     // const [theme, colorMode] = useMode();
     // const backgroundTheme = useSelector((state) => state.auth?.user.themeModeDevice)
     //
@@ -25,11 +37,17 @@ function App() {
 
     const {pathname} = useLocation();
     // const navigate = useNavigate();
-    console.log('pathname',pathname)
+    // console.log('pathname',pathname)
     // console.log('navigate',navigate)
+// const isloading=useSelector(state => state.auth.isLoading);
+// const isloading=true
 
     return (
         <>
+            {/*{*/}
+            {/*    isloading && <SkeletonComponent/>*/}
+
+            {/*}*/}
 
             {/*<CssBaseline/>*/}
             {/*<div className="App" style={{backgroundColor: backgroundTheme === 'tomato' ? '#ff6347' : undefined}}>*/}
@@ -39,9 +57,11 @@ function App() {
                     ? { alignSelf: 'center' }
                     : {}
             }>
+
                 <Routes>
                     <Route element={<LayoutComponent/>}>
                         <Route element={<PrivateRoute/>}>
+
                             <Route path="/" element={<Home/>}/>
                             <Route path="/settings" element={<SettingsPage/>}/>
                         </Route>
