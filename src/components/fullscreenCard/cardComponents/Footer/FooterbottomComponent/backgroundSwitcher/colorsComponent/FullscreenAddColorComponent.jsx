@@ -16,7 +16,7 @@ const FullscreenAddColorComponent = ({setDialogOpen, dialogOpen}) => {
 
     const dispatch = useDispatch();
 
-    const [color, setColor] = useState('#fff');
+    const [color, setColor] = useState('#ffffff');
 
     const handleColorChange = (event) => {
         setColor(event.target.value);
@@ -25,9 +25,9 @@ const FullscreenAddColorComponent = ({setDialogOpen, dialogOpen}) => {
     const handleAddColor = () => {
         // dispatch(addUserColorAction(color));
         // dispatch(addNewColorAction(color))
-        console.log('color', color)
+        // console.log('color', color)
         const addColor = [...userData.colors, color]
-        console.log('addColor', addColor)
+        // console.log('addColor', addColor)
         const updateUser = {
             // "userName": userData.userName,
             // "email": userData.email,
@@ -38,7 +38,7 @@ const FullscreenAddColorComponent = ({setDialogOpen, dialogOpen}) => {
             // "switcherFolder": userData.switcherFolder,
             "colors": addColor,
         }
-        console.log(updateUser)
+        // console.log(updateUser)
         dispatch(updateUserInfo(updateUser))
         dispatch(getPublicUser());
         setDialogOpen(!dialogOpen)

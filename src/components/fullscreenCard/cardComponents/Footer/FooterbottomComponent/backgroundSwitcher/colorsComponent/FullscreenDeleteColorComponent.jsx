@@ -28,9 +28,9 @@ const FullscreenDeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) =>
 
     const handleExitAndPatchColor = () => {
         // dispatch(addNewColorAction(color))
-        console.log('color',userData.colors)
+        // console.log('color',userData.colors)
         // const addColor=[...userData.colors,colorsUser]
-        console.log('addColor',colorsUser)
+        // console.log('addColor',colorsUser)
         const updateUser = {
             // "userName":userData.userName ,
             // "email": userData.email,
@@ -41,11 +41,11 @@ const FullscreenDeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) =>
             // "switcherFolder":userData.switcherFolder,
             "colors":colorsUser,
         }
-        console.log(updateUser)
+        // console.log(updateUser)
         dispatch(updateUserInfo(updateUser))
         dispatch(getPublicUser());
         setDeleteColorOpen(!deleteColorOpen)
-        console.log('userData.colors',userData.colors)
+        // console.log('userData.colors',userData.colors)
         setDelColor('')
     };
 
@@ -53,7 +53,7 @@ const FullscreenDeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) =>
     function handlerRemoveColor() {
         // dispatch(removeColorAction(delColor))
         dispatch(removeColorUser(delColor))
-        console.log('dispatch(removeColorAction())', delColor)
+        // console.log('dispatch(removeColorAction())', delColor)
         setDelColor('')
     }
 

@@ -11,6 +11,7 @@ import dataTimeSlice from "../components/addCard/timeDataComponent/sliceTimeData
 import cardSlice from "./slice/cardReducer/cardReducer";
 import sidebarSlice from "../components/sidebar/sidebarSlice";
 import fullscreenSlice from "../components/card/cardsSlice";
+import searchSlice from "../components/search-bar/searchSlice";
 
 const store = configureStore({
     reducer: {
@@ -26,6 +27,7 @@ const store = configureStore({
         dataTime:dataTimeSlice,
         sidebarSlice:sidebarSlice,
         fullscreenToggle:fullscreenSlice,
+        search:searchSlice,
     }
 })
 

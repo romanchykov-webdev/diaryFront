@@ -24,7 +24,8 @@ const cardSlice = createSlice({
         addNewLabelAction(state, action) {
             const newLabel = action.payload;
             state.labels.push(newLabel)
-        }
+        },
+
     },
     extraReducers: (builder) => {
         builder

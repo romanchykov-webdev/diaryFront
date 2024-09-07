@@ -25,7 +25,7 @@ const FullscreenColorsComponent = () => {
         const switcherColor = (color) => {
             // dispatch(backgroundColorCardAction(color))
             dispatch(changeColorCardAction(color))
-            console.log('color',color)
+            // console.log('color',color)
         }
         const [dialogOpen, setDialogOpen] = useState(false);
         const [deleteColorOpen, setDeleteColorOpen] = useState(false);
@@ -46,7 +46,7 @@ const FullscreenColorsComponent = () => {
                         setBackgroundColors(true)
                 }
         }, [dialogOpen,deleteColorOpen,backgroundColors]);
-        console.log('backgroundColors',backgroundColors)
+        // console.log('backgroundColors',backgroundColors)
         return (
             <Grid container sx={{ padding: 0, paddingTop: 2,position:'relative',justifyContent:'center',width:'100%',}}>
 

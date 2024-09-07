@@ -9,14 +9,17 @@ import {getCardIds} from "../../../store/thunks/cardActions/cardActions";
 const BodyComponent = ({todo, todoCompleted, textarea, i}) => {
 
     const dispatch = useDispatch();
-    const typeCard=i.typeCard
-    console.log('typeCard',typeCard)
+    const typeCard = i.typeCard
+        // console.log('typeCard',typeCard)
 
-    function handlerFullscreen() {
-        console.log('click body component')
+        function
+    handlerFullscreen()
+    {
+        // console.log('click body component')
         // console.log('card', i)
         dispatch(fullscreenToggleAction(i))
         dispatch(getCardIds());
+            document.body.style.overflow = 'hidden';
         // document.body.style.overflow = 'hidden';
 
 
@@ -59,11 +62,12 @@ const BodyComponent = ({todo, todoCompleted, textarea, i}) => {
                 }}
             >
                 {
-                    typeCard==='textarea' ? <TextareaComponentSmall textarea={textarea}/>
+                    typeCard === 'textarea' ? <TextareaComponentSmall textarea={textarea}/>
                         : <Box sx={{
                             // border: '1px solid red',
                             height: '100%',
                             overflow: 'hidden',
+
                         }}
                         >
                             <TodoComponentSmall todo={todo} todoCompleted={todoCompleted}/>

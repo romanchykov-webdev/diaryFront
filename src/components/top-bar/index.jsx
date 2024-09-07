@@ -62,7 +62,7 @@ const TopBarComponent = (props) => {
     //     console.log("useLayoutEffect",backgroundTheme)
     // }, [backgroundTheme]);
     // console.log('backgroundTheme',backgroundTheme)
-
+    // console.log('isNonMobile',isNonMobile)
 
     return (
         <AppBar component={Root} sx={{
@@ -93,16 +93,21 @@ const TopBarComponent = (props) => {
                     </Grid>
 
                     <Grid display='flex' justifyContent='flex-end' item sm={8} md={9}>
-                        <SwitcherFolder/>
+                        {isNonMobile && (
+                            <SwitcherFolder/>
+                        )}
+
                         <Box sx={{display: 'none', visibility: 'hidden', width: 0, height: 0, position: 'absolute'}}>
 
                             <ThemeToggleComponent/>
                         </Box>
-                        {isNonMobile && (
-                            <Box marginLeft='28px'>
-                                <SearchBarComponent/>
-                            </Box>
-                        )}
+
+                        <Box  sx={{
+                            marginLeft: isNonMobile ? '28px' : '0'
+                        }}
+                        >
+                            <SearchBarComponent/>
+                        </Box>
                     </Grid>
                 </Grid>
             </MuiToolbar>

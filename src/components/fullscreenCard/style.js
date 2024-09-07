@@ -3,11 +3,11 @@ import {Box} from "@mui/material";
 
 export const WrapperFullscreen = styled(Box)({
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: '20px',
-    position: 'absolute',
-    // position: 'fixed',
+    // paddingTop: '20px',
+    // position: 'absolute',
+    position: 'fixed',
     top: 0,
     left: 0,
     width: '100%',
@@ -20,20 +20,26 @@ export const WrapperFullscreen = styled(Box)({
     '& ::-webkit-scrollbar': {
         display: 'none'
     },
+
     // Для маленьких экранов
     '@media (max-width: 480px)': {
         position: 'fixed',
-        paddingTop: '0px',
+        paddingTop: '20px',
         paddingBottom: '40px',
     },
 })
 export const WrapperCard = styled(Box)({
     // border:'1px solid red',
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '1300px',
     width: '90%',
     padding: '10px',
     borderRadius: '12px',
     boxShadow: 'var(--box-shadow)',
-    height: 'auto',
+    // height: 'auto',
+    // maxHeight: '100svh',
+    height: '95svh',
     overflowY: 'scroll',
     '@media (max-width: 480px)': {
         // padding:'2px',

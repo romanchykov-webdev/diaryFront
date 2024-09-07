@@ -112,7 +112,7 @@ export const updateUserInfo = createAsyncThunk(
         // dispatch(setLoading(true));
         try {
             const user = await instanceAuth.patch('/auth/update', data)
-            console.log('user', user.data)
+            // console.log('user', user.data)
             return user.data
         } catch (error) {
             if (error.response && error.response.data.message) {

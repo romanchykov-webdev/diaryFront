@@ -3,22 +3,41 @@ import {Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormContro
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import {useDispatch, useSelector} from "react-redux";
-import { removeLabelsFromCards} from "../../../store/thunks/cardActions/cardActions";
+import { getCardIds, removeLabelsFromCards} from "../../../store/thunks/cardActions/cardActions";
+// import {removeLabelsUser} from "../../../store/slice/cardReducer/cardReducer";
 // import {removeLabelsFromUserCards} from "../../../store/thunks/cardActions/cardActions";
 
 const RemoveLabels = () => {
 
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
-    const labels=useSelector((state)=>state.cards.labels)
+    const labels = useSelector((state) => state.cards.labels)
 
     const [removeLabels, setRemoveLabels] = useState([])
+    // useEffect(()=>{
+    //     setRemoveLabels(labels)
+    // },[labels])
 
     const handlerRemoveLabels = () => {
         console.log(removeLabels)
         // dispatch(removeLabelsFromUserCards(removeLabels));
         // dispatch(getCardsByLabels(removeLabels));
-        dispatch(removeLabelsFromCards(removeLabels));
+        dispatch(removeLabelsFromCards(removeLabels))
+            .then(() => {
+                // После успешного обновления карточки на сервере, получаем обновленную карточку
+                return dispatch(getCardIds())
+            })
+            .then((response) => {
+                // Если запрос на получение обновленной карточки прошел успешно, данные можно будет использовать дальше
+                // console.log('Updated card:', response.payload);
+            })
+            .catch((error) => {
+                // Обработка ошибок
+                console.error('Failed to update card:', error);
+            });
+        setRemoveLabels([])
+        // dispatch(getCardIds())
+
 
     }
 

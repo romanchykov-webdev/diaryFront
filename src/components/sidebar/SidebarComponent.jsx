@@ -229,9 +229,9 @@ const SidebarComponent = (props) => {
                                 </Box>
                                 {!isNonMobile && (
                                     <List>
-                                        <ListItem>
-                                            <SearchBarComponent/>
-                                        </ListItem>
+                                        {/*<ListItem>*/}
+                                        {/*    <SearchBarComponent/>*/}
+                                        {/*</ListItem>*/}
                                         <ListItem sx={{justifyContent: 'center', mt: 2}}>
                                             <SwitcherFolder/>
                                         </ListItem>
@@ -283,7 +283,10 @@ const SidebarComponent = (props) => {
                                             {renderNavMenu()}
                                         </AccordionDetails>
                                     </Accordion>
-                                    <RemoveLabels />
+                                    {
+                                        labels.length>0 && <RemoveLabels />
+                                    }
+
                                 </NavList>
 
                             </NavBlock>

@@ -1,22 +1,28 @@
 import './styles.css';
-import React, { useState} from "react";
-import {Reorder, AnimatePresence} from "framer-motion";
+import React, {useEffect, useState} from "react";
+import {Reorder, AnimatePresence,motion} from "framer-motion";
 
 import {Box, Typography} from "@mui/material";
 import {v4 as uuidv4} from 'uuid';
 import TodoCompleteComponent from "./todoCompleteComponent/TodoCompleteComponent";
 import TodoNonCompleteComponent from "./todoNonCompleteComponent/TodoNonCompleteComponent";
-import {useDispatch} from "react-redux";
-import {addNewTodoAction} from "../../../../card/cardsSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {addNewTodoAction, handleDragEndAction} from "../../../../card/cardsSlice";
 
 
-export default function FullscreenBodyToDoList({cardData}) {
-    const {todo, todoCompleted} = cardData
+export default function FullscreenBodyToDoList() {
+    // const {todo, todoCompleted} = cardData
 
     // console.log('FullscreenBodyToDoList', cardData)
 
+    const todo=useSelector((store)=>store.fullscreenToggle.card.todo)
+    const todoCompleted=useSelector((store)=>store.fullscreenToggle.card.todoCompleted)
 
     const [items, setItems] = useState(todo);
+
+    useEffect(()=>{
+        setItems(todo)
+    },[todo])
 
     // const [reorderedItems, setReorderedItems] = useState(todo);
 
@@ -36,24 +42,36 @@ export default function FullscreenBodyToDoList({cardData}) {
 
     const onReorderItems = (newOrder) => {
         setItems(newOrder);
+
     };
 
 
     const handleDragEnd = () => {
         setItems(items)
         // const updateItem = { ...cardData, todo: items };
+        // console.log('setItems',items)
+        dispatch(handleDragEndAction(items))
     };
 
 
     return (
-        <div className="wrapperTodo" style={{height: '100%', overflowY: 'scroll', padding: '0'}}>
+        <motion.div
+            className="wrapperTodo"
+            style={{height: '100%', overflowY: 'scroll', padding: '0'}}
+            layout
+            transition={{ ease: "easeInOut"}} // добавляем плавность через ease
+        >
+            {/*<div className="wrapperTodo" style={{height: '100%', overflowY: 'scroll', padding: '0'}}>*/}
             {/*no completed*/}
             <Reorder.Group axis="y" onReorder={onReorderItems} values={items.filter(item => !item.completed)}
                            as="ul"
+                           layout
+                           transition={{ ease: "easeInOut"}} // плавная анимация для изменения порядка
             >
                 <AnimatePresence>
                     <TodoNonCompleteComponent
                         // items={items}
+                        todoNoCompleted={items}
                         handlerAddItem={handlerAddItem}
                         handleDragEnd={handleDragEnd}
 
@@ -65,11 +83,12 @@ export default function FullscreenBodyToDoList({cardData}) {
                 <Typography sx={{cursor: 'pointer', pl: 4, pr: 4}}> + add item </Typography>
             </Box>
 
-            <TodoCompleteComponent
-                todoCompleted={todoCompleted}
-
-
-            />
-        </div>
+            <motion.div layout transition={{ ease: "easeInOut"}}>
+                <TodoCompleteComponent
+                    todoCompleted={todoCompleted}
+                />
+            </motion.div>
+            {/*</div>*/}
+        </motion.div>
     );
 }

@@ -7,9 +7,11 @@ import Body from "./cardComponents/Body/Body";
 import Footer from "./cardComponents/Footer/Footer";
 import {getCardById, updateCard} from "../../store/thunks/cardActions/cardActions";
 
+
 const FullscreenCardComponent = () => {
 
     const dispatch = useDispatch();
+    // const fullscreen=useSelector((state)=>state.fullscreenToggle.fullscreen)
 
     // const cardId = useSelector((state) => state.fullscreenToggle.card);
     const card = useSelector((state) => state.fullscreenToggle.card);
@@ -24,7 +26,8 @@ const FullscreenCardComponent = () => {
 
     useEffect(() => {
         setCardData(card);
-    }, [ card])
+        // console.log('card',card)
+    }, [ card,cardData])
 
     // console.log('allCards',allCards)
     // console.log('cardId',cardId)
@@ -34,8 +37,8 @@ const FullscreenCardComponent = () => {
 
     const handlerCloseFullscreen = () => {
         dispatch(fullscreenToggleAction())
-
-        // document.body.style.overflow =  'auto';
+        // console.log('fullscreen',fullscreen)
+        document.body.style.overflow =  'auto';
         // console.log('isOverflowHiddenBody',isOverflowHiddenBody)
 
     }
@@ -43,6 +46,7 @@ const FullscreenCardComponent = () => {
     const updateCardItem = useSelector((state) => state.fullscreenToggle.card)
     const saveCard = () => {
         // console.log('updateCard', updateCard)
+
         dispatch(updateCard({cardId: updateCardItem.id, cardData: updateCardItem}))
             .then(() => {
                 // После успешного обновления карточки на сервере, получаем обновленную карточку
@@ -50,7 +54,7 @@ const FullscreenCardComponent = () => {
             })
             .then((response) => {
                 // Если запрос на получение обновленной карточки прошел успешно, данные можно будет использовать дальше
-                console.log('Updated card:', response.payload);
+                // console.log('Updated card:', response.payload);
             })
             .catch((error) => {
                 // Обработка ошибок
@@ -61,41 +65,49 @@ const FullscreenCardComponent = () => {
     }
     // save card
 
+
     return (
-        <WrapperFullscreen
-            // onClick={saveCard}
-        >
-            {Object.keys(cardData).length > 0 ? (
-                <WrapperCard
-                    onClick={(e) => e.stopPropagation()} // Останавливаем распространение события
-                    sx={{
-                        backgroundColor: cardData.colors === '' ? `var(--background-color)` : cardData.colors,
-                        backgroundImage: cardData.backgroundColorCard ? `url(${cardData.backgroundColorCard})` : 'none',
-                        backgroundPositionX: 'right',
-                        backgroundPositionY: 'bottom',
-                        backgroundSize: 'cover',
-
-                    }}
-                >
-                    <Header i={cardData} title={cardData.title} />
-                    {/*<Body todo={cardData.todo} todoCompleted={cardData.todoCompleted} textarea={cardData.textarea}/>*/}
-                    <Body cardData={cardData} />
-                    <Footer
-                        cardId={cardData.id}
-                        // labels={cardData.labels}
-                        // cardData={cardData}
-                        handlerCloseFullscreen={handlerCloseFullscreen}
-                        saveCard={saveCard}
-                    />
 
 
-                </WrapperCard>
-            ) : (
-                <div>Loading...</div>
-            )}
-        </WrapperFullscreen>
-    )
-        ;
-};
+            <WrapperFullscreen
+                // onClick={saveCard}
+
+
+            >
+                {Object.keys(cardData).length > 0 ? (
+
+                        <WrapperCard
+                            onClick={(e) => e.stopPropagation()} // Останавливаем распространение события
+                            sx={{
+                                backgroundColor: cardData.colors === '' ? `var(--background-color)` : cardData.colors,
+                                backgroundImage: cardData.backgroundColorCard ? `url(${cardData.backgroundColorCard})` : 'none',
+                                backgroundPositionX: 'right',
+                                backgroundPositionY: 'bottom',
+                                backgroundSize: 'cover',
+                            }}
+                        >
+                            <Header i={cardData} title={cardData.title}/>
+                            {/*<Body todo={cardData.todo} todoCompleted={cardData.todoCompleted} textarea={cardData.textarea}/>*/}
+                            <Body
+                                // cardData={cardData}
+                            />
+                            <Footer
+                                cardId={cardData.id}
+                                // labels={cardData.labels}
+                                // cardData={cardData}
+                                handlerCloseFullscreen={handlerCloseFullscreen}
+                                saveCard={saveCard}
+                            />
+
+
+                        </WrapperCard>
+                         ) : (
+                        <div>Loading...</div>
+                        )}
+                    </WrapperFullscreen>
+
+                    )
+                    ;
+                };
 
 export default FullscreenCardComponent;

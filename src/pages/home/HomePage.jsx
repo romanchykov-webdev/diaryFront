@@ -3,7 +3,8 @@ import CardComponent from "../../components/card/CardComponent";
 import {WrapperCards, WrapperHomePage} from "./style";
 // import AddCardMobiComponent from "../../components/addCard/mobile/AddCardMobiComponent";
 import {
-    Box, Typography,
+    Box,
+    // Typography,
     // useMediaQuery
 } from "@mui/material";
 import AddCardFsComponent from "../../components/addCard/bigScrin/AddCardFsComponent";
@@ -16,8 +17,8 @@ import {
 import FullscreenCardComponent from "../../components/fullscreenCard/FullscreenCardComponent";
 // import FullscreenCardComponent from "../../components/fullscreenCard/FullscreenCardComponent";
 // import WrapperMobAddCardComponent from "../../components/addCard/mobile/WrapperMobAddCard/WrapperMobAddCardComponent";
-import FolderIcon from '@mui/icons-material/Folder';
-import Button from "@mui/material/Button";
+// import FolderIcon from '@mui/icons-material/Folder';
+// import Button from "@mui/material/Button";
 import FolderComponent from "../../components/folder/FolderComponent";
 import {addLabelAction} from "../../components/sidebar/sidebarSlice";
 
@@ -30,7 +31,7 @@ const HomePage = () => {
     const fullscreenCard = useSelector((state) => state.fullscreenToggle.fullscreen);
     const switcherFolder = useSelector((state) => state.auth.user.switcherFolder)
     const allLabels = useSelector((state) => state.cards.labels);
-
+    const searchCards = useSelector((state) => state.search.searchCards)
 
     useEffect(() => {
         dispatch(getCardIds());
@@ -54,11 +55,16 @@ const HomePage = () => {
                 filteredCards = allCards.filter(item => item.labels.includes(activeLabel));
                 break;
         }
-        setLocalCards(filteredCards);
-    }, [activeLabel, allCards]);
+        if(searchCards===null){
 
-    const handlerChangeLabel=(label)=>{
-        console.log('handlerIsFavorite',label)
+            setLocalCards(filteredCards);
+        }else{
+            setLocalCards(searchCards);
+        }
+    }, [activeLabel,searchCards, allCards]);
+
+    const handlerChangeLabel = (label) => {
+        // console.log('handlerIsFavorite', label)
         dispatch(addLabelAction(label))
     }
 
@@ -75,39 +81,43 @@ const HomePage = () => {
                     gridTemplateColumns: switcherFolder === 'todo' && '1fr !important'
                 }}
             >
-                {switcherFolder !== 'folder' ?
-                    (localCards.map((card) => (
-                        <Box
-                            // draggable='true'
-                            key={card.id}
-                            sx={{
-                                height: '200px',
-                                overflow: 'hidden',
-                                boxShadow: `var(--box-shadow)`,
-                                borderRadius: 'var(--border-radius12)'
-                            }}
-                        >
-                            <CardComponent
-                                i={card}
-                                sx={{padding: '1px'}}
-                            />
-                        </Box>
-                    )))
-                    : (
-                        <>
-                            <FolderComponent key={'No_label'} label={'No label'} handlerChangeLabel={handlerChangeLabel} />
-                            <FolderComponent key={'Is_Favorite'} label={'Is Favorite'} handlerChangeLabel={handlerChangeLabel}  />
-                            {allLabels.map((label, index) => (
-                                <FolderComponent key={`${label}-${index}`} label={label} handlerChangeLabel={handlerChangeLabel}  />
-                            ))}
-                        </>
-            )
-            }
-        </WrapperCards>
+                {
+                    switcherFolder !== 'folder' ?
+                        (localCards.map((card) => (
+                            <Box
+                                // draggable='true'
+                                key={card.id}
+                                sx={{
+                                    height: '200px',
+                                    overflow: 'hidden',
+                                    boxShadow: `var(--box-shadow)`,
+                                    borderRadius: '12px'
+                                }}
+                            >
+                                <CardComponent
+                                    i={card}
+                                    sx={{padding: '1px'}}
+                                />
+                            </Box>
+                        )))
+                        : (
+                            <>
+                                <FolderComponent key={'No_label'} label={'No label'}
+                                                 handlerChangeLabel={handlerChangeLabel}/>
+                                <FolderComponent key={'Is_Favorite'} label={'Is Favorite'}
+                                                 handlerChangeLabel={handlerChangeLabel}/>
+                                {allLabels.map((label, index) => (
+                                    <FolderComponent key={`${label}-${index}`} label={label}
+                                                     handlerChangeLabel={handlerChangeLabel}/>
+                                ))}
+                            </>
+                        )
+                }
+            </WrapperCards>
 
-</WrapperHomePage>
-)
-    ;
+        </WrapperHomePage>
+    )
+        ;
 };
 
 export default HomePage;

@@ -68,12 +68,12 @@ const Footer = ({saveCard,cardId, handlerCloseFullscreen,}) => {
     const handleClickOpen = () => {
         setOpenPopUpLabel(true);
 
-        // dispatch(getCardIds());
-        // console.log('handleClickOpen')
+
     };
 
     const handleClose = () => {
         setOpenPopUpLabel(false);
+        // dispatch(updateCard())
     };
     // label popup
 
@@ -89,14 +89,14 @@ const Footer = ({saveCard,cardId, handlerCloseFullscreen,}) => {
         <WrapperFooter
             sx={{
                 width: '100%',
-                marginTop: '10px',
+                // marginTop: '10px',
             }}
         >
             <Box sx={{
                 overflow: 'hidden',
                 // overflowX: 'scroll',
                 width: '100%',
-                padding: '5px 0',
+                padding: labels.length>0 ? '5px 0' : 0,
                 display: 'flex',
                 alignItems: 'center',
 
@@ -107,14 +107,16 @@ const Footer = ({saveCard,cardId, handlerCloseFullscreen,}) => {
                     display: 'none'
                 }
             }}>
-                {labels.map((item, index) => (
+                {
+                    labels.map((item, index) => (
                     <span key={index} style={{
                         border: '1px solid var(--border-color)',
                         padding: '2px 5px',
                         borderRadius: '5px',
                         marginRight: '5px',
                     }}>    {item}</span>
-                ))}
+                ))
+                }
             </Box>
             <Box
                 sx={{

@@ -11,7 +11,7 @@ export const WrapperBody =styled(Box)({
     padding:0,
     // height:'100%',
     height:'auto',
-    // maxHeight:'70svh',
+    maxHeight:'75svh',
     '@media (max-width: 480px)': {
         // maxHeight:'74svh',
 

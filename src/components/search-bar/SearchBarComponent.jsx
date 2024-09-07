@@ -1,38 +1,48 @@
-import React, { useState } from 'react';
-import { Stack, Autocomplete, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
+import React, {useEffect, useState} from 'react';
+import { TextField, Box} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import {useDispatch, useSelector} from "react-redux";
+import {searchCardsActions} from "./searchSlice";
 const SearchBarComponent = () => {
-    const [selectedItem, setSelectedItem] = useState(null);
-    const navigate = useNavigate();
 
-    const aray = [1, 2, 3, 4, 5, 6, 7, 8];
+    const titleCardSearch=useSelector((state)=>state.cards.cards)
+
+    const [searchCardsTitle,setSearchCardsTitle]=useState(titleCardSearch)
+    const [value, setValue] = useState("");
+
+    const dispatch=useDispatch()
+
+    useEffect(()=>{
+
+            if(value!==''){
+                const filteredCards=titleCardSearch.filter(item=>
+                    item.title.toLowerCase().includes(value.toLowerCase())
+                )
+                setSearchCardsTitle(filteredCards)
+                dispatch(searchCardsActions(filteredCards))
+            }else{
+                dispatch(searchCardsActions(null))
+            }
+
+        // console.log('searchTitle',searchTitle)
+        // console.log('searchCardsTitle',searchCardsTitle)
+    },[dispatch,titleCardSearch,value])
 
     return (
-        <Stack spacing={2} sx={{ width: '300px' }}>
-            <Autocomplete
-                value={selectedItem}
-                onChange={(event, newValue) => {
-                    setSelectedItem(newValue);
-                    if (newValue !== null) {
-                        navigate(`/search/${newValue}`);
-                    }
-                }}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Поиск"
-                        InputProps={{
-                            ...params.InputProps,
-                            type: 'search',
-                        }}
-                    />
-                )}
-                options={aray}
-                getOptionLabel={(option) => option.toString()}  // Преобразование числа в строку
-                isOptionEqualToValue={(option, value) => option === value}
+        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+            <SearchIcon
+                sx={{ color: 'action.active', mr: 1, my: 0.5 }}
             />
-        </Stack>
+            <TextField
+                sx={{
+                    backgroundColor: 'transparent',
+                }}
+                autoComplete='off'
+             value={value}
+             onChange={(e)=>setValue(e.target.value)}
+                label="Поиск" variant="standard"
+            />
+        </Box>
     );
 };
 

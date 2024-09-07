@@ -15,6 +15,7 @@ const TextareaComponentSmall = ({textarea}) => {
                 // color: 'var(--text-color)',
                 height: '100% !important',
                 // overflow: 'hidden',
+                // overflowY: 'scroll',
                 padding: '0 !important',
                 // '& .MuiBox-root .css-0':{
                 //     border: '1px solid red',
@@ -28,6 +29,9 @@ const TextareaComponentSmall = ({textarea}) => {
                     //     // height: '100% !important',
                     //     border: '1px solid black',
                     // }
+                },
+                '& ::-webkit-scrollbar': {
+                    display: 'none'
                 },
 
             }}

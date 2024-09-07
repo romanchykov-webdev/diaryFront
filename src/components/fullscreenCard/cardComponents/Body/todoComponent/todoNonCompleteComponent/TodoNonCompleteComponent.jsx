@@ -5,23 +5,21 @@ import ClearIcon from '@mui/icons-material/Clear';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 // import {Item} from "../Item";
-import {
-    changeTextAction,
-    removeTodoItemAction,
-    todoCompletedAction
-} from "../todocomponentSlice11";
+
 import {useDispatch, useSelector} from "react-redux";
 import {changeTextItemTodoAction, removeItemAction, toggleCompletedAction} from "../../../../../card/cardsSlice";
 const TodoNonCompleteComponent = (
     {
         // items,
+        todoNoCompleted,
         handlerAddItem,
         handleDragEnd,
 
         // lastItemRef
     }) => {
 
-const todoNoCompleted=useSelector((state)=>state.fullscreenToggle.card.todo)
+
+// const todoNoCompleted=useSelector((state)=>state.fullscreenToggle.card.todo)
     // console.log('todoNoCompleted',todoNoCompleted)
     const [items,setItems]=useState(todoNoCompleted);
     useEffect(() => {

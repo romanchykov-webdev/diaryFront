@@ -66,14 +66,14 @@ const HeaderComponent = ({i,userId,itemId,title, isFavorite}) => {
             dispatch(updateCard({ cardId: i.id, cardData: updateItem }))
                 .then(() => dispatch(getCardById(i.id)))
                 .then((response) => {
-                    console.log('Updated card:', response.payload);
+                    // console.log('Updated card:', response.payload);
                 })
                 .catch((error) => {
                     console.error('Failed to update card:', error);
                 });
 
-            console.log('i', i);
-            console.log('updateItem', updateItem);
+            // console.log('i', i);
+            // console.log('updateItem', updateItem);
         }, 1000);
 
         // Обновляем таймер

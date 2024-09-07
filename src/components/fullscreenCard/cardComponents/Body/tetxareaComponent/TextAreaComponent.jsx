@@ -29,11 +29,12 @@ const TextAreaComponent = ({cardData}) => {
         <WrapperTextArea
             sx={{
                 height: '100% !important',
+                overflowY: 'scroll',
             }}
         >
             <Textarea
                 value={valueTextarea}
-                placeholder={valueTextarea ==='' && 'ведитте текст'}
+                placeholder={valueTextarea ==='' ? 'текст' : undefined}
                 onChange={(e) => handlerText(e)}
                 sx={{
                     // width: '100%',
@@ -41,8 +42,9 @@ const TextAreaComponent = ({cardData}) => {
                     overflow: 'none !important',
                     overflowY: 'scroll',
                     height: '100% !important',
-                    border: valueTextarea ==='' ? '1px solid black' : '1px solid transparent',
-                    padding:'0 !important',
+                    // border: valueTextarea ==='' ? '1px solid black' : '1px solid transparent',
+                    border: '1px solid var(--border-color)',
+                    padding:'5px !important',
                 }}
                 minRows={2}
             />

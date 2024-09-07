@@ -1,7 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 
-
 const initialState = {
     fullscreen: false,
     card: null,
@@ -28,18 +27,20 @@ const fullscreenSlice = createSlice({
             // debugger
             const itemCompleted = action.payload
 
-            // Удаляем элемент из массива todo_
-            state.card.todo = state.card.todo.filter(item => item.id !== itemCompleted.id);
             // Добавляем элемент в массив `todoCompleted`
             state.card.todoCompleted.push(itemCompleted);
+            // Удаляем элемент из массива todo_
+            state.card.todo = state.card.todo.filter(item => item.id !== itemCompleted.id);
+
         },
         toggleNoCompletedAction(state, action) {
             // debugger
             const itemCompleted = action.payload
-
+            // Добавляем элемент в массив
+            state.card.todo.push(itemCompleted)
+            // Удаляем элемент из массива
             state.card.todoCompleted = state.card.todoCompleted.filter(item => item.id !== itemCompleted.id);
 
-            state.card.todo.push(itemCompleted)
 
         }, removeItemAction(state, action) {
             // debugger
@@ -91,6 +92,10 @@ const fullscreenSlice = createSlice({
             }
 
         },
+        handleDragEndAction(state, action) {
+            const items = action.payload;
+            state.card.todo = items
+        }
     }
 })
 export const {
@@ -106,6 +111,7 @@ export const {
     changeBackgroundCardAction,
     changeColorCardAction,
     LabelAddRemoveLabelAction,
+    handleDragEndAction,
 } = fullscreenSlice.actions
 
 export default fullscreenSlice.reducer;
