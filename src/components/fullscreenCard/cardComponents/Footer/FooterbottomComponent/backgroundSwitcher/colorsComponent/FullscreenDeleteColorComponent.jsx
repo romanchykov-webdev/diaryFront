@@ -9,9 +9,13 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {getPublicUser, updateUserInfo} from "../../../../../../../store/thunks/auth";
 import {removeColorUser} from "../../../../../../../store/slice/auth";
+import {useTranslation} from "react-i18next";
 
 const FullscreenDeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
 
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const userData = useSelector(state => state.auth.user);
 
@@ -71,7 +75,9 @@ const FullscreenDeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) =>
              }}
         >
             <Box sx={{width:'100%'}}>
-                <Typography variant='h6' sx={{textAlign: 'center', mb: 2, mt: 2}}>Выберите цвет for delete</Typography>
+                <Typography variant='h6' sx={{textAlign: 'center', mb: 2, mt: 2}}>
+                    {t('Select color to remove')}
+                </Typography>
                 <AnimatePresence>
                     <motion.div
                         initial={{ height: 0, opacity: 0 }}
@@ -121,7 +127,7 @@ const FullscreenDeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) =>
                                     onClick={handlerRemoveColor}
                                     disabled={delColor===''}
                                     variant="contained" color="error" startIcon={<DeleteIcon />}>
-                                    Delete
+                                    {t('Delete')}
                                 </Button>
                             </Grid>
                         </Grid>

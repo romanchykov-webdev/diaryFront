@@ -2,13 +2,14 @@ import {createSlice} from '@reduxjs/toolkit';
 import {
     createCard, deleteCard,
     getAllCards,
-    getCardById, getCardIds, removeLabelsFromCards,
+    getCardById, getCardIds,  removeLabelsFromCards,
     updateCard,
     updateCardOrders
 } from '../../thunks/cardActions/cardActions';
 
 const initialState = {
     cards: [],
+    hasMoreCards:true,
     labels: [],
     loading: true,
     error: null,
@@ -146,6 +147,27 @@ const cardSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+            // .addCase(getPaginatedCards.pending, (state) => {
+            //     state.status = 'loading';
+            // })
+            // .addCase(getPaginatedCards.fulfilled, (state, action) => {
+            //     state.status = 'succeeded';
+            //     // debugger
+            //     const cards = action.payload;
+            //
+            //     if (Array.isArray(cards)) {
+            //         // Добавляем новые карточки к уже загруженным
+            //         state.cards = [...state.cards, ...cards];
+            //         // Проверяем, есть ли еще карточки для загрузки
+            //         state.hasMoreCards = cards.length === 10; // Если загружено 10 карточек, есть ли еще
+            //     } else {
+            //         console.error('Expected an array but got:', cards);
+            //     }
+            // })
+            // .addCase(getPaginatedCards.rejected, (state, action) => {
+            //     state.status = 'failed';
+            //     state.error = action.payload;
+            // })
         ;
     },
 });

@@ -5,8 +5,11 @@ import TodoComponentSmall from "./todoComponent/TodoComponentSmall";
 import {useDispatch} from "react-redux";
 import {fullscreenToggleAction} from "../cardsSlice";
 import {getCardIds} from "../../../store/thunks/cardActions/cardActions";
+import {useTranslation} from "react-i18next";
 
 const BodyComponent = ({todo, todoCompleted, textarea, i}) => {
+
+
 
     const dispatch = useDispatch();
     const typeCard = i.typeCard

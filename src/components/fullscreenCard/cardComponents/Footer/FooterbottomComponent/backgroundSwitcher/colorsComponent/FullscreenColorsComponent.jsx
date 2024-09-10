@@ -10,8 +10,14 @@ import {motion,AnimatePresence} from 'framer-motion';
 import {changeColorCardAction} from "../../../../../../card/cardsSlice";
 import FullscreenAddColorComponent from "./FullscreenAddColorComponent";
 import FullscreenDeleteColorComponent from "./FullscreenDeleteColorComponent";
+import {useTranslation} from "react-i18next";
 
 const FullscreenColorsComponent = () => {
+
+        // translate
+        const {t} = useTranslation();
+        // translate
+
         const colors = useSelector((state) => state.auth.user.colors);
 
         const dispatch = useDispatch()
@@ -154,7 +160,7 @@ const FullscreenColorsComponent = () => {
                                             variant='outlined'
 
                                         >
-                                                Add new color
+                                                {t('Add new color')}
                                         </Button>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}
@@ -170,7 +176,7 @@ const FullscreenColorsComponent = () => {
                                             variant='outlined'
 
                                         >
-                                                Delete old color
+                                                {t('Delete color')}
                                         </Button>
                                 </Grid>
                         </Grid>

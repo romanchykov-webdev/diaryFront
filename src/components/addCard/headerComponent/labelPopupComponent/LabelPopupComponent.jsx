@@ -9,8 +9,13 @@ import {addRemoveLabelAction} from "../../bodyComponent/todoComponent/todocompon
 import {useDispatch, useSelector} from "react-redux";
 import {Box, Checkbox, FormControlLabel, FormGroup, TextField, Typography} from "@mui/material";
 import {addNewLabelAction} from "../../../../store/slice/cardReducer/cardReducer";
+import {useTranslation} from "react-i18next";
 
 const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, setIsOpenLabelPopup}) => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const dispatch = useDispatch()
 
@@ -85,15 +90,16 @@ const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, set
                     '& .css-1t1j96h-MuiPaper-root-MuiDialog-paper': {backgroundColor: 'var(--background-color)'}
                 }}
             ><Box sx={{padding: '10px', borderRadius: 'var(--border-radius12)'}}>
-                <Typography variant="body1" sx={{fontSize: '12px', textAlign: 'center', mb: '10px'}}>Добавить
-                    ярлык</Typography>
+                <Typography variant="body1" sx={{fontSize: '12px', textAlign: 'center', mb: '10px'}}>
+                    {t('Add label')}
+                </Typography>
                 <TextField
                     sx={{marginBottom: '10px'}}
                     autoComplete="off"
                     variant="standard"
                     value={valueInput}
                     onChange={(e) => findLabel(e)}
-                    placeholder='Введите название ярлыка'
+                    placeholder={t('Create a new label')}
                 />
                 <DialogContent sx={{padding: 0}}>
 
@@ -126,14 +132,14 @@ const LabelPopupComponent = ({handleClose, openPopUpLabel, isOpenLabelPopup, set
                 </DialogContent>
                 <DialogActions>
                     {
-                        buttonAddLabels && <Button onClick={addNewLabel}>add labels</Button>
+                        buttonAddLabels && <Button onClick={addNewLabel}>{t('Add a label')}</Button>
                     }
 
                     <Button onClick={() => {
                         handleClose();
                         setValueInput('');
                     }}>
-                        exit
+                        {t('Exit')}
                     </Button>
                 </DialogActions>
             </Box>

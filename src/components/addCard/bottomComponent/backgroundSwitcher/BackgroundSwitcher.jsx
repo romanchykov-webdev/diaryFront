@@ -6,8 +6,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {WrapperBackground} from "./style";
 import ColorsComponent from "./colorsComponent/ColorsComponent";
 import BackgroundComponent from "./backgroundComponent/BackgroundComponent";
+import {useTranslation} from "react-i18next";
 
 const BackgroundSwitcher = () => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
+
     return (
         <WrapperBackground>
             <Accordion>
@@ -16,7 +22,7 @@ const BackgroundSwitcher = () => {
                     aria-controls="panel1-content"
                     id="panel1-header"
                 >
-                    Switcher colors
+                    {t('Note color')}
                 </AccordionSummary>
                 <AccordionDetails>
                    <ColorsComponent/>
@@ -28,7 +34,7 @@ const BackgroundSwitcher = () => {
                     aria-controls="panel2-content"
                     id="panel2-header"
                 >
-                    Swicher background
+                    {t('Note background')}
                 </AccordionSummary>
                 <AccordionDetails>
                     <BackgroundComponent/>

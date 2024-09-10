@@ -26,7 +26,11 @@ const FullscreenBackgroundComponent = () => {
     }
 
     return (
-        <Grid container sx={{outline: '1px solid white', padding: 0, paddingTop: 2}}>
+        <Grid container sx={{
+            // outline: '1px solid white',
+            padding: 0,
+            paddingTop: 2
+        }}>
             <BackgroundImgComponentCelebration backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>
             <BackgroundImgComponentFoodLight backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>
             <BackgroundImgComponentGroceryLight backgroundColorCard={backgroundColorCard} switcherBackground={switcherBackground}/>

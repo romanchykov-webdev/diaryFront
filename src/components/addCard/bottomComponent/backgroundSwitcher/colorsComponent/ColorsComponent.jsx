@@ -7,8 +7,14 @@ import {backgroundColorCardAction} from "../../../bodyComponent/todoComponent/to
 import AddColorComponent from "./AddColorComponent";
 import {motion,AnimatePresence} from 'framer-motion';
 import DeleteColorComponent from "./DeleteColorComponent";
+import {useTranslation} from "react-i18next";
 
 const ColorsComponent = () => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
+
         const colors = useSelector((state) => state.auth.user.colors);
 
         const dispatch = useDispatch()
@@ -123,7 +129,7 @@ const ColorsComponent = () => {
                   variant='outlined'
 
               >
-                  Add new color
+                  {t('Add new color')}
               </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={6}
@@ -139,7 +145,7 @@ const ColorsComponent = () => {
                   variant='outlined'
 
               >
-                  Delete old color
+                  {t('Delete color')}
               </Button>
           </Grid>
       </Grid>

@@ -8,6 +8,7 @@ import TodoCompleteComponent from "./todoCompleteComponent/TodoCompleteComponent
 import TodoNonCompleteComponent from "./todoNonCompleteComponent/TodoNonCompleteComponent";
 import {useDispatch, useSelector} from "react-redux";
 import {addTodoItemAction, dropItemAction} from "./todocomponentSlice";
+import {useTranslation} from "react-i18next";
 
 
 
@@ -17,7 +18,9 @@ export default function ToDoList() {
 
     // const initialItemsTodoCompleted = useSelector((state) => state.createNewTodo.todoCompleted);
 
-
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const [items, setItems] = useState(initialItems);
 
@@ -97,7 +100,7 @@ export default function ToDoList() {
                 </AnimatePresence>
             </Reorder.Group>
             <Box sx={{display: 'flex', alignItems: 'center', mb: 2, mt: 2,}} onClick={handlerAddItem}>
-                <Typography sx={{cursor: 'pointer', pl: 4, pr: 4}}> + add item </Typography>
+                <Typography sx={{cursor: 'pointer', pl: 4, pr: 4}}> + {t('Add')} </Typography>
             </Box>
             {/*no completed*/}
 

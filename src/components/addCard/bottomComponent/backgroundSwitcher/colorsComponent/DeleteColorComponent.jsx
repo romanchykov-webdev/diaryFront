@@ -11,9 +11,14 @@ import Avatar from "@mui/material/Avatar";
 
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {useTranslation} from "react-i18next";
 
 const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
 
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const userData = useSelector(state => state.auth.user);
 
@@ -30,9 +35,9 @@ const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
 
     const handleExitAndPatchColor = () => {
         // dispatch(addNewColorAction(color))
-        console.log('color',userData.colors)
+        // console.log('color',userData.colors)
         // const addColor=[...userData.colors,colorsUser]
-        console.log('addColor',colorsUser)
+        // console.log('addColor',colorsUser)
         const updateUser = {
             // "userName":userData.userName ,
             // "email": userData.email,
@@ -43,18 +48,18 @@ const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
             // "switcherFolder":userData.switcherFolder,
             "colors":colorsUser,
         }
-        console.log(updateUser)
+        // console.log(updateUser)
         dispatch(updateUserInfo(updateUser))
         dispatch(getPublicUser());
         setDeleteColorOpen(!deleteColorOpen)
-        console.log('userData.colors',userData.colors)
+        // console.log('userData.colors',userData.colors)
         setDelColor('')
     };
 
     const [delColor,setDelColor]=useState('')
     function handlerRemoveColor() {
         dispatch(removeColorAction(delColor))
-        console.log('dispatch(removeColorAction())', delColor)
+        // console.log('dispatch(removeColorAction())', delColor)
         setDelColor('')
     }
 
@@ -72,7 +77,7 @@ const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
              }}
         >
             <Box sx={{width:'100%'}}>
-                <Typography variant='h6' sx={{textAlign: 'center', mb: 2, mt: 2}}>Выберите цвет for delete</Typography>
+                <Typography variant='h6' sx={{textAlign: 'center', mb: 2, mt: 2}}>{t('Select color to remove')}</Typography>
                 <AnimatePresence>
                     <motion.div
                         initial={{ height: 0, opacity: 0 }}
@@ -122,7 +127,7 @@ const DeleteColorComponent = ({setDeleteColorOpen,deleteColorOpen}) => {
                                     onClick={handlerRemoveColor}
                                     disabled={delColor===''}
                                     variant="contained" color="error" startIcon={<DeleteIcon />}>
-                                    Delete
+                                    {t('Delete')}
                                 </Button>
                             </Grid>
                         </Grid>

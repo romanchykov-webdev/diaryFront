@@ -33,9 +33,12 @@ const HomePage = () => {
     const allLabels = useSelector((state) => state.cards.labels);
     const searchCards = useSelector((state) => state.search.searchCards)
 
+
+
     useEffect(() => {
         dispatch(getCardIds());
         dispatch(getAllCards());
+        // dispatch(getPaginatedCards({ limit: 10, offset }));
     }, [dispatch]);
 
     useLayoutEffect(() => {
@@ -67,6 +70,8 @@ const HomePage = () => {
         // console.log('handlerIsFavorite', label)
         dispatch(addLabelAction(label))
     }
+
+
 
     return (
         <WrapperHomePage>

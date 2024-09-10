@@ -8,12 +8,17 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import {useDispatch} from "react-redux";
 import { getCardById, updateCard} from "../../../store/thunks/cardActions/cardActions";
 import {WrapperIsFavorite} from "../style";
+import {useTranslation} from "react-i18next";
 // import IsLoadComponent from "../../skeleton/IsLoadComponent";
 // import {colorsAction, isFavoriteAction, titleTextAction} from "../bodyComponent/todoComponent/todocomponentSlice";
 // import LabelPopupSmallComponent from "./labelPopupComponent/LabelPopupSmallComponent";
 // import {motion, AnimatePresence} from "framer-motion";
 
 const HeaderComponent = ({i,userId,itemId,title, isFavorite}) => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const dispatch = useDispatch();
 
@@ -155,8 +160,8 @@ const HeaderComponent = ({i,userId,itemId,title, isFavorite}) => {
                     onChange={(e) => changeTitle(e)}
                     // label="Name"
                     variant="standard"
-                    placeholder='напишите имя заметки'
-                    title='напишите имя заметки'
+                    placeholder={t('Note name')}
+                    title={t('Note name')}
                 />
             </WrapperTitle>
             <WrapperIcons>

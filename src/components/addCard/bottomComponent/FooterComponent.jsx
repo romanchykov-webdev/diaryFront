@@ -9,10 +9,15 @@ import BackgroundSwitcher from "./backgroundSwitcher/BackgroundSwitcher";
 import {motion, AnimatePresence} from 'framer-motion';
 // import {v4 as uuidv4} from "uuid";
 import {createCard} from "../../../store/thunks/cardActions/cardActions";
+import {useTranslation} from "react-i18next";
 // import DateTimeDisplay from "../timeDataComponent/TimeDataComponent";
 
 
 const FooterComponent = () => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const createTextarea=useSelector((state) => state.addCard.textarea);
     const createTodo=useSelector((state) => state.addCard.todo);
@@ -82,10 +87,10 @@ const FooterComponent = () => {
 
             <WrapperBottom>
                 <WrapperCreateCard onClick={handlerAddCard}>
-                    Create new card
+                    {t('Create new card')}
                 </WrapperCreateCard>
                 <WrapperExit onClick={handlerExit}>
-                    Exit
+                    {t('Exit')}
                 </WrapperExit>
             </WrapperBottom>
             {/*<DateTimeDisplay/>*/}

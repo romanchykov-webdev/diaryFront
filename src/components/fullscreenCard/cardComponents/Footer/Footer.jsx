@@ -12,10 +12,15 @@ import FullscreenLabelPopupComponent from "./FooterbottomComponent/labels/Fullsc
 import DeleteIcon from '@mui/icons-material/Delete';
 import {deleteCard} from "../../../../store/thunks/cardActions/cardActions";
 import {fullscreenToggleAction} from "../../../card/cardsSlice";
+import {useTranslation} from "react-i18next";
 
 const Footer = ({saveCard,cardId, handlerCloseFullscreen,}) => {
     const user = useSelector((state) => state.auth.user)
     const dispatch = useDispatch();
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const labels = useSelector((state) => state.fullscreenToggle.card.labels)
     // update updateFullscreenCard
@@ -171,7 +176,7 @@ const Footer = ({saveCard,cardId, handlerCloseFullscreen,}) => {
                             // width: '50%',
                         }}
                         variant="outlined"
-                        onClick={saveCard}>Save</Button>
+                        onClick={saveCard}>{t('Save')}</Button>
 
                     {/*    label*/}
                     <AnimatePresence>

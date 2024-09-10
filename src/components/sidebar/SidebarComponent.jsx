@@ -16,7 +16,7 @@ import {LogoutOutlined, ChevronLeftOutlined} from '@mui/icons-material';
 import {useLocation, useNavigate} from "react-router-dom";
 import FlexBetween from "../flex-between/FlexBetween";
 import Logo from "../../assets/image/logo/diaryLogo.svg";
-import SearchBarComponent from "../search-bar/SearchBarComponent";
+// import SearchBarComponent from "../search-bar/SearchBarComponent";
 import {
     NavBlock,
     Brand,
@@ -250,7 +250,7 @@ const SidebarComponent = (props) => {
                                             aria-controls="panel1-content"
                                             id="panel1-header"
                                         >
-                                            Labels
+                                            {t('Labels')}
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             <ListItem>
@@ -262,7 +262,7 @@ const SidebarComponent = (props) => {
                                                         <StyleIcon/>
                                                     </ListItemIcon>
                                                     <ListItemText>
-                                                        All Cards
+                                                        {t('All notes')}
                                                     </ListItemText>
                                                 </ListItemButton>
                                             </ListItem>
@@ -275,7 +275,7 @@ const SidebarComponent = (props) => {
                                                         <StarRateIcon sx={{fill: 'gold'}}/>
                                                     </ListItemIcon>
                                                     <ListItemText>
-                                                        Is Favorite
+                                                        {t('Is favorite')}
                                                     </ListItemText>
                                                 </ListItemButton>
                                             </ListItem>
@@ -318,19 +318,20 @@ const SidebarComponent = (props) => {
                                                 {t('Settings')}
                                             </ListItemText>
                                         </ListItemButton>
-                                    </ListItem> <ListItem>
-                                    <ListItemButton
-                                        // onClick={handleSettings}
-                                        // component={active === '/settings' ? ActiveNavItem : NavItem}
-                                    >
-                                        <ListItemIcon>
-                                            <SettingsIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText>
-                                            Изменение ярлыков
-                                        </ListItemText>
-                                    </ListItemButton>
-                                </ListItem>
+                                    </ListItem>
+                                {/*    <ListItem>*/}
+                                {/*    <ListItemButton*/}
+                                {/*        // onClick={handleSettings}*/}
+                                {/*        // component={active === '/settings' ? ActiveNavItem : NavItem}*/}
+                                {/*    >*/}
+                                {/*        <ListItemIcon>*/}
+                                {/*            <SettingsIcon/>*/}
+                                {/*        </ListItemIcon>*/}
+                                {/*        <ListItemText>*/}
+                                {/*            Изменение ярлыков*/}
+                                {/*        </ListItemText>*/}
+                                {/*    </ListItemButton>*/}
+                                {/*</ListItem>*/}
                                     <ListItem>
 
                                         <ListItemButton component={NavItem} onClick={handleLogOut}>

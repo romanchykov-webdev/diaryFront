@@ -3,8 +3,9 @@ import { TextField, Box} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {useDispatch, useSelector} from "react-redux";
 import {searchCardsActions} from "./searchSlice";
+import {useTranslation} from "react-i18next";
 const SearchBarComponent = () => {
-
+    const {t} = useTranslation();
     const titleCardSearch=useSelector((state)=>state.cards.cards)
 
     const [searchCardsTitle,setSearchCardsTitle]=useState(titleCardSearch)
@@ -40,7 +41,7 @@ const SearchBarComponent = () => {
                 autoComplete='off'
              value={value}
              onChange={(e)=>setValue(e.target.value)}
-                label="Поиск" variant="standard"
+                label={t('search')} variant="standard"
             />
         </Box>
     );

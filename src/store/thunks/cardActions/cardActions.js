@@ -40,6 +40,21 @@ export const updateCard = createAsyncThunk(
     }
 );
 
+// Действие для получения 10  карточек с пагинацией
+// export const getPaginatedCards = createAsyncThunk(
+//     'cards/getPaginatedCards',
+//     async ({ limit = 10, offset = 0 }, { rejectWithValue }) => {
+//         try {
+//             console.log('Fetching paginated cards with limit and offset:', { limit, offset });
+//             const response = await instanceAuth.get(`/cards?limit=${limit}&offset=${offset}`);
+//             return response.data;
+//         } catch (error) {
+//             console.error('Error fetching paginated cards:', error);
+//             return rejectWithValue(error.response.data);
+//         }
+//     }
+// );
+
 
 // update cards order
 

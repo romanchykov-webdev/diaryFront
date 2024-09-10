@@ -4,8 +4,13 @@ import {Button,  Typography, Box} from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import {getPublicUser, updateUserInfo} from "../../../../../store/thunks/auth";
 import {addNewColorAction} from "../../../bodyComponent/todoComponent/todocomponentSlice";
+import {useTranslation} from "react-i18next";
 
 const AddColorComponent = ({setDialogOpen,dialogOpen}) => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const userData = useSelector(state => state.auth.user);
 
@@ -57,7 +62,9 @@ const AddColorComponent = ({setDialogOpen,dialogOpen}) => {
              }}
         >
             <Box sx={{width:'100%'}}>
-                <Typography variant='h6' sx={{textAlign: 'center', mb: 2, mt: 2}}>Выберите цвет</Typography>
+                <Typography variant='h6' sx={{textAlign: 'center', mb: 2, mt: 2}}>
+                    {t('Select color')}
+                </Typography>
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
                     <Box sx={{
                         overflow: 'hidden',
@@ -76,12 +83,14 @@ const AddColorComponent = ({setDialogOpen,dialogOpen}) => {
                     </Box>
                 </Box>
                 <Box sx={{display: 'flex', flexDirection: 'column', gap: 2, mt: 2}}>
-                    <Button onClick={()=>setDialogOpen(!dialogOpen)} color="primary" variant="outlined">Отмена</Button>
-                    <Button onClick={handleAddColor} color="primary" variant="contained" sx={{backgroundColor: color,}}>
+                    <Button onClick={()=>setDialogOpen(!dialogOpen)} color="primary" variant="outlined">
+                        {t('Cancel')}
+                    </Button>
+                    <Button onClick={handleAddColor} color="primary" variant="contained" sx={{backgroundColor: color,textShadow:'1px 1px 1px black'}}>
                         {/*<Avatar sx={{ width:'40px',height:'40px', backgroundColor: color, marginRight: 1 }}>*/}
                         <CheckIcon/>
                         {/*</Avatar>*/}
-                        Добавить
+                        {t('Add')}
                     </Button>
                 </Box>
             </Box>

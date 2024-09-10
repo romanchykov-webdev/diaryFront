@@ -6,8 +6,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {removeTodoCompletedItemAction,  todoNonCompletedAction} from "../todocomponentSlice";
 import {motion} from 'framer-motion';
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import {useTranslation} from "react-i18next";
 
 const TodoCompleteComponent = () => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
+
     const dispatch = useDispatch();
     const items = useSelector((state) => state.createNewTodo.todoCompleted);
 
@@ -44,8 +50,7 @@ const TodoCompleteComponent = () => {
                                 id="panel1-header"
                             >
                                 <Typography variant="body1" sx={{textDecoration: 'underline'}}>
-                                    {lengthItemsCompleted}
-                                    Completed Items</Typography>
+                                    {lengthItemsCompleted} {t('Completed item')} Items</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {items.map(item =>  (

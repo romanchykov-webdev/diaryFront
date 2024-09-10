@@ -8,9 +8,16 @@ import TodoCompleteComponent from "./todoCompleteComponent/TodoCompleteComponent
 import TodoNonCompleteComponent from "./todoNonCompleteComponent/TodoNonCompleteComponent";
 import {useDispatch, useSelector} from "react-redux";
 import {addNewTodoAction, handleDragEndAction} from "../../../../card/cardsSlice";
+import {useTranslation} from "react-i18next";
 
 
 export default function FullscreenBodyToDoList() {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
+
+
     // const {todo, todoCompleted} = cardData
 
     // console.log('FullscreenBodyToDoList', cardData)
@@ -80,7 +87,7 @@ export default function FullscreenBodyToDoList() {
                 </AnimatePresence>
             </Reorder.Group>
             <Box sx={{display: 'flex', alignItems: 'center', mb: 2, mt: 2,}} onClick={handlerAddItem}>
-                <Typography sx={{cursor: 'pointer', pl: 4, pr: 4}}> + add item </Typography>
+                <Typography sx={{cursor: 'pointer', pl: 4, pr: 4}}> + {t('Add')} </Typography>
             </Box>
 
             <motion.div layout transition={{ ease: "easeInOut"}}>

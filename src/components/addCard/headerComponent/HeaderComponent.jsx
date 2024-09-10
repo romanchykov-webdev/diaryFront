@@ -10,8 +10,13 @@ import {colorsAction, isFavoriteAction, titleTextAction} from "../bodyComponent/
 import LabelPopupComponent from "./labelPopupComponent/LabelPopupComponent";
 import {motion, AnimatePresence} from "framer-motion";
 import {getCardIds} from "../../../store/thunks/cardActions/cardActions";
+import {useTranslation} from "react-i18next";
 
 const HeaderComponent = () => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const isFavorite = useSelector((state) => state.createNewTodo.isFavorite)
 
@@ -59,9 +64,9 @@ const HeaderComponent = () => {
                 <TextField
                     value={inputValue}
                     onChange={(e) => changeTitle(e)}
-                    label="Name"
+                    label={t('Note name')}
                     variant="standard"
-                    title='напишите имя заметки'
+                    title={t('Note name')}
                 />
             </WrapperTitle>
             <WrapperIcons>
@@ -84,6 +89,7 @@ const HeaderComponent = () => {
                                     handleClose={handleClose}
                                     // isOpenLabelPopup={isOpenLabelPopup}
                                     //setIsOpenLabelPopup={setIsOpenLabelPopup}
+
                                 />
                             </motion.div>
                         </AnimatePresence>
@@ -95,6 +101,7 @@ const HeaderComponent = () => {
                 <BeenhereIcon
                     onClick={handleClickOpen}
                     // onClick={() => setIsOpenLabelPopup(true)}
+
                 />
                 {
                     isFavorite

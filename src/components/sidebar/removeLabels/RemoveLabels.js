@@ -4,10 +4,15 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import {useDispatch, useSelector} from "react-redux";
 import { getCardIds, removeLabelsFromCards} from "../../../store/thunks/cardActions/cardActions";
+import {useTranslation} from "react-i18next";
 // import {removeLabelsUser} from "../../../store/slice/cardReducer/cardReducer";
 // import {removeLabelsFromUserCards} from "../../../store/thunks/cardActions/cardActions";
 
 const RemoveLabels = () => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const dispatch = useDispatch();
 
@@ -64,7 +69,7 @@ const RemoveLabels = () => {
                 aria-controls="panel1-content"
                 id="panel1-header"
             >
-                Remove Labels
+                {t('Remove Labels')}
             </AccordionSummary>
             <AccordionDetails>
                 <FormGroup>
@@ -104,7 +109,7 @@ const RemoveLabels = () => {
                         variant="contained"
                         disabled={removeLabels.length === 0}
                     >
-                        remove labels
+                        {t('Remove Labels')}
                     </Button>
                 </Box>
             </AccordionDetails>

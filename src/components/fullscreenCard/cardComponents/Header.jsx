@@ -7,8 +7,13 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import {useDispatch, useSelector} from "react-redux";
 import {changeTitleAction, toggleIsFavoriteAction} from "../../card/cardsSlice";
+import {useTranslation} from "react-i18next";
 
 const Header = ({i}) => {
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
     const isFavorite=useSelector((state)=>state.fullscreenToggle.card.isFavorite);
     const title=useSelector((state)=>state.fullscreenToggle.card.title);
@@ -45,8 +50,8 @@ const Header = ({i}) => {
                     onChange={(e) => changeTitle(e)}
                     // label="Name"
                     variant="standard"
-                    placeholder='напишите имя заметки'
-                    title='напишите имя заметки'
+                    placeholder={t('Note name')}
+                    title={t('Note name')}
                 />
             </WrapperTitle>
             <WrapperIcons>

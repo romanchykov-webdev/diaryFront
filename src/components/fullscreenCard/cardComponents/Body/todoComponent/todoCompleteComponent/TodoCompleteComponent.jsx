@@ -7,8 +7,14 @@ import {removeTodoCompletedItemAction, todoNonCompletedAction} from "../todocomp
 import {motion} from 'framer-motion';
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import {removeItemAction, toggleNoCompletedAction} from "../../../../../card/cardsSlice";
+import {useTranslation} from "react-i18next";
 
 const TodoCompleteComponent = () => {
+
+
+    // translate
+    const {t} = useTranslation();
+    // translate
 
 
     const todoCompleted = useSelector((state) => state.fullscreenToggle.card.todoCompleted)
@@ -58,9 +64,10 @@ const TodoCompleteComponent = () => {
                                 aria-controls="panel1-content"
                                 id="panel1-header"
                             >
+
                                 <Typography variant="body1" sx={{textDecoration: 'underline'}}>
-                                    {lengthItemsCompleted}
-                                    Completed Items</Typography>
+                                    {lengthItemsCompleted} {t('Completed item')}
+                                    </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {items.map(item => (

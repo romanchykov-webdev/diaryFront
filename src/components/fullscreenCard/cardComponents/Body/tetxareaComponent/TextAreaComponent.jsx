@@ -3,8 +3,15 @@ import {WrapperTextArea} from "./style";
 import {Textarea} from "@mui/joy";
 import {useDispatch} from "react-redux";
 import {changeTextTextareaAction} from "../../../../card/cardsSlice";
+import {useTranslation} from "react-i18next";
 
 const TextAreaComponent = ({cardData}) => {
+
+
+    // translate
+    const {t} = useTranslation();
+    // translate
+
     const dispatch = useDispatch()
 
     const {textarea} = cardData
@@ -34,7 +41,7 @@ const TextAreaComponent = ({cardData}) => {
         >
             <Textarea
                 value={valueTextarea}
-                placeholder={valueTextarea ==='' ? 'текст' : undefined}
+                placeholder={valueTextarea ==='' ? `${t('Write a note')}` : undefined}
                 onChange={(e) => handlerText(e)}
                 sx={{
                     // width: '100%',
